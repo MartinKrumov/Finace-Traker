@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Set;
+
 public class User {
 	private long userId;
 	private String username;

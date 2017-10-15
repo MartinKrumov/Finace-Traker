@@ -8,18 +8,17 @@ public class Budget {
 	private String name;
 	private BigDecimal amount;
 	private LocalDateTime date;
-	
 	private long wallet;
 	private long category;
-	private long ownCategory;
+	private long customCategory;
 	
-	public Budget(String name, BigDecimal amount, LocalDateTime date, long wallet, long category, long ownCategory) {
+	public Budget(String name, BigDecimal amount, LocalDateTime date, long wallet, long category, long customCategory) {
 		this.name = name;
 		this.amount = amount;
 		this.date = date;
 		this.wallet = wallet;
 		this.category = category;
-		this.ownCategory = ownCategory;
+		this.customCategory = customCategory;
 	}
 	
 	
