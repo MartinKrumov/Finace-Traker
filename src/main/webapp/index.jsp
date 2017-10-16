@@ -116,7 +116,7 @@ form button[type=submit] {
 <body>
 	<div id="bg"></div>
 
-	<form action="login" method="post">
+	<form action="loginsss" method="post">
 
 		<label for=""></label> 
 		<input type="text" name="fname" id=""placeholder="First name" class="pass">
@@ -130,7 +130,12 @@ form button[type=submit] {
 	</form>
 	<script
 		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<%
+String name = "name";
+%>
 
+<%-- <jsp:scriptlet> --%>
+<h1><%=name%></h1>
 
 </body>
 </html>
