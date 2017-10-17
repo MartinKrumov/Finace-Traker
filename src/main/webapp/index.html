@@ -24,38 +24,41 @@
         <div id="signups">   
           <h1>Sign Up for Free</h1>
           
-          <form action="signups" method="post">
+          <form action="signup" method="post" enctype="multipart/form-data">
           
           <div class="top-row">
             <div class="field-wrap">
               <label>
                 First Name<span class="req">*</span>
               </label>
-              <input type="text" name = "fname" required autocomplete="off" />
+              <input type="text" name = "fname"  autocomplete="off" />
             </div>
         
             <div class="field-wrap">
               <label>
                 Last Name<span class="req">*</span>
               </label>
-              <input type="text" name = "lname" required autocomplete="off"/>
+              <input type="text" name = "lname"  autocomplete="off"/>
             </div>
+            
           </div>
 
           <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email" name = "email" required autocomplete="off"/>
+            <input type="email" name = "email"  autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password" name = "pass" required autocomplete="off"/>
+            <input type="password" name = "pass"  autocomplete="off"/>
           </div>
-          
+          <div class="field-wrap">
+              <input type="file" name = "profilpic" />
+            </div>
           <button type="submit" class="button button-block"/>Get Started</button>
           
           </form>
