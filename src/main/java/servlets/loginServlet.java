@@ -43,7 +43,7 @@ public class loginServlet extends HttpServlet {
 		// String lastName
 
 		response.setContentType("text/html");
-		User user = new User(fname, pass, email, fname, sname);
+		User user = new User(fname, pass, email, fname);
 		String tableCss = "";
 		String table = "<table border = 3>" + "<tr>" + "<th>First name</th>" + "<th>Second name</th>"
 				+ "<th>User name</th>" + "<th>Email</th>" + "<th>Passworth</th>" + "</th></tr>" + "<tr><td>" + fname
