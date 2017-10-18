@@ -24,7 +24,7 @@ import model.User;
 /**
  * Servlet implementation class SignUpServlet
  */
-//@WebServlet("/signups")
+// @WebServlet("/signups")
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,51 +42,62 @@ public class SignUpServlet extends HttpServlet {
 		pr.println(email);
 		pr.println(pass);
 		pr.println("dsfvdvdfsv");
-		
 
-//		if (!UserDAO.checkIfExists(email)) {
-			User user = new User(fname, lname, email, pass);
-			PrintWriter out = response.getWriter();
+		// if (!UserDAO.checkIfExists(email)) {
+		User user = new User(fname, lname, email, pass);
+		PrintWriter out = response.getWriter();
 
-			if (!ServletFileUpload.isMultipartContent(request)) {
-				out.println("Nothing to upload");
-				return;
-			}
-			FileItemFactory itemfactory = new DiskFileItemFactory();
-			ServletFileUpload upload = new ServletFileUpload(itemfactory);
-			try {
-				List<FileItem> items = upload.parseRequest(request);
-				for (FileItem item : items) {
+		if (!ServletFileUpload.isMultipartContent(request)) {
+			out.println("Nothing to upload");
+			return;
+		}
+		FileItemFactory itemfactory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(itemfactory);
+		try {
+			HttpServletRequest request2 = request;
+			List<FileItem> items = upload.parseRequest(request2);
+			for (FileItem item : items) {
 
-					String contentType = item.getContentType();
-					if (!contentType.equals("image/png")) {
+				String contentType = item.getContentType();
+				
+					if (!item.getFieldName().equals("profilpic")) {
 						out.println("only png format image files supported");
 						continue;
 					}
-					File uploadDir = new File("src");
-					if(!uploadDir.exists()){
-						uploadDir.createNewFile();
-					}
-					File file = File.createTempFile("img", ".png", uploadDir);
-					item.write(file);
-					out.println("File Saved Successfully");
-				}
-			} catch (FileUploadException e) {
-				out.println(e.getMessage());
-				out.println("upload fail");
-			} catch (Exception ex) {
-				out.println(ex.getMessage());
-				ex.printStackTrace();
-				out.println("can't save");
+				
+				// 10275942_797222240295519_2409051625224068118_n.jpg
+				File uploadDir = new File(
+						"C:/Program Files (x86)/apache-tomcat-9.0.0.M26/webapps/Finance-Traker/ImageUpload/");
+				// if(!uploadDir.exists()){
+				// uploadDir.createNewFile();
+				// }
+				out.println("name: " + item.getName());
+				out.println("size: " + item.getSize());
+				out.println("formfield: " + item.isFormField());
+				out.println("Content type: " + item.getContentType());
+				// out.println("name: "+item.);
+
+				File file = File.createTempFile(item.getFieldName(), ".jpg", uploadDir);
+				item.write(file);
+				out.println("file name uploadet: "+file.getName());
+				out.println("File Saved Successfully");
 			}
-//			long userID = UserDAO.insertUser(user);
-//			request.getSession().setAttribute("username", email);
-//			request.getSession().setAttribute("id", (long) userID);
-//			response.sendRedirect("./index.jsp");
-//		} else {
-//			response.sendRedirect("./index.html?error=userEmailExists");
-//		}
-//		response.setContentType("text/html");
-		
+		} catch (FileUploadException e) {
+			out.println(e.getMessage());
+			out.println("upload fail");
+		} catch (Exception ex) {
+			out.println(ex.getMessage());
+			ex.printStackTrace();
+			out.println("can't save");
+		}
+		// long userID = UserDAO.insertUser(user);
+		// request.getSession().setAttribute("email", email);
+		// request.getSession().setAttribute("id", (long) userID);
+		// response.sendRedirect("./index.jsp");
+		// } else {
+		// response.sendRedirect("./index.html?error=userEmailExists");
+		// }
+		// response.setContentType("text/html");
+
 	}
 }
