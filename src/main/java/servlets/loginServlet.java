@@ -34,87 +34,29 @@ public class loginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter pr = response.getWriter();
-		String fname = StringEscapeUtils.escapeHtml(request.getParameter("fname"));
-		String sname = StringEscapeUtils.escapeHtml(request.getParameter("sname"));
-		String uname = StringEscapeUtils.escapeHtml(request.getParameter("uname"));
-		String email = StringEscapeUtils.escapeHtml(request.getParameter("email"));
-		String pass = StringEscapeUtils.escapeHtml(request.getParameter("pass"));
-		// String username, String password, String email, String firstName,
-		// String lastName
-
-		response.setContentType("text/html");
-		User user = new User(fname, pass, email, fname);
-		String tableCss = "";
-		String table = "<table border = 3>" + "<tr>" + "<th>First name</th>" + "<th>Second name</th>"
-				+ "<th>User name</th>" + "<th>Email</th>" + "<th>Passworth</th>" + "</th></tr>" + "<tr><td>" + fname
-				+ "</td>" + "<td>" + sname + "</td>" + "<td>" + uname + "</td>" + "<td>" + email + "</td>" + "<td>"
-				+ pass + "</td></tr>" + "</table>";
-		pr.println(table);
-		// if (UserDAO.insertUser(user)) {
-		// pr.println(fname);
-		// pr.println(sname);
-		// pr.println(uname);
-		// pr.println(email);
-		// pr.println(pass);
-		// pr.println("INSERTED ");
-		// } else {
-		// pr.println("TROUBLE ");
-		// }
-		ResultSet res = UserDAO.selecttUser();
-		String table2 = "<table border = 3>" + "<tr><th>First name</th>" + "<th>Second name</th>" + "<th>User name</th>"
-				+ "<th>Email</th>" + "<th>Passworth</th>" + "</th></tr><tr>";
-		String end = "</table>";
-		// sb.append(table2);
-		String str;
-
-		try {
-			while (res.next()) {
-				if (res.getString("username").equals(uname)) {
-					session = request.getSession();
-					session.setAttribute("username", uname);
-					pr.println(session.getAttribute("username") + " te tova e sesia");
-					break;
-				}
-				table2 += ("<tr><td>" + res.getString("id") + "</td>");
-				table2 += ("<td>" + res.getString("fname") + "</td>");
-				table2 += ("<td>" + res.getString("sname") + "</td>");
-				table2 += ("<td>" + res.getString("username") + "</td>");
-				table2 += ("<td>" + res.getString("pass") + "</td></tr>");
-			}
-
-			table2 += end;
-			// sb.append(end);
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String uname = new String(StringEscapeUtils.escapeHtml(request.getParameter("uname")));
+		String email = new String(StringEscapeUtils.escapeHtml(request.getParameter("email")));
+		String pass = new String(StringEscapeUtils.escapeHtml(request.getParameter("pass")));
+		pr.println(uname);
+		pr.println(email);
+		pr.println(pass);
+//		loginCheckByUserName(
+		long userID =-10;
+		if(uname != null && !uname.isEmpty()){
+			userID = UserDAO.loginCheckByUserName(uname, pass);
+		}else if(email != null && !email.isEmpty()){
+			userID = UserDAO.loginCheckByEmail(email, pass);
 		}
-		if (session != null) {
-			pr.println(request.getSession(false).getAttribute("username") + " dolniq else");
-		} else {
+		if (userID > 0) {
+			request.getSession().setAttribute("email", email);
+			request.getSession().setAttribute("id", (long) userID);
+			pr.println("OK");
 			response.sendRedirect("./index.jsp");
-			return;
+		} else {
+			response.sendRedirect("./index.html?error=loginerror");
 		}
-		String logout = "<a href = './logout'>Logout</a>";
-		pr.println(logout);
-		pr.println(table2);
-		// request.setAttribute("result", table2);
-		// request.getRequestDispatcher("login.jsp");
-		// ((RequestDispatcher) request).forward(request, response);
-		// response.setAttribute("result", table);
-		// response.getRequestDispatcher("welcome.jsp").forward(request,
-		// response);
-		// response.setHeader( "result", table2);
-		// response.sendRedirect("/Finance-Tracker/login.jsp");
+		// response.setContentType("text/html");
 
-		// HttpServletResponse.setHeader("Location", "/your/new/location.jsp");
-		// request.setAttribute("result", user);
-		// getServletContext().getRequestDispatcher("/login.jsp").forward(request,
-		// response);
-
-		String st = StringEscapeUtils.escapeHtml("<img src=\"\">");
-		// pr.println(st);
-		// doGet(request, response);
 	}
 
 }

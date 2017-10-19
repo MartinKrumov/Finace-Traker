@@ -24,7 +24,7 @@
         <div id="signups">   
           <h1>Sign Up for Free</h1>
           
-          <form action="signups" method="post" enctype="multipart/form-data">
+          <form action="signups" method="post" >
            
           <div class="top-row">
             <div class="field-wrap">
@@ -79,9 +79,14 @@
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email" name = "email" required autocomplete="off"/>
+            <input type="email" name = "email" required autocomplete="on"/>
           </div>
-          
+          <div class="field-wrap">
+            <label>
+              User Name<span class="req">*</span>
+            </label>
+            <input type="text" name = "uname" required autocomplete="on"/>
+          </div>
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
