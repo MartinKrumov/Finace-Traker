@@ -8,7 +8,7 @@ import java.util.Set;
 public class User {
 	private long userId;
 	private String username;
-	private char[] pass;
+	private char[] password;
 	private String email;
 	private String firstName;
 	private String lastName;
@@ -17,7 +17,7 @@ public class User {
 	
 	public User(String username, char[] pass, String email, String firstName, String lastName) {
 		this.username = username;
-		this.pass = pass;
+		this.password = pass;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -32,8 +32,8 @@ public class User {
 		return username;
 	}
 
-	public char[] getPass() {
-		return pass;
+	public char[] getPassword() {
+		return password;
 	}
 
 	public String getEmail() {

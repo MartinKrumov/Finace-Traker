@@ -28,21 +28,20 @@ public class SignUpServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		PrintWriter pr = response.getWriter();
-		String fname = new String(StringEscapeUtils.escapeHtml(request.getParameter("fname")));
-		String lname = new String(StringEscapeUtils.escapeHtml(request.getParameter("lname")));
+		String firstName = new String(StringEscapeUtils.escapeHtml(request.getParameter("fname")));
+		String lastName = new String(StringEscapeUtils.escapeHtml(request.getParameter("lname")));
 		String email = new String(StringEscapeUtils.escapeHtml(request.getParameter("email")));
-		String pass = new String(StringEscapeUtils.escapeHtml(request.getParameter("pass")));
-		String uname = new String(StringEscapeUtils.escapeHtml(request.getParameter("uname")));
+		char[] pass = StringEscapeUtils.escapeHtml(request.getParameter("pass")).toCharArray();
+		String username = new String(StringEscapeUtils.escapeHtml(request.getParameter("uname")));
 
-		// byte[] file =request.getParameter("profilpic").getBytes();
 		pr.println(request.getParameter("fname"));
-		pr.println(lname);
+		pr.println(lastName);
 		pr.println(email);
 		pr.println(pass);
-		pr.println(uname);
+		pr.println(username);
 
 		if (!UserDAO.checkIfExists(email) && request.getSession(false) == null) {
-			User user = new User(fname, lname, email, pass);
+			User user = new User(username, pass, email, firstName, lastName);
 			PrintWriter out = response.getWriter();
 
 			long userID = UserDAO.insertUser(user);
