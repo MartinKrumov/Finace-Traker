@@ -13,8 +13,12 @@ body {
 	font-family: 'Titillium Web', sans-serif;
 	background-size: 120% 120%;
 	background-repeat: no-repeat;
+	 
 }
-
+/* img{ */
+/* 	opacity: 0.5;  */
+/*     filter: alpha(opacity=50); */
+/* } */
 a {
 	text-decoration: none;
 	color: #1ab188;

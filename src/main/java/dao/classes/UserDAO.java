@@ -12,7 +12,7 @@ import model.User;
 
 public class UserDAO {
 
-	private final static String INSERT = "INSERT INTO financetracker.users VALUES(null,?,?,?,?,?,?)";
+	private final static String INSERT = "INSERT INTO financetracker.users (`fname`, `lname`, `email`, `pass`, `profilpic`, `date`) VALUES(?,?,?,?,?,?)";
 
 	private final static String SELECT = "SELECT * FROM financetracker.users";
 	// AND pass = ?
@@ -24,7 +24,7 @@ public class UserDAO {
 	// private String firstName;
 	// private String lastName;
 
-	public static long insertUser(User user) {
+	public static long insertUser(User user,String path) {
 
 		try {
 			Connection conn = DBConnection.getInstance().getConnection();
@@ -33,7 +33,7 @@ public class UserDAO {
 			prs.setString(2, user.getLastName());
 			prs.setString(3, user.getEmail());
 			prs.setString(4, user.getpass());
-			prs.setString(5, "path to pic");
+			prs.setString(5, path);
 			prs.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
 			prs.executeUpdate();
 			ResultSet rs = prs.getGeneratedKeys();
@@ -83,6 +83,7 @@ public class UserDAO {
 				}
 			}
 		} catch (SQLException e) {
+			
 			return false;
 		}
 		return returnBool;
