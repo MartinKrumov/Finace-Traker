@@ -7,7 +7,7 @@
 
 <%
 long id =(long) request.getSession(false).getAttribute("id");
-String username =(String) request.getSession(false).getAttribute("username");
+String username =(String) request.getSession(false).getAttribute("email");
 %>
 
 <%-- <jsp:scriptlet> --%>
