@@ -1,32 +1,40 @@
 package model;
 
+import java.awt.Image;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 public class User {
 	private long userId;
-	private String pass;
+	private String username;
+	private char[] password;
 	private String email;
 	private String firstName;
 	private String lastName;
+	private Image profilePic;
+	private Set<Wallet> wallets;
 	
-	public User(String firstName, String lastName, String email ,String pass) {
-		this.pass = pass;
+	public User(String username, char[] pass, String email, String firstName, String lastName) {
+		this.username = username;
+		this.password = pass;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.wallets = new HashSet<>();
 	}
 
 	public long getUserId() {
 		return userId;
 	}
 
-	public String getpass() {
-		return pass;
+	public String getUsername() {
+		return username;
 	}
 
-//	public String getPass() {
-//		return pass;
-//	}
+	public char[] getPassword() {
+		return password;
+	}
 
 	public String getEmail() {
 		return email;
@@ -38,6 +46,22 @@ public class User {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	public Image getProfilePic() {
+		return profilePic;
+	}
+
+	public Set<Wallet> getWallets() {
+		return Collections.unmodifiableSet(wallets);
+	}
+	
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public void setProfilePic(Image profilePic) {
+		this.profilePic = profilePic;
 	}
 	
 }
