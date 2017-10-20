@@ -15,7 +15,6 @@ public class UserDAO {
 	private final static String INSERT = "INSERT INTO financetracker.users (`fname`, `lname`, `email`, `pass`, `profilpic`, `date`) VALUES(?,?,?,?,?,?)";
 	private final static String SELECT = "SELECT * FROM financetracker.users";
 	private final static String SELECT_CHECK = "SELECT email FROM financetracker.users WHERE email =?";
-	
     private final static String SELECT_LOGIN_MAIL = "SELECT * FROM financetracker.users WHERE email = ? AND pass = ?";
     private final static String SELECT_LOGIN_USERNAME = "SELECT * FROM financetracker.users WHERE lname = ? AND pass = ?";
 

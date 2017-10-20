@@ -40,13 +40,8 @@ public class SignUpServlet extends HttpServlet {
 		pr.println(pass);
 		pr.println(username);
 
-<<<<<<< HEAD
-		if (!UserDAO.checkIfExists(email)) {
-			User user = new User(fname, lname, email, pass);
-=======
 		if (!UserDAO.checkIfExists(email) && request.getSession(false) == null) {
 			User user = new User(username, pass, email, firstName, lastName);
->>>>>>> fb39693ed21afe21898db49cd17357eefb46dd01
 			PrintWriter out = response.getWriter();
 
 			long userID = UserDAO.insertUser(user);
