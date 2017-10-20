@@ -18,7 +18,7 @@ import model.User;
 /**
  * Servlet implementation class SignUpServlet
  */
-@WebServlet("/signups")
+//@WebServlet("/signups")
 // @javax.servlet.annotation.MultipartConfig
 // @MultipartConfig
 public class SignUpServlet extends HttpServlet {
@@ -41,7 +41,7 @@ public class SignUpServlet extends HttpServlet {
 		pr.println(pass);
 		pr.println(uname);
 
-		if (!UserDAO.checkIfExists(email) && request.getSession(false) == null) {
+		if (!UserDAO.checkIfExists(email)) {
 			User user = new User(fname, lname, email, pass);
 			PrintWriter out = response.getWriter();
 
