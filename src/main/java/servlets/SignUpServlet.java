@@ -18,7 +18,7 @@ import model.User;
 /**
  * Servlet implementation class SignUpServlet
  */
-@WebServlet("/signups")
+//@WebServlet("/signups")
 // @javax.servlet.annotation.MultipartConfig
 // @MultipartConfig
 public class SignUpServlet extends HttpServlet {

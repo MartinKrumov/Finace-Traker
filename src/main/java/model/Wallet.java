@@ -10,7 +10,7 @@ public class Wallet {
 	private long userId;
 	private Set<Category> categories;
 	
-	public Wallet(String name, BigDecimal amount, long userId, List<Transaction> transactions) {
+	public Wallet(String name, BigDecimal amount, long userId, Set<Category> categories) {
 		this.name = name;
 		this.amount = amount;
 		this.userId = userId;
