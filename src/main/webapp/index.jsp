@@ -2,7 +2,7 @@
          pageEncoding="ISO-8859-1" %>
 <%@ page session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link text="text/css" rel="stylesheet" href="css/jspstyle.css">
+<link type="text/css" rel="stylesheet" href="css/jspstyle.css">
 <html>
 <head>
     <meta charset="UTF-8">
@@ -16,17 +16,29 @@ String username = (String) "";
 if(request.getSession(false) != null){
 	 id = (long) request.getSession(false).getAttribute("id");
 	 username = (String) request.getSession(false).getAttribute("email");
-	 %> v iff<%
+
 }else{
 // 	resffponse.setHeader("Refresh", "0; URL=http://localhost:8080/Finance-Tracker/index.jsp");
-%> v else<%	
+
 response.sendRedirect("./index.html");
 }
 %>
 
-
+    <div id="header">
+        <ul id="menu">
+            <li><a href="/"><span>Home</span></a></li>
+            <li>
+                <a href="/"><span>Tutorials</span></a></li>
+            <li>
+                <a href="/"><span>Articles</span></a></li>
+            <li>
+                <a href="/"><span>About me</span></a></li>
+            <li>
+                <a href="logout"><span>Logout</span></a></li>
+        </ul>
+    </div>
 <body>
-<header>
+<%--<header>
     <ul>
         <li><%=id%>
         </li>
@@ -35,7 +47,7 @@ response.sendRedirect("./index.html");
 
         <li><a href="logout">Logout</a></li>
     </ul>
-</header>
+</header>--%>
 
 
 </body>
