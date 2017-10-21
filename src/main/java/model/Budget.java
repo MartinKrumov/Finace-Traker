@@ -1,25 +1,61 @@
 package model;
 
 import java.math.BigDecimal;
+
 import java.time.LocalDateTime;
 
 public class Budget {
 	private long budgedId;
-	private String name;
+//	private String name;
 	private BigDecimal amount;
-	private LocalDateTime date;
-	private long wallet;
+	private LocalDateTime fromDate;
+	private LocalDateTime toDate;
 	private long category;
-	private long customCategory;
-	
-	public Budget(String name, BigDecimal amount, LocalDateTime date, long wallet, long category, long customCategory) {
-		this.name = name;
-		this.amount = amount;
-		this.date = date;
-		this.wallet = wallet;
-		this.category = category;
-		this.customCategory = customCategory;
-	}
-	
-	
+
+    public Budget(BigDecimal amount, LocalDateTime fromDate, LocalDateTime toDate, long category) {
+        this.amount = amount;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+        this.category = category;
+    }
+
+    public long getBudgedId() {
+        return budgedId;
+    }
+
+    public void setBudgedId(long budgedId) {
+        this.budgedId = budgedId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public LocalDateTime getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(LocalDateTime fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public LocalDateTime getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(LocalDateTime toDate) {
+        this.toDate = toDate;
+    }
+
+    public long getCategory() {
+        return category;
+    }
+
+    public void setCategory(long category) {
+        this.category = category;
+    }
 }

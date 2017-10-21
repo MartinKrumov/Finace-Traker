@@ -1,22 +1,20 @@
 package model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Wallet {
 	private long wallettID;
 	private String name;
 	private BigDecimal amount;
 	private long userId;
-	private List<Transaction> transactions;
+	private Set<Category> categories;
 	
 	public Wallet(String name, BigDecimal amount, long userId, List<Transaction> transactions) {
 		this.name = name;
 		this.amount = amount;
 		this.userId = userId;
-		this.transactions = new ArrayList<>();
+		this.categories = new HashSet<>();
 	}
 
 	public long getWallettID() {
@@ -39,7 +37,7 @@ public class Wallet {
 		return userId;
 	}
 
-	public List<Transaction> getTransactions() {
-		return Collections.unmodifiableList(transactions);
+	public Set<Category> getTransactions() {
+		return Collections.unmodifiableSet(categories);
 	}
 }

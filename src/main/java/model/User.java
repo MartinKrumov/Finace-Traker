@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Image;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +11,7 @@ public class User {
 	private String email;
 	private String firstName;
 	private String lastName;
-	private Image profilePic;
+	private String profilePic;
 	private Set<Wallet> wallets;
 	
 	public User(String username, char[] pass, String email, String firstName, String lastName) {
@@ -48,7 +47,7 @@ public class User {
 		return lastName;
 	}
 
-	public Image getProfilePic() {
+	public String getProfilePic() {
 		return profilePic;
 	}
 
@@ -60,7 +59,7 @@ public class User {
 		this.userId = userId;
 	}
 
-	public void setProfilePic(Image profilePic) {
+	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
 	}
 	

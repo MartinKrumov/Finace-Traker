@@ -12,7 +12,7 @@ import model.User;
 
 public class UserDAO {
 
-	private final static String INSERT = "INSERT INTO financetracker.users (`fname`, `lname`, `email`, `pass`, `profilpic`, `date`) VALUES(?,?,?,?,?,?)";
+	private final static String INSERT = "INSERT INTO financetracker.users (`username`, `password`, `email`, `first_name`, `last_name`) VALUES(?,?,?,?,?)";
 	private final static String SELECT = "SELECT * FROM financetracker.users";
 	private final static String SELECT_CHECK = "SELECT email FROM financetracker.users WHERE email =?";
 	
@@ -25,11 +25,12 @@ public class UserDAO {
 		try {
 			Connection conn = DBConnection.getInstance().getConnection();
 			PreparedStatement statement = conn.prepareStatement(INSERT, 1);
-			statement.setString(1, user.getFirstName());
-			statement.setString(2, user.getLastName());
+			statement.setString(1, user.getUsername());
+			statement.setString(2, user.getPassword().toString());
 			statement.setString(3, user.getEmail());
-			statement.setString(4, user.getPassword().toString());
-			statement.setString(5, "");
+			statement.setString(4, user.getFirstName());
+			statement.setString(5, user.getLastName());
+			
 			statement.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
 			statement.executeUpdate();
 			ResultSet rs = statement.getGeneratedKeys();
@@ -60,7 +61,7 @@ public class UserDAO {
 	}
 
 	public static boolean checkIfExists(String email) {
-		boolean returnBool = false;
+		boolean isExist = false;
 		ResultSet set;
 		try {
 
@@ -71,14 +72,14 @@ public class UserDAO {
 			set = prs.executeQuery();
 			if (set.next()) {
 				if (set.getString("email").equals(email)) {
-					returnBool = true;
+					isExist = true;
 				}
 			}
 		} catch (SQLException e) {
 			
 			return false;
 		}
-		return returnBool;
+		return isExist;
 	}
 	
     public static long loginCheckByEmail(String email , String pass) {
@@ -118,6 +119,5 @@ public class UserDAO {
         }
         return 0;
     }
-
 
 }
