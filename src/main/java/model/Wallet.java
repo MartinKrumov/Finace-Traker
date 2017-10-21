@@ -16,7 +16,7 @@ public class Wallet {
 		this.name = name;
 		this.amount = amount;
 		this.userId = userId;
-		this.transactions = new ArrayList<>();
+		this.transactions = new ArrayList<Transaction>();
 	}
 
 	public long getWallettID() {

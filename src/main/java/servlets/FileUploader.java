@@ -33,7 +33,7 @@ public class FileUploader extends FileUtils {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Part filePart = request.getPart("profilpic");
+		//Part filePart = request.getPart("profilpic");
 		String path = "";
 		FileItemFactory itemfactory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(itemfactory);

@@ -20,7 +20,7 @@ import model.User;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet("/loginsss")
+//@WebServlet("/loginsss")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession session;

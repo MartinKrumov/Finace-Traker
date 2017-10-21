@@ -21,7 +21,7 @@ public class User {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.wallets = new HashSet<>();
+		this.wallets = new HashSet<Wallet>();
 	}
 
 	public long getUserId() {
