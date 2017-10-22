@@ -28,13 +28,13 @@ public class SignUpServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		PrintWriter pr = response.getWriter();
-		String firstName = new String(StringEscapeUtils.escapeHtml(request.getParameter("fname")));
-		String lastName = new String(StringEscapeUtils.escapeHtml(request.getParameter("lname")));
+		String firstName = new String(StringEscapeUtils.escapeHtml(request.getParameter("first_name")));
+		String lastName = new String(StringEscapeUtils.escapeHtml(request.getParameter("last_name")));
 		String email = new String(StringEscapeUtils.escapeHtml(request.getParameter("email")));
-		char[] pass = StringEscapeUtils.escapeHtml(request.getParameter("pass")).toCharArray();
-		String username = new String(StringEscapeUtils.escapeHtml(request.getParameter("uname")));
+		char[] pass = StringEscapeUtils.escapeHtml(request.getParameter("password")).toCharArray();
+		String username = new String(StringEscapeUtils.escapeHtml(request.getParameter("username")));
 
-		pr.println(request.getParameter("fname"));
+		pr.println(request.getParameter("first_name"));
 		pr.println(lastName);
 		pr.println(email);
 		pr.println(pass);
@@ -46,7 +46,7 @@ public class SignUpServlet extends HttpServlet {
 
 			long userID = UserDAO.insertUser(user);
 			request.getSession().setAttribute("email", email);
-			request.getSession().setAttribute("id", (long) userID);
+			request.getSession().setAttribute("user_id", (long) userID);
 			if (request.getSession(false) != null) {
 				response.sendRedirect("./index.jsp");
 			}
