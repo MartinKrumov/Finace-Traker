@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +13,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String profilePic;
+	private LocalDateTime date;
 	private Set<Wallet> wallets;
 	
 	public User(String username, char[] pass, String email, String firstName, String lastName) {
@@ -54,7 +56,11 @@ public class User {
 	public Set<Wallet> getWallets() {
 		return Collections.unmodifiableSet(wallets);
 	}
-	
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}

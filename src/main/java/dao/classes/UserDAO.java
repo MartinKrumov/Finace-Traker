@@ -12,7 +12,7 @@ import model.User;
 
 public class UserDAO {
 
-	private final static String INSERT = "INSERT INTO financetracker.users (`username`, `password`, `email`, `first_name`, `last_name`) VALUES(?,?,?,?,?)";
+	private final static String INSERT = "INSERT INTO financetracker.users (`username`, `password`, `email`, `first_name`, `last_name`) VALUES(?,?,?,?,?,?)";
 	private final static String SELECT = "SELECT * FROM financetracker.users";
 	private final static String SELECT_CHECK = "SELECT email FROM financetracker.users WHERE email =?";
     private final static String SELECT_LOGIN_MAIL = "SELECT * FROM financetracker.users WHERE email = ? AND pass = ?";
@@ -29,7 +29,6 @@ public class UserDAO {
 			statement.setString(3, user.getEmail());
 			statement.setString(4, user.getFirstName());
 			statement.setString(5, user.getLastName());
-			
 			statement.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
 			statement.executeUpdate();
 			ResultSet rs = statement.getGeneratedKeys();
@@ -53,7 +52,7 @@ public class UserDAO {
 			return prs.executeQuery();
 
 		} catch (SQLException e) {
-
+			System.out.println("Problem with result set.");
 		}
 		return null;
 
