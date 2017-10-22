@@ -34,7 +34,7 @@ public class FileUploader extends FileUtils {
 			throws ServletException, IOException {
 
 		//Part filePart = request.getPart("profilpic");
-		String path = "";
+		String  path = "";
 		FileItemFactory itemfactory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(itemfactory);
 		PrintWriter out = response.getWriter();
