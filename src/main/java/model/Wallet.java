@@ -14,7 +14,7 @@ public class Wallet {
 		this.name = name;
 		this.amount = amount;
 		this.userId = userId;
-		this.categories = new HashSet<>();
+		this.categories = new HashSet<Category>();
 	}
 
 	public long getWallettID() {
