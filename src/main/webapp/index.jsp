@@ -38,12 +38,15 @@
 
 <div class="wrapper">
 
-    <form action="wallet">
+    <form action="wallet" method = "post">
         <input type="text" name="wallet_name">
         <select name="categories" id="">
-            <option value=""></option>
-            
+            <option value="1">option 1</option>
+            <option value="2">option 1</option>
+            <option value="3">option 1</option>
         </select>
+        <input type="checkbox" name="check" value="Car" checked>
+        <input type="submit" value="insert">
     </form>
 
 </div>

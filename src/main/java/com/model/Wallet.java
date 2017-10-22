@@ -16,7 +16,12 @@ public class Wallet {
 		this.userId = userId;
 		this.categories = new HashSet<Category>();
 	}
-
+	public Wallet(String name, BigDecimal amount, long userId) {
+		this.name = name;
+		this.amount = amount;
+		this.userId = userId;
+		this.categories = new HashSet<Category>();
+	}
 	public long getWallettID() {
 		return wallettID;
 	}
