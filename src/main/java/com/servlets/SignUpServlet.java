@@ -1,19 +1,17 @@
-package servlets;
+package com.servlets;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
-import dao.classes.UserDAO;
-import model.User;
+import com.dao.classes.UserDAO;
+import com.model.User;
 
 /**
  * Servlet implementation class SignUpServlet
@@ -28,13 +26,13 @@ public class SignUpServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		PrintWriter pr = response.getWriter();
-		String firstName = new String(StringEscapeUtils.escapeHtml(request.getParameter("first_name")));
-		String lastName = new String(StringEscapeUtils.escapeHtml(request.getParameter("last_name")));
+		String firstName = new String(StringEscapeUtils.escapeHtml(request.getParameter("fname")));
+		String lastName = new String(StringEscapeUtils.escapeHtml(request.getParameter("lname")));
 		String email = new String(StringEscapeUtils.escapeHtml(request.getParameter("email")));
-		char[] pass = StringEscapeUtils.escapeHtml(request.getParameter("password")).toCharArray();
-		String username = new String(StringEscapeUtils.escapeHtml(request.getParameter("username")));
+		String pass = new String(StringEscapeUtils.escapeHtml(request.getParameter("pass")));
+		String username = new String(StringEscapeUtils.escapeHtml(request.getParameter("uname")));
 
-		pr.println(request.getParameter("first_name"));
+		pr.println(firstName);
 		pr.println(lastName);
 		pr.println(email);
 		pr.println(pass);
@@ -45,16 +43,18 @@ public class SignUpServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 
 			long userID = UserDAO.insertUser(user);
+			System.out.println(" userID "+userID);
 			request.getSession().setAttribute("email", email);
 			request.getSession().setAttribute("user_id", (long) userID);
 			if (request.getSession(false) != null) {
 				response.sendRedirect("./index.jsp");
+				out.close();
+				return ;
 			}
-			out.close();
+
 		} else {
 			response.sendRedirect("./index.html?error=userEmailExists");
 		}
 		response.setContentType("text/html");
-
 	}
 }

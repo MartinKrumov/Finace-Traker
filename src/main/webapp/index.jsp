@@ -11,42 +11,51 @@
 
 
         <%
-long id = (long) 0;
-String username = (String) "";
-if(request.getSession(false) != null){
-	 id = (long) request.getSession(false).getAttribute("id");
-	 username = (String) request.getSession(false).getAttribute("email");
+	long id = (long) 0;
+	String email = (String) "";
+	if (request.getSession(false) != null) {
+		id = (long) request.getSession(false).getAttribute("user_id");
+		email = (String) request.getSession(false).getAttribute("email");
 
-}else{
-// 	resffponse.setHeader("Refresh", "0; URL=http://localhost:8080/Finance-Tracker/index.jsp");
-
-response.sendRedirect("./index.html");
-}
+	} else {
+		response.sendRedirect("./index.html");
+	}
 %>
 
     <div id="header">
         <ul id="menu">
             <li><a href="/"><span>Home</span></a></li>
-            <li>
-                <a href="/"><span>Tutorials</span></a></li>
-            <li>
-                <a href="/"><span>Articles</span></a></li>
-            <li>
-                <a href="/"><span>About me</span></a></li>
-            <li>
-                <a href="logout"><span>Logout</span></a></li>
+            <li><a href="/"><span>Tutorials</span></a></li>
+            <li><a href="/"><span>Articles</span></a></li>
+            <li><a href="/"><span>About me</span></a></li>
+            <li><a href="logout"><span>Logout</span></a></li>
         </ul>
+        <%= id %>
+        <%= email %>
     </div>
 <body>
-<%--<header>
-    <ul>
-        <li><%=id%>
-        </li>
-        <li><%=username%>
-        </li>
 
-        <li><a href="logout">Logout</a></li>
-    </ul>
+
+<div class="wrapper">
+
+    <form action="wallet">
+        <input type="text" name="wallet_name">
+        <select name="categories" id="">
+            <option value=""></option>
+            
+        </select>
+    </form>
+
+</div>
+<%--<header>
+<ul>
+    <li><%=id%>
+    </li>
+    <li><%=username%>
+    </li>
+
+    <li><a href="logout">Logout</a></li>
+</ul>
 </header>--%>
 
 

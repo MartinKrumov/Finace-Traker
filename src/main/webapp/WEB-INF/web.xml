@@ -8,26 +8,26 @@
   	<servlet-name>loginServlet</servlet-name>
   	<display-name>loginServlet</display-name>
   	<description></description>
-  	<servlet-class>servlets.loginServlet</servlet-class>
+  	<servlet-class>com.servlets.loginServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>LogoutServlet</servlet-name>
   	<display-name>LogoutServlet</display-name>
   	<description></description>
-  	<servlet-class>logout.LogoutServlet</servlet-class>
+  	<servlet-class>com.logout.LogoutServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>SignUpServlet</servlet-name>
   	<display-name>SignUpServlet</display-name>
   	<description></description>
-  	<servlet-class>servlets.SignUpServlet</servlet-class>
+  	<servlet-class>com.servlets.SignUpServlet</servlet-class>
   	
   </servlet>
   <servlet>
   	<servlet-name>FileUploader</servlet-name>
   	<display-name>FileUploader</display-name>
   	<description></description>
-  	<servlet-class>servlets.FileUploader</servlet-class>
+  	<servlet-class>com.servlets.FileUploader</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>loginServlet</servlet-name>

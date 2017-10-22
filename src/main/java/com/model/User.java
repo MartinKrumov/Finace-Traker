@@ -1,4 +1,4 @@
-package model;
+package com.model;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.Set;
 public class User {
 	private long userId;
 	private String username;
-	private char[] password;
+	private String password;
 	private String email;
 	private String firstName;
 	private String lastName;
@@ -16,9 +16,9 @@ public class User {
 	private LocalDateTime date;
 	private Set<Wallet> wallets;
 	
-	public User(String username, char[] pass, String email, String firstName, String lastName) {
+	public User(String username, String pass, String email, String firstName, String lastName) {
 		this.username = username;
-		this.password = pass;
+		this.password = new String(pass);
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -33,7 +33,7 @@ public class User {
 		return username;
 	}
 
-	public char[] getPassword() {
+	public String getPassword() {
 		return password;
 	}
 

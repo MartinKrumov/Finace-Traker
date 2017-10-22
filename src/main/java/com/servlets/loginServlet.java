@@ -1,12 +1,9 @@
-package servlets;
+package com.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,8 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
-import dao.classes.UserDAO;
-import model.User;
+import com.dao.classes.UserDAO;
 
 /**
  * Servlet implementation class loginServlet
@@ -41,15 +37,19 @@ public class loginServlet extends HttpServlet {
 		pr.println(email);
 		pr.println(pass);
 //		loginCheckByUserName(
-		long userID =-10;
+		long userID =-1;
 		if(uname != null && !uname.isEmpty()){
+			System.out.println("user name login");
 			userID = UserDAO.loginCheckByUserName(uname, pass);
+			System.out.println(" userID "+userID);
 		}else if(email != null && !email.isEmpty()){
+			System.out.println("email login");
 			userID = UserDAO.loginCheckByEmail(email, pass);
+			System.out.println(" userID "+userID);
 		}
 		if (userID > 0) {
 			request.getSession().setAttribute("email", email);
-			request.getSession().setAttribute("id", (long) userID);
+			request.getSession(false).setAttribute("user_id", (long) userID);
 			pr.println("OK");
 			response.sendRedirect("./index.jsp");
 		} else {

@@ -1,4 +1,4 @@
-package logout;
+package com.logout;
 
 import java.io.IOException;
 
