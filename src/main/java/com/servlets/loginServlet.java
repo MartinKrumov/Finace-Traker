@@ -50,13 +50,13 @@ public class loginServlet extends HttpServlet {
             futureVal = UserDAO.loginCheckByEmail(email, pass);
             System.out.println(" userID " + futureVal[0]);
         }
-        if ( futureVal != null && !unameLoginCheck ) {
+        if ( futureVal [0] > 0 && !unameLoginCheck ) {
             request.getSession().setAttribute("email", email);
             request.getSession(false).setAttribute("user_id", ( long ) futureVal[0]);
             request.getSession(false).setAttribute("rights", ( long ) futureVal[1]);
             pr.println("OK");
             response.sendRedirect("./index.jsp");
-        } else if ( futureVal != null && unameLoginCheck ) {
+        } else if ( futureVal [0] > 0 && unameLoginCheck ) {
             request.getSession().setAttribute("email", uname);
             request.getSession(false).setAttribute("user_id", ( long ) futureVal[0]);
             request.getSession(false).setAttribute("rights", ( long ) futureVal[1]);
