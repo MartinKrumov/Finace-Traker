@@ -11,10 +11,10 @@ import com.model.User;
 public class UserDAO {
 
 	private final static String INSERT = "INSERT INTO `users`( `username`, `password`, `email`, `first_name`, `last_name`, `profile_pic`)  VALUES(?,?,?,?,?,?)";
-	private final static String SELECT = "SELECT * FROM users";
+	private final static String SELECT_ALL = "SELECT * FROM users";
 	private final static String SELECT_CHECK = "SELECT email FROM users WHERE email =?";
 	private final static String SELECT_LOGIN_MAIL = "SELECT * FROM users WHERE email = ? AND password = ?";
-	private final static String SELECT_LOGIN_USERNAME = "SELECT * FROM users WHERE last_name = ? AND password = ?";
+	private final static String SELECT_LOGIN_USERNAME = "SELECT * FROM users WHERE username = ? AND password = ?";
 
 	public static long insertUser(User user) {
 
@@ -43,12 +43,11 @@ public class UserDAO {
 		return 0;
 	}
 
-	public static ResultSet selecttUser() {
+	public static ResultSet selecttUsers() {
 
 		try {
 			Connection conn = DBConnection.getInstance().getConnection();
-			PreparedStatement prs = conn.prepareStatement(SELECT);
-
+			PreparedStatement prs = conn.prepareStatement(SELECT_ALL);
 			return prs.executeQuery();
 
 		} catch (SQLException e) {
@@ -81,43 +80,48 @@ public class UserDAO {
 		return isExist;
 	}
 
-	public static long loginCheckByEmail(String email, String pass) {
+	public static long[] loginCheckByEmail(String email, String pass) {
 		ResultSet set;
+		long[] returnArray = new long[2];
 		try {
 
 			Connection conn = DBConnection.getInstance().getConnection();
-			PreparedStatement prs = conn.prepareStatement(SELECT_LOGIN_MAIL, PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement prs = conn.prepareStatement(SELECT_LOGIN_MAIL);
 
 			prs.setString(1, email);
 			prs.setString(2, pass);
 			set = prs.executeQuery();
 			if (set.next()) {
-				return set.getLong(1);
+				returnArray[0] = set.getInt("user_id");
+				returnArray[1] =(long) set.getInt("rights");
+				return returnArray;
 			}
 		} catch (SQLException e) {
-			return -1;
+			return returnArray;
 		}
-		return 0;
+		return returnArray;
 	}
 
-	public static long loginCheckByUserName(String uname, String pass) {
+	public static long[] loginCheckByUserName(String uname, String pass) {
 		ResultSet set;
+		long[] returnArray = new long[2];
 		try {
 
 			Connection conn = DBConnection.getInstance().getConnection();
-			PreparedStatement prs = conn.prepareStatement(SELECT_LOGIN_USERNAME,
-					PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement prs = conn.prepareStatement(SELECT_LOGIN_USERNAME);
 
 			prs.setString(1, uname);
 			prs.setString(2, pass);
 			set = prs.executeQuery();
 			if (set.next()) {
-				return set.getLong(1);
+				returnArray[0] = set.getLong(1);
+				returnArray[1] = set.getInt("rights");
+				return returnArray;
 			}
 		} catch (SQLException e) {
-			return -1;
+			return returnArray;
 		}
-		return 0;
+		return returnArray;
 	}
 
 }

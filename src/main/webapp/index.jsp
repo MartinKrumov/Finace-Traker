@@ -5,6 +5,7 @@
 <link type="text/css" rel="stylesheet" href="css/jspstyle.css">
 <html>
 <head>
+
     <meta charset="UTF-8">
 
     <title>Transparent login form</title>
@@ -13,32 +14,54 @@
         <%
 	long id = (long) 0;
 	String email = (String) "";
+	long  rights  = 0;
 	if (request.getSession(false) != null) {
 		id = (long) request.getSession(false).getAttribute("user_id");
 		email = (String) request.getSession(false).getAttribute("email");
-
+        rights = (long)request.getSession(false).getAttribute("rights") ;
 	} else {
 		response.sendRedirect("./index.html");
 	}
 %>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
 
+        //        $(document).change(function(){
+        //            $('#userslist').click(function(){
+        //                alert("Clicked");
+        //            });
+        //        });
+
+      function PrintUsers()
+        {
+            $.get("http://localhost:8080/PrintAllUserWithAjax.jsp" ,
+                function (data) {
+                    $("#tableprint").append(data);
+                });
+        }
+    </script>
     <div id="header">
         <ul id="menu">
             <li><a href="/"><span>Home</span></a></li>
             <li><a href="/"><span>Tutorials</span></a></li>
             <li><a href="/"><span>Articles</span></a></li>
-            <li><a href="/"><span>About me</span></a></li>
+            <% if ( rights == 1 ) {
+            %>
+            <li><a href="#" id="userslist" onClick="PrintUsers()"><span>List Users</span></a></li>
+            <%
+                }%>
             <li><a href="logout"><span>Logout</span></a></li>
         </ul>
         <%= id %>
         <%= email %>
+        <%=   rights%>
     </div>
 <body>
 
-
 <div class="wrapper">
 
-    <form action="wallet" method = "post">
+    <form action="wallet" method="post">
         <input type="text" name="wallet_name">
         <select name="categories" id="">
             <option value="1">option 1</option>
@@ -48,6 +71,11 @@
         <input type="checkbox" name="check" value="Car" checked>
         <input type="submit" value="insert">
     </form>
+
+</div>
+
+<div    id = "tableprint">
+
 
 </div>
 <%--<header>
