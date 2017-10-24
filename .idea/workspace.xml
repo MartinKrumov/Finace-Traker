@@ -6,14 +6,18 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp" line="35" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp" line="39" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c1b97e6-f80b-48ab-91e0-5811490e7484" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/ajaxJsp/SelectWalletsAjax.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dao/classes/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/dao/classes/UserDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dao/classes/WalletDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/dao/classes/WalletDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java" afterPath="$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/servlets/loginServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/servlets/loginServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker/index.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker/index.jsp" />
     </list>
@@ -30,25 +34,47 @@
       <file leaf-file-name="UserDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dao/classes/UserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="130" column="13" lean-forward="true" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+            <state relative-caret-position="477">
+              <caret line="141" column="1" lean-forward="true" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
               <folding>
-                <marker date="1508840338455" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
-                <marker date="1508840338455" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
-                <marker date="1508840338455" expanded="true" signature="540:578" ph="SELECT email... users" />
-                <marker date="1508840338455" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
-                <marker date="1508840338455" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
-                <marker date="1508840338455" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
+                <marker date="1508847420787" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
+                <marker date="1508847420787" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
+                <marker date="1508847420787" expanded="true" signature="540:578" ph="SELECT email... users" />
+                <marker date="1508847420787" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
+                <marker date="1508847420787" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
+                <marker date="1508847420787" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrintAllUserWithAjax.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp">
+      <file leaf-file-name="SignUpServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="260">
+              <caret line="38" column="29" lean-forward="true" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrintAllUserWithAjax.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#table#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectWalletsAjax.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/SelectWalletsAjax.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -57,9 +83,25 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+            <state relative-caret-position="273">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WalletDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dao/classes/WalletDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+              <folding>
+                <marker date="1508849609072" expanded="true" signature="514:580" ph="INSERT INTO `wallets`... " />
+                <marker date="1508849609072" expanded="true" signature="638:678" ph="SELECT * FRO... wallets" />
+                <marker date="1508849609072" expanded="true" signature="741:780" ph="SELECT * FRO... wallets" />
+                <marker date="1508849609072" expanded="true" signature="838:879" ph="SELECT * FRO... wallets" />
+                <marker date="1508849609072" expanded="true" signature="844:879" ph="DELETE FROM " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,8 +109,8 @@
       <file leaf-file-name="DelUserFromAdmin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+            <state relative-caret-position="200">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,8 +119,8 @@
       <file leaf-file-name="loginServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/loginServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+            <state relative-caret-position="449">
+              <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -113,12 +155,16 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/classes/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/DBConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlets/SignUpServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/servlets/loginServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/DeleteUserAjax.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/servlets/loginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dao/classes/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/ajaxJsp/SelectWalletsAjax.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dao/classes/WalletDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp" />
       </list>
     </option>
   </component>
@@ -135,7 +181,7 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-19" />
     <option name="width" value="1386" />
     <option name="height" value="788" />
@@ -220,9 +266,7 @@
               <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="servlets" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
@@ -230,6 +274,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="ajaxJsp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -246,6 +291,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Program Files (x86)\apache-tomcat-9.0.0.M26\webapps\Finance-Traker\src\main\webapp\ajaxJsp" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -260,6 +310,7 @@
   </component>
   <component name="RunManager" selected="Tomcat Server.Finance-Tracker">
     <configuration name="Finance-Tracker" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M26" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="SHOW_DIALOG_ON_UPDATE" value="false" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="Finance-Tracker:war">
@@ -429,7 +480,7 @@
       <workItem from="1508762210863" duration="1537000" />
       <workItem from="1508769424595" duration="3588000" />
       <workItem from="1508775512959" duration="4264000" />
-      <workItem from="1508827014112" duration="12845000" />
+      <workItem from="1508827014112" duration="18866000" />
     </task>
     <task id="LOCAL-00001" summary="admin rights given">
       <created>1508770327340</created>
@@ -456,10 +507,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47002000" />
+    <option name="totallyTimeSpent" value="53023000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -479,11 +530,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2728249" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29001075" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1337953" sideWeight="0.49483013" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1337953" sideWeight="0.50516987" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1337953" sideWeight="0.91679275" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1337953" sideWeight="0.083207265" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -516,21 +567,23 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1508840338455" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
-            <marker date="1508840338455" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="540:578" ph="SELECT email... users" />
-            <marker date="1508840338455" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
+            <marker date="1508847420787" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="540:578" ph="SELECT email... users" />
+            <marker date="1508847420787" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#table#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -555,21 +608,23 @@
         <state relative-caret-position="2060">
           <caret line="109" column="24" lean-forward="false" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="24" />
           <folding>
-            <marker date="1508840338455" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
-            <marker date="1508840338455" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="540:578" ph="SELECT email... users" />
-            <marker date="1508840338455" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
+            <marker date="1508847420787" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="540:578" ph="SELECT email... users" />
+            <marker date="1508847420787" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#table#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -594,21 +649,23 @@
         <state relative-caret-position="780">
           <caret line="45" column="40" lean-forward="false" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
           <folding>
-            <marker date="1508840338455" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
-            <marker date="1508840338455" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="540:578" ph="SELECT email... users" />
-            <marker date="1508840338455" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
+            <marker date="1508847420787" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="540:578" ph="SELECT email... users" />
+            <marker date="1508847420787" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#table#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -676,50 +733,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/loginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="38" column="29" lean-forward="true" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dao/classes/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="130" column="13" lean-forward="true" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+        <state relative-caret-position="477">
+          <caret line="141" column="1" lean-forward="true" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
           <folding>
-            <marker date="1508840338455" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
-            <marker date="1508840338455" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="540:578" ph="SELECT email... users" />
-            <marker date="1508840338455" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
-            <marker date="1508840338455" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="305:421" ph="INSERT INTO `users`... " />
+            <marker date="1508847420787" expanded="true" signature="470:489" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="540:578" ph="SELECT email... users" />
+            <marker date="1508847420787" expanded="true" signature="634:686" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="746:801" ph="SELECT * FRO... users" />
+            <marker date="1508847420787" expanded="true" signature="851:888" ph="SELECT * FRO... users" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/loginServlet.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/sql/PreparedStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+        <state relative-caret-position="212">
+          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dao/classes/WalletDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <marker date="1508849609072" expanded="true" signature="514:580" ph="INSERT INTO `wallets`... " />
+            <marker date="1508849609072" expanded="true" signature="638:678" ph="SELECT * FRO... wallets" />
+            <marker date="1508849609072" expanded="true" signature="741:780" ph="SELECT * FRO... wallets" />
+            <marker date="1508849609072" expanded="true" signature="838:879" ph="SELECT * FRO... wallets" />
+            <marker date="1508849609072" expanded="true" signature="844:879" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/SelectWalletsAjax.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+        <state relative-caret-position="273">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        <state relative-caret-position="200">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="393">
+          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#table#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

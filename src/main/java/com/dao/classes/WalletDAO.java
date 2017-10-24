@@ -19,7 +19,8 @@ public class WalletDAO {
     private static PreparedStatement preparedStatement;
     private static final String INSERT_INTO_WALLET = "INSERT INTO `wallets`( `name`, `amount`, `user_id`) VALUES (?,?,?);";
     private static final String SELECT_FROM_WALLET = "SELECT  * FROM wallets WHERE user_id = ?;";
-
+    private static final String DELETE_USER_FROM_WALLET = "DELETE FROM `wallets` WHERE user_id = ?;";
+    private static final String SELECT_USER_WALLET = "SELECT * FROM `wallets` WHERE user_id = ?;";
 
     public static long insertWallet(Wallet wallet) {
         try {
@@ -45,22 +46,54 @@ public class WalletDAO {
         try {
             conn = DBConnection.getInstance().getConnection();
             preparedStatement = conn.prepareStatement(SELECT_FROM_WALLET);
-            preparedStatement.setInt(1,userId);
+            preparedStatement.setInt(1, userId);
             return preparedStatement.executeQuery();
         } catch ( SQLException e ) {
             System.out.println("Wallet Trouble.");
         }
         return null;
     }
-    public static ResultSet selectWalletsForAdmin(int userId) {
+
+    public static boolean deleteWallets(Integer userId) {
+        boolean returnBool = false;
         try {
             conn = DBConnection.getInstance().getConnection();
-            preparedStatement = conn.prepareStatement(SELECT_FROM_WALLET);
-            preparedStatement.setInt(1,userId);
-            return preparedStatement.executeQuery();
+            preparedStatement = conn.prepareStatement(DELETE_USER_FROM_WALLET);
+            preparedStatement.setInt(1, userId);
+            returnBool = preparedStatement.execute();
         } catch ( SQLException e ) {
             System.out.println("Wallet Trouble.");
         }
-        return null;
+        return returnBool;
     }
+
+
+    public static ResultSet selectUserWallets(long userId) throws NullPointerException {
+
+        ResultSet set = null;
+        boolean returnBool = false;
+        try {
+            conn = DBConnection.getInstance().getConnection();
+            preparedStatement = conn.prepareStatement(SELECT_USER_WALLET);
+            preparedStatement.setInt(1,(int) userId);
+            set = preparedStatement.executeQuery();
+        } catch ( SQLException e ) {
+            System.out.println("Wallet Trouble.");
+            return null;
+        }
+        return set;
+    }
+
+
+//    public static ResultSet selectWalletsForAdmin(int userId) {
+//        try {
+//            conn = DBConnection.getInstance().getConnection();
+//            preparedStatement = conn.prepareStatement(SELECT_FROM_WALLET);
+//            preparedStatement.setInt(1,userId);
+//            return preparedStatement.executeQuery();
+//        } catch ( SQLException e ) {
+//            System.out.println("Wallet Trouble.");
+//        }
+//        return null;
+//    }
 }

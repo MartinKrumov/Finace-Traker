@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
 
     <title>Transparent login form</title>
-<%
+        <%
 	long id = (long) 0;
 	String email = (String) "";
 	long  rights  = 0;
@@ -23,39 +23,53 @@
     <script type="text/javascript"
             src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $("#userslist").click(function(){
+        $(document).ready(function () {
+            $("#userslist").click(function () {
                 $.ajax({
-                    url: 'PrintAllUserWithAjax.jsp',
-                    success:function(data){
+                    url: 'ajaxJsp/PrintAllUserWithAjax.jsp',
+                    success: function (data) {
 //                        alert("success");
                         document.getElementById("tableprint").innerHTML = data;
                     }
                 });
             });
         });
+
         function delUser(user_id) {
+//            var u_id = $(this).val();
             $(document).ready(function () {
+
                 $("#optionsAdmin").click(function () {
-                    alert("u id " + user_id);
-            $.ajax({
-                url: 'DelUserFromAdmin',
-                type:'post',
-                data:{id:user_id},
-                success:function(){
-                        alert("success");
+//            alert("u id " + user_id);
+                    $.ajax({
+                        url: 'DelUserFromAdmin',
+                        type: 'post',
+                        data: {del_user_id: user_id},
+                        success: function () {
+//                        alert("success");
 //                    document.getElementById("tableprint").innerHTML = data;
-                }
-            })
+                        }
+                    })
                 });
             });
         }
+
+        $(document).ready(function () {
+            $("#walletuser").click(function () {
+                $.ajax({
+                    url: 'ajaxJsp/SelectWalletsAjax.jsp',
+                    success: function (data) {
+                        document.getElementById("tableprint").innerHTML = data;
+                    }
+                });
+            });
+        });
     </script>
     <div id="header">
         <ul id="menu">
             <li><a href="/"><span>Home</span></a></li>
             <li><a href="/"><span>Tutorials</span></a></li>
-            <li><a href="/"><span>Articles</span></a></li>
+            <li><a id="walletuser" href="#" onclick=""><span>Wallets</span></a></li>
             <% if ( rights == 1 ) {%>
             <li><a href="#" id="userslist" onclick=""><span>List Users</span></a></li>
             <%}%>
@@ -82,7 +96,7 @@
 
 </div>
 
-<div    id = "tableprint"></div>
+<div id="tableprint"></div>
 
 </body>
 </html>

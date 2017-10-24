@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<table border =1 >
+<table border=1>
     <tr>
         <th>User ID</th>
         <th>Password</th>
@@ -32,14 +32,12 @@
         </td>
         <td><%= set.getString("email")%>
         </td>
-        <td><span id="optionsAdmin" onclick="delUser(<%= user_id%>)">DEL</span></td>
+        <td>
+            <button style="color:white; background-color: black; border-radius: 1em;" id="optionsAdmin"
+                    onclick="delUser(<%= user_id%>)">DEL
+            </button>
+        </td>
     </tr>
     <% } %>
 </table>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
 </html>

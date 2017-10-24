@@ -1,6 +1,7 @@
 package com.servlets.ajax;
 
 import com.dao.classes.UserDAO;
+import com.dao.classes.WalletDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +15,15 @@ import java.io.PrintWriter;
 public class DelUserFromAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pr = response.getWriter();
-        Integer user_id = Integer.parseInt(request.getParameter("id"));
-        UserDAO.delUser(user_id);
-        System.out.println("DELETE");
+        int user_id = Integer.parseInt(request.getParameter("del_user_id"));
+        System.out.println("user id to delete "+user_id);
+
+        if ( WalletDAO.deleteWallets(user_id) && UserDAO.delUser(user_id) ) {
+            System.out.println("DELETED");
+        }else{
+            System.out.println("No delete ");
+        }
+
     }
 
 }

@@ -41,26 +41,19 @@ public class loginServlet extends HttpServlet {
         boolean unameLoginCheck = false;
         long[] futureVal = new long[2];
         if ( uname != null && !uname.isEmpty() ) {
-            System.out.println("user name login");
             futureVal = UserDAO.loginCheckByUserName(uname, pass);
             System.out.println(" userID " + futureVal[0]);
             unameLoginCheck = true;
         } else if ( email != null && !email.isEmpty() ) {
-            System.out.println("email login");
             futureVal = UserDAO.loginCheckByEmail(email, pass);
             System.out.println(" userID " + futureVal[0]);
         }
         if ( futureVal [0] > 0 && !unameLoginCheck ) {
-            request.getSession().setAttribute("email", email);
-            request.getSession(false).setAttribute("user_id", ( long ) futureVal[0]);
-            request.getSession(false).setAttribute("rights", ( long ) futureVal[1]);
-            pr.println("OK");
-            response.sendRedirect("./index.jsp");
+
         } else if ( futureVal [0] > 0 && unameLoginCheck ) {
             request.getSession().setAttribute("email", uname);
             request.getSession(false).setAttribute("user_id", ( long ) futureVal[0]);
             request.getSession(false).setAttribute("rights", ( long ) futureVal[1]);
-            pr.println("OK");
             response.sendRedirect("./index.jsp");
         } else {
             response.sendRedirect("./index.html?error=loginerror");
@@ -68,5 +61,6 @@ public class loginServlet extends HttpServlet {
         // response.setContentType("text/html");
 
     }
+
 
 }

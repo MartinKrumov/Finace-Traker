@@ -23,8 +23,6 @@ public class UserDAO {
 
         try {
             conn = DBConnection.getInstance().getConnection();
-            // `username`, `password`, `email`, `first_name`, `last_name`,
-            // `profile_pic`
             PreparedStatement statement = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword().toString());
@@ -127,15 +125,18 @@ public class UserDAO {
         return returnArray;
     }
 
-    public static void delUser(Integer user_id) {
+    public static boolean delUser(Integer user_id) {
+        boolean returnbool = false;
         try {
             conn = DBConnection.getInstance().getConnection();
             PreparedStatement prs = conn.prepareStatement(DELETE_USER);
             prs.setInt(1, user_id);
-            prs.execute();
+            returnbool = prs.execute();
         } catch ( SQLException e ) {
+            System.out.println(e.getMessage());
             System.out.println(" trouble with the delete ");
-            return;
+            return false;
         }
+        return returnbool;
     }
 }
