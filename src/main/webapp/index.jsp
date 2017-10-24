@@ -27,19 +27,28 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
 
-        //        $(document).change(function(){
-        //            $('#userslist').click(function(){
-        //                alert("Clicked");
-        //            });
-        //        });
-
-      function PrintUsers()
-        {
-            $.get("http://localhost:8080/PrintAllUserWithAjax.jsp" ,
-                function (data) {
-                    $("#tableprint").append(data);
+                $(document).ready(function(){
+                    $("#userslist").click(function(){
+//                        alert("Clicked");
+                        $.ajax({
+                          url: 'PrintAllUserWithAjax.jsp',
+                            success:function(data){
+                              alert("success");
+                                document.getElementById("tableprint").innerHTML = data;
+                            }
+                        })
+                    });
                 });
-        }
+
+//      function PrintUsers()
+//        {
+
+
+        /*$.get("http://localhost:8080/PrintAllUserWithAjax.jsp" ,
+            function (data) {
+                $("#tableprint").append(data);
+            });*/
+//        }
     </script>
     <div id="header">
         <ul id="menu">
@@ -48,7 +57,7 @@
             <li><a href="/"><span>Articles</span></a></li>
             <% if ( rights == 1 ) {
             %>
-            <li><a href="#" id="userslist" onClick="PrintUsers()"><span>List Users</span></a></li>
+            <li><a id="userslist" onclick="function()"><span>List Users</span></a></li>
             <%
                 }%>
             <li><a href="logout"><span>Logout</span></a></li>

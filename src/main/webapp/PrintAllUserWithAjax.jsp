@@ -23,11 +23,11 @@
         while ( set.next() ) {%>
     <tr>
         <td><%= set.getInt("user_id")%></td>
-        <td><%= set.getInt("password")%></td>
+        <td><%= set.getString("password")%></td>
         <td><%= set.getInt("blocked")%></td>
         <td><%= set.getInt("rights")%></td>
-        <td><%= set.getInt("first_name")%></td>
-        <td><%= set.getInt("email")%></td>
+        <td><%= set.getString("first_name")%></td>
+        <td><%= set.getString("email")%></td>
     </tr>
 
     <% } %>
