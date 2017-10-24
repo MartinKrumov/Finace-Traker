@@ -1,35 +1,39 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="com.dao.classes.UserDAO" %>
-<%@ page session="false" %><%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 23.10.2017 г.
-  Time: 15:41 ч.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page session="false" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
-<table border = 1>
+<table border =1 >
     <tr>
         <th>User ID</th>
         <th>Password</th>
         <th>Blocked</th>
-        <th>Rigths</th>
+        <th>Rights</th>
         <th>First name</th>
         <th>Email</th>
+        <th>Options</th>
     </tr>
     <%
         ResultSet set = UserDAO.selecttUsers();
-        while ( set.next() ) {%>
+        while ( set.next() ) {
+            int user_id = set.getInt("user_id");%>
     <tr>
-        <td><%= set.getInt("user_id")%></td>
-        <td><%= set.getString("password")%></td>
-        <td><%= set.getInt("blocked")%></td>
-        <td><%= set.getInt("rights")%></td>
-        <td><%= set.getString("first_name")%></td>
-        <td><%= set.getString("email")%></td>
+        <td><%= user_id%>
+        </td>
+        <td><%= set.getString("password")%>
+        </td>
+        <td><%= set.getInt("blocked")%>
+        </td>
+        <td><%= set.getInt("rights")%>
+        </td>
+        <td><%= set.getString("first_name")%>
+        </td>
+        <td><%= set.getString("email")%>
+        </td>
+        <td><span id="optionsAdmin" onclick="delUser(<%= user_id%>)">DEL</span></td>
     </tr>
-
     <% } %>
 </table>
 <head>
