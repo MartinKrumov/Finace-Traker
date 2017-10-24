@@ -8,8 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5c1b97e6-f80b-48ab-91e0-5811490e7484" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/PrintAllUserWithAjax.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker/index.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -554,7 +552,7 @@
       <workItem from="1508762210863" duration="1537000" />
       <workItem from="1508769424595" duration="3588000" />
       <workItem from="1508775512959" duration="4264000" />
-      <workItem from="1508827014112" duration="3347000" />
+      <workItem from="1508827014112" duration="3378000" />
     </task>
     <task id="LOCAL-00001" summary="admin rights given">
       <created>1508770327340</created>
@@ -563,11 +561,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508770327340</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ajax PrintAllUsers for admin rights">
+      <created>1508832142233</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1508832142233</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37504000" />
+    <option name="totallyTimeSpent" value="37535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -614,7 +619,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="admin rights given" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin rights given" />
+    <MESSAGE value="ajax PrintAllUsers for admin rights" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajax PrintAllUsers for admin rights" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
