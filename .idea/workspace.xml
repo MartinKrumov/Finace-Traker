@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c1b97e6-f80b-48ab-91e0-5811490e7484" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dao/classes/CategoryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/dao/classes/CategoryDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/model/Category.java" afterPath="$PROJECT_DIR$/src/main/java/com/model/Category.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,17 +19,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CategoryDAO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CategoryDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dao/classes/CategoryDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="43" column="72" lean-forward="true" selection-start-line="43" selection-start-column="72" selection-end-line="43" selection-end-column="72" />
+            <state relative-caret-position="517">
+              <caret line="52" column="34" lean-forward="true" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1508951679655" expanded="true" signature="182:257" ph="INSERT INTO categories... " />
-                <marker date="1508951679655" expanded="true" signature="182:283" ph="INSERT INTO categories... " />
-                <marker date="1508951679655" expanded="true" signature="327:351" ph="SELECT * FRO... categories" />
-                <marker date="1508951679655" expanded="true" signature="327:375" ph="SELECT * FRO... categories" />
+                <marker date="1508964319045" expanded="true" signature="182:257" ph="INSERT INTO categories... " />
+                <marker date="1508964319045" expanded="true" signature="182:283" ph="INSERT INTO categories... " />
+                <marker date="1508964319045" expanded="true" signature="327:351" ph="SELECT * FRO... categories" />
+                <marker date="1508964319045" expanded="true" signature="327:369" ph="SELECT * FRO... categories" />
               </folding>
             </state>
           </provider>
@@ -56,7 +55,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Demo.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Demo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/model/Demo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
@@ -71,8 +70,8 @@
       <file leaf-file-name="Category.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/model/Category.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+            <state relative-caret-position="112">
+              <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="25" />
               <folding>
                 <element signature="method#equals#0;class#Category#0" expanded="false" />
                 <element signature="method#hashCode#0;class#Category#0" expanded="false" />
@@ -137,10 +136,10 @@
         <option value="$PROJECT_DIR$/src/main/java/servlets/SignUpServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dao/classes/TransactionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/model/Demo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/model/Category.java" />
         <option value="$MAVEN_REPOSITORY$/mysql/mysql-connector-java/6.0.6/mysql-connector-java-6.0.6.jar!/com/mysql/cj/jdbc/AbandonedConnectionCleanupThread.class" />
         <option value="$PROJECT_DIR$/src/main/java/com/model/DBConnection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/model/Demo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dao/classes/CategoryDAO.java" />
       </list>
     </option>
@@ -222,6 +221,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Finance-Tracker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Finance-Tracker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="logout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Finance-Tracker" type="b2602c69:ProjectViewProjectNode" />
@@ -481,12 +489,20 @@
       <workItem from="1508785595591" duration="6924000" />
       <workItem from="1508829126458" duration="610000" />
       <workItem from="1508875222763" duration="638000" />
-      <workItem from="1508941451402" duration="7342000" />
+      <workItem from="1508941451402" duration="9663000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed CategoryDAO checkIfCategoryExist()">
+      <created>1508964405028</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1508964405028</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53709000" />
+    <option name="totallyTimeSpent" value="56030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -530,6 +546,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed CategoryDAO checkIfCategoryExist()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed CategoryDAO checkIfCategoryExist()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -718,17 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/model/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-          <folding>
-            <element signature="method#equals#0;class#Category#0" expanded="false" />
-            <element signature="method#hashCode#0;class#Category#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/6.0.6/mysql-connector-java-6.0.6.jar!/com/mysql/cj/jdbc/AbandonedConnectionCleanupThread.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="778">
@@ -753,26 +762,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/model/Demo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/model/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="42" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        <state relative-caret-position="112">
+          <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#equals#0;class#Category#0" expanded="false" />
+            <element signature="method#hashCode#0;class#Category#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dao/classes/CategoryDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="43" column="72" lean-forward="true" selection-start-line="43" selection-start-column="72" selection-end-line="43" selection-end-column="72" />
+        <state relative-caret-position="517">
+          <caret line="52" column="34" lean-forward="true" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1508951679655" expanded="true" signature="182:257" ph="INSERT INTO categories... " />
-            <marker date="1508951679655" expanded="true" signature="182:283" ph="INSERT INTO categories... " />
-            <marker date="1508951679655" expanded="true" signature="327:351" ph="SELECT * FRO... categories" />
-            <marker date="1508951679655" expanded="true" signature="327:375" ph="SELECT * FRO... categories" />
+            <marker date="1508964319045" expanded="true" signature="182:257" ph="INSERT INTO categories... " />
+            <marker date="1508964319045" expanded="true" signature="182:283" ph="INSERT INTO categories... " />
+            <marker date="1508964319045" expanded="true" signature="327:351" ph="SELECT * FRO... categories" />
+            <marker date="1508964319045" expanded="true" signature="327:369" ph="SELECT * FRO... categories" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/model/Demo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="42" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
