@@ -10,20 +10,21 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 public class TransactionDAO {
-    private static final Connection connection = DBConnection.getInstance().getConnection();
+    private static Connection connection;
 
     public synchronized void insertTransaction(Transaction t) throws SQLException {
-
+        connection = DBConnection.getInstance().getConnection();
         String query = "INSERT INTO finace_tracker.transactions (type, amount, description, date, category_id) VALUES (?, ?, ?, ?, )";
-        PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        statement.setString(1, t.getType().toString());
-        statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
-        statement.setBigDecimal(3, t.getAmount());
-        statement.setString(4, t.getDescription());
-        statement.setLong(5, t.getCategoryId());
-        statement.executeUpdate();
 
-        ResultSet resultSet = statement.getGeneratedKeys();
+        PreparedStatement prepareStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        prepareStatement.setString(1, t.getType().toString());
+        prepareStatement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+        prepareStatement.setBigDecimal(3, t.getAmount());
+        prepareStatement.setString(4, t.getDescription());
+        prepareStatement.setLong(5, t.getCategoryId());
+        prepareStatement.executeUpdate();
+
+        ResultSet resultSet = prepareStatement.getGeneratedKeys();
         resultSet.next();
         t.setTransactionId(resultSet.getLong(1));
 

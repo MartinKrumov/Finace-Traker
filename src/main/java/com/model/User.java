@@ -15,6 +15,7 @@ public class User {
 	private String profilePic;
 	private LocalDateTime date;
 	private Set<Wallet> wallets;
+	private Set<Category> ownCategories;
 	
 	public User(String username, String pass, String email, String firstName, String lastName) {
 		this.username = username;
@@ -23,6 +24,7 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.wallets = new HashSet<Wallet>();
+		this.ownCategories = new HashSet<>();
 	}
 
 	public long getUserId() {
@@ -68,5 +70,12 @@ public class User {
 	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
 	}
-	
+
+	public Set<Category> getOwnCategories() {
+		return Collections.unmodifiableSet(ownCategories);
+	}
+
+	public void addOwnCategory(Category c) {
+		this.ownCategories.add(c);
+	}
 }
