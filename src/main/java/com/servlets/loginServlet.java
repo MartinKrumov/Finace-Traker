@@ -18,45 +18,49 @@ import com.dao.classes.UserDAO;
  */
 //@WebServlet("/loginsss")
 public class loginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private HttpSession session;
+    private static final long serialVersionUID = 1L;
+    private HttpSession session;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        response.getWriter().append("Served at: ").append(request.getContextPath());
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		PrintWriter pr = response.getWriter();
-		String uname = new String(StringEscapeUtils.escapeHtml(request.getParameter("uname")));
-		String email = new String(StringEscapeUtils.escapeHtml(request.getParameter("email")));
-		String pass = new String(StringEscapeUtils.escapeHtml(request.getParameter("pass")));
-		pr.println(uname);
-		pr.println(email);
-		pr.println(pass);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        PrintWriter pr = response.getWriter();
+        String uname = new String(StringEscapeUtils.escapeHtml(request.getParameter("uname")));
+        String email = new String(StringEscapeUtils.escapeHtml(request.getParameter("email")));
+        String pass = new String(StringEscapeUtils.escapeHtml(request.getParameter("pass")));
+        pr.println(uname);
+        pr.println(email);
+        pr.println(pass);
 //		loginCheckByUserName(
-		long userID =-1;
-		if(uname != null && !uname.isEmpty()){
-			System.out.println("user name login");
-			userID = UserDAO.loginCheckByUserName(uname, pass);
-			System.out.println(" userID "+userID);
-		}else if(email != null && !email.isEmpty()){
-			System.out.println("email login");
-			userID = UserDAO.loginCheckByEmail(email, pass);
-			System.out.println(" userID "+userID);
-		}
-		if (userID > 0) {
-			request.getSession().setAttribute("email", email);
-			request.getSession(false).setAttribute("user_id", (long) userID);
-			pr.println("OK");
-			response.sendRedirect("./index.jsp");
-		} else {
-			response.sendRedirect("./index.html?error=loginerror");
-		}
-		// response.setContentType("text/html");
+        long userID = -1;
+        boolean unameLoginCheck = false;
+        long[] futureVal = new long[2];
+        if ( uname != null && !uname.isEmpty() ) {
+            futureVal = UserDAO.loginCheckByUserName(uname, pass);
+            System.out.println(" userID " + futureVal[0]);
+            unameLoginCheck = true;
+        } else if ( email != null && !email.isEmpty() ) {
+            futureVal = UserDAO.loginCheckByEmail(email, pass);
+            System.out.println(" userID " + futureVal[0]);
+        }
+        if ( futureVal [0] > 0 && !unameLoginCheck ) {
 
-	}
+        } else if ( futureVal [0] > 0 && unameLoginCheck ) {
+            request.getSession().setAttribute("email", uname);
+            request.getSession(false).setAttribute("user_id", ( long ) futureVal[0]);
+            request.getSession(false).setAttribute("rights", ( long ) futureVal[1]);
+            response.sendRedirect("./index.jsp");
+        } else {
+            response.sendRedirect("./index.html?error=loginerror");
+        }
+        // response.setContentType("text/html");
+
+    }
+
 
 }

@@ -46,6 +46,7 @@ public class SignUpServlet extends HttpServlet {
 			System.out.println(" userID "+userID);
 			request.getSession().setAttribute("email", email);
 			request.getSession().setAttribute("user_id", (long) userID);
+            request.getSession(false).setAttribute("rights", ( long ) 3);
 			if (request.getSession(false) != null) {
 				response.sendRedirect("./index.jsp");
 				out.close();
