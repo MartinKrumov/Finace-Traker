@@ -7,15 +7,15 @@ import java.sql.*;
 
 public class CategoryDAO {
     public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES (?, ?, ?, ?, ?, ?)";
-    private final static String CHECK = "SELECT * FROM categories WHERE categories_id = ?";
+    private final static String CHECK = "SELECT * FROM categories WHERE user_id = ?";
     private static Connection connection;
 
     public static void insertCategory(Category c) throws SQLException {
 
-//        if (checkIfCategoryExist(c)){
-//            System.out.println("The category already exists.");
-//            return;
-//        }
+        if (checkIfCategoryExist(c)){
+            System.out.println("The category already exists.");
+            return;
+        }
         connection = DBConnection.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
 
@@ -41,18 +41,19 @@ public class CategoryDAO {
         try {
             connection = DBConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(CHECK);
-            System.out.println("*************************************");
+            ps.setLong(1, category.getUserId());
+
             resultSet = ps.executeQuery();
 
-            if (resultSet.next()) {
-                if (category.equals(resultSet.next())) {
-                    return false;
+            while (resultSet.next()) {
+                if (category.getName().equals(resultSet.getString("name"))) {
+                    return true;
                 }
             }
         } catch (SQLException e) {
             System.out.println("Problem in the function.");
             e.printStackTrace();
         }
-        return true;
+        return false;
     }
 }
