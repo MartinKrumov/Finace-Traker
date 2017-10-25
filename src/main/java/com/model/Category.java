@@ -63,6 +63,10 @@ public class Category {
         return isActive;
     }
 
+    public long getWalletId() {
+        return walletId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

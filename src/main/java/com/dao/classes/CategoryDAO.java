@@ -12,10 +12,10 @@ public class CategoryDAO {
 
     public static void insertCategory(Category c) throws SQLException {
 
-        if (checkIfCategoryExist(c)){
-            System.out.println("The category already exists.");
-            return;
-        }
+//        if (checkIfCategoryExist(c)){
+//            System.out.println("The category already exists.");
+//            return;
+//        }
         connection = DBConnection.getInstance().getConnection();
         PreparedStatement ps = connection.prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
 
@@ -23,13 +23,15 @@ public class CategoryDAO {
         ps.setString(2, c.getType().toString());
         ps.setString(3, c.getImagePath());
         ps.setString(4, c.isActive());
-        ps.setLong(5, c.getCategoryId());
+        ps.setLong(5, c.getWalletId());
         ps.setLong(6, c.getUserId());
 
         ps.executeUpdate();
         ResultSet resultSet = ps.getGeneratedKeys();
 
-        resultSet.next();
+        if (resultSet.next()) {
+            System.out.println("Success");
+        }
 
         c.setCategoryId(resultSet.getLong(1));
     }
@@ -39,14 +41,17 @@ public class CategoryDAO {
         try {
             connection = DBConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(CHECK);
-
+            System.out.println("*************************************");
             resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                return true;
+                if (category.equals(resultSet.next())) {
+                    return false;
+                }
             }
         } catch (SQLException e) {
             System.out.println("Problem in the function.");
+            e.printStackTrace();
         }
         return true;
     }
