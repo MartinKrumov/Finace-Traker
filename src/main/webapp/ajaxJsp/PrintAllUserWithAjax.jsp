@@ -33,9 +33,7 @@
         <td><%= set.getString("email")%>
         </td>
         <td>
-            <button style="color:white; background-color: black; border-radius: 1em;" id="optionsAdmin"
-                    onclick="delUser(<%= user_id%>)">DEL
-            </button>
+            <button style="color:white; background-color: black; border-radius: 1em;" class="optionsAdmin" data-user-id="<%= user_id %>">DEL </button>
         </td>
     </tr>
     <% } %>

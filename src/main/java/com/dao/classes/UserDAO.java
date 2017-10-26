@@ -12,11 +12,11 @@ public class UserDAO {
 
     private static Connection conn;
 
-    private final static String INSERT = "INSERT INTO `users`( `username`, `password`, `email`, `first_name`, `last_name`, `profile_pic`)  VALUES(?,?,?,?,?,?)";
+    private final static String INSERT = "INSERT INTO `users`( `username`, `password`, `email`, `first_name`, `last_name`, `profile_pic`)  VALUES(?,SHA2(?,256),?,?,?,?)";
     private final static String SELECT_ALL = "SELECT * FROM users";
     private final static String SELECT_CHECK = "SELECT email FROM users WHERE email =?";
-    private final static String SELECT_LOGIN_MAIL = "SELECT * FROM users WHERE email = ? AND password = ?";
-    private final static String SELECT_LOGIN_USERNAME = "SELECT * FROM users WHERE username = ? AND password = ?";
+    private final static String SELECT_LOGIN_MAIL = "SELECT * FROM users WHERE email = ? AND password = SHA2(?,256)";
+    private final static String SELECT_LOGIN_USERNAME = "SELECT * FROM users WHERE username = ? AND password = SHA2(?,256)";
     private final static String DELETE_USER = "DELETE FROM `users` WHERE user_id = ?";
 
     public static long insertUser(User user) {

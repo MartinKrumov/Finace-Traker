@@ -20,51 +20,8 @@
 		response.sendRedirect("./index.html");
 	}
 %>
-    <script type="text/javascript"
-            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#userslist").click(function () {
-                $.ajax({
-                    url: 'ajaxJsp/PrintAllUserWithAjax.jsp',
-                    success: function (data) {
-//                        alert("success");
-                        document.getElementById("tableprint").innerHTML = data;
-                    }
-                });
-            });
-        });
-
-        function delUser(user_id) {
-//            var u_id = $(this).val();
-            $(document).ready(function () {
-
-                $("#optionsAdmin").click(function () {
-//            alert("u id " + user_id);
-                    $.ajax({
-                        url: 'DelUserFromAdmin',
-                        type: 'post',
-                        data: {del_user_id: user_id},
-                        success: function () {
-//                        alert("success");
-//                    document.getElementById("tableprint").innerHTML = data;
-                        }
-                    })
-                });
-            });
-        }
-
-        $(document).ready(function () {
-            $("#walletuser").click(function () {
-                $.ajax({
-                    url: 'ajaxJsp/SelectWalletsAjax.jsp',
-                    success: function (data) {
-                        document.getElementById("tableprint").innerHTML = data;
-                    }
-                });
-            });
-        });
-    </script>
+</head>
+<body>
     <div id="header">
         <ul id="menu">
             <li><a href="/"><span>Home</span></a></li>
@@ -79,7 +36,7 @@
         <%= email %>
         <%=   rights%>
     </div>
-<body>
+
 
 <div class="wrapper">
 
@@ -98,5 +55,55 @@
 
 <div id="tableprint"></div>
 
+<script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var onDeleteClick = function (e) {
+            e.preventDefault();
+            var user_id = $(this).data('user-id');
+//                this.getProperty('data-user-id')
+            alert("u id " + user_id);
+            return;
+            var $parent = $(this).parents('tr');
+            console.log(parent);
+            $.ajax({
+                url: 'DelUserFromAdmin',
+                type: 'post',
+                data: {del_user_id: user_id},
+                success: function () {
+                    $parent.hide();
+                }
+            })
+        };
+
+        $("#userslist").click(function () {
+            $.ajax({
+                url: 'ajaxJsp/PrintAllUserWithAjax.jsp',
+                success: function (data) {
+//                        alert("success");
+//                    document.getElementById("tableprint").innerHTML = data;
+                    $("#tableprint").html(data);
+                    console.log($(".optionsAdmin").length);
+                    $(".optionsAdmin").click(onDeleteClick);
+                }
+            });
+    });
+
+    });
+
+
+    $(document).ready(function () {
+        $("#walletuser").click(function () {
+            $.ajax({
+                url: 'ajaxJsp/SelectWalletsAjax.jsp',
+                success: function (data) {
+                    document.getElementById("tableprint").innerHTML = data;
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

@@ -16,11 +16,12 @@ public class DelUserFromAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pr = response.getWriter();
         int user_id = Integer.parseInt(request.getParameter("del_user_id"));
-        System.out.println("user id to delete "+user_id);
-
-        if ( WalletDAO.deleteWallets(user_id) && UserDAO.delUser(user_id) ) {
+        System.out.println("user id to delete " + user_id);
+        boolean delWallet = WalletDAO.deleteWallets(user_id);
+        boolean delUser = UserDAO.delUser(user_id);
+        if ( delWallet && delUser ) {
             System.out.println("DELETED");
-        }else{
+        } else {
             System.out.println("No delete ");
         }
 
