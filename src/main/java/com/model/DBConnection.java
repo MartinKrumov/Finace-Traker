@@ -10,7 +10,7 @@ public class DBConnection {
 	private static final String USERNAME = "root";
     private static final String PASSWORD = "123456";
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3305/finace_tracker";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/finace_tracker";
     
     private DBConnection() {
         try {

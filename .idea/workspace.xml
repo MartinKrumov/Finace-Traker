@@ -10,13 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c1b97e6-f80b-48ab-91e0-5811490e7484" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dao/classes/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/dao/classes/UserDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java" afterPath="$PROJECT_DIR$/src/main/java/com/servlets/ajax/DelUserFromAdmin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/ajaxJsp/PrintAllUserWithAjax.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker/index.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker/index.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/dao/classes/CategoryDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/model/Demo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dao/classes/TransactionDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/dao/classes/TransactionDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/model/Category.java" afterPath="$PROJECT_DIR$/src/main/java/com/model/Category.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/model/DBConnection.java" afterPath="$PROJECT_DIR$/src/main/java/com/model/DBConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/model/User.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
-              <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+              <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -485,7 +484,7 @@
       <workItem from="1508827014112" duration="18933000" />
       <workItem from="1508854707399" duration="7501000" />
       <workItem from="1508919247628" duration="3149000" />
-      <workItem from="1509003576632" duration="1427000" />
+      <workItem from="1509003576632" duration="1685000" />
     </task>
     <task id="LOCAL-00001" summary="admin rights given">
       <created>1508770327340</created>
@@ -512,7 +511,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65167000" />
+    <option name="totallyTimeSpent" value="65425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1374" y="-8" width="1382" height="784" extended-state="6" />
@@ -861,7 +860,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/servlets/SignUpServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
-          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
           <folding />
         </state>
       </provider>
