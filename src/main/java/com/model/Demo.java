@@ -17,11 +17,12 @@ public class Demo {
 //            e.printStackTrace();
 //        }
 
-        Transaction t = new Transaction(TransactionType.EXPENCE, BigDecimal.ONE.valueOf(20.5), LocalDateTime.now(), "Just runn", 14);
+        Transaction t = new Transaction(TransactionType.INCOME, BigDecimal.ONE.valueOf(47.69), LocalDateTime.now(), "Aidee**", 14);
 
         try {
             TransactionDAO dao = TransactionDAO.getInstance();
-            dao.insertTransaction(t);
+//            dao.insertTransaction(t);
+            dao.updateTransaction(t);
         } catch (SQLException e) {
             e.printStackTrace();
         }
