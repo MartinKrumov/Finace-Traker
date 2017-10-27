@@ -24,6 +24,7 @@
         <div id="signup">
             <h1>Sign Up for Free</h1>
 
+            <%--@elvariable id="user" type=""--%>
             <form:form commandName="user" action="signup" method="post">
 
                 <div class="top-row">

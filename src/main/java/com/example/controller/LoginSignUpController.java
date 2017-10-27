@@ -19,7 +19,7 @@ import java.io.IOException;
 public class LoginSignUpController {
     @RequestMapping( value = "/index", method = RequestMethod.GET )
     public String sayHello(Model model) {
-        model.addAttribute(new User());
+        model.addAttribute("user",new User());
         return "index";
     }
 
