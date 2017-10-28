@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Martin
@@ -11,6 +12,19 @@
     <title>Wallets</title>
 </head>
 <body>
-    <h1>User: ${user.name}</h1>
+    <h1>User: ${sessionScope.user.username}</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+        </tr>
+        <c:forEach items="${wallets}" var="w">
+            <tr>
+                <td>${w.name}</td>
+                <td>${w.amount}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>
