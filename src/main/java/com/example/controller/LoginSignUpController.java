@@ -33,6 +33,9 @@ public class LoginSignUpController {
             user.setRights(3);
             user.setUserId(UserDAO.insertUser(user));
             user.setBlocked(0);
+            System.out.println(user.getUserId());
+            System.out.println(user.getEmail());
+            System.out.println(user.getRights());
             request.getSession().setAttribute("user_id", user.getUserId());
             request.getSession(false).setAttribute("user_email", user.getEmail());
             request.getSession(false).setAttribute("username", user.getUsername());
@@ -43,8 +46,11 @@ public class LoginSignUpController {
     }
 
     @RequestMapping( value = "/logout" )
-    public String logout(HttpServletRequest request, HttpServletResponse response)
+    public String logout(HttpServletRequest request, HttpServletResponse response ,Model model)
             throws ServletException, IOException {
+       if( model.containsAttribute("user")){
+            model.addAttribute("user",null);
+        }
         if ( request.getSession(false) != null ) {
             request.getSession().setAttribute("id", null);
             request.getSession().setAttribute("email", null);
@@ -61,13 +67,9 @@ public class LoginSignUpController {
                     cookie.setMaxAge(0);
                     response.addCookie(cookie);
                 }
-            if ( request.getSession(false) == null ) {
-                return "index";
-            }
-        } else {
-            return "index";
+
         }
-        return "index";
+        return "redirect:index";
     }
 
 }
