@@ -31,7 +31,7 @@ public class User {
     private LocalDateTime date;
     private int blocked;
     private int rights;
-    private Set< Wallet > wallets;
+    public Set< Wallet > wallets;
     private Set< Category > ownCategories;
 
 

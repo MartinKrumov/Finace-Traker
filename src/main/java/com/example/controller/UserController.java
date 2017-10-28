@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -32,7 +33,7 @@ public class UserController {
 //        return "test";
 //    }
 @RequestMapping( value = "/login", method = RequestMethod.POST )
-public String loginUser(@ModelAttribute User user, HttpServletRequest request) {
+public String loginUser(@ModelAttribute User user, HttpServletRequest request, HttpServletResponse response) {
 
     System.out.println(user.getEmail());
     System.out.println(user.getUsername());
@@ -50,7 +51,7 @@ public String loginUser(@ModelAttribute User user, HttpServletRequest request) {
 
 
     HttpSession session = request.getSession();
-    session.setAttribute("user_id", 2);
+    session.setAttribute("user_id", user.getUserId());
     session.setAttribute("user_email", user.getEmail());
     session.setAttribute("username", user.getUsername());
     session.setAttribute("user_rights", user.getRights());

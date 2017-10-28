@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.Set;
+
 import com.example.model.pojo.User;
+import com.example.model.pojo.Wallet;
 
 public class UserDAO {
 
@@ -103,6 +106,15 @@ public class UserDAO {
             set = prs.executeQuery();
             if ( set.next() ) {
                 User user = makeUser(set);
+                try {
+                    Set<Wallet> walletss= WalletDAO.selectUserWallets(user.getUserId());
+                    if(!walletss.isEmpty()){
+                        user.wallets.addAll(walletss);
+                    }
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
+
                 return user;
             }
         } catch ( SQLException e ) {

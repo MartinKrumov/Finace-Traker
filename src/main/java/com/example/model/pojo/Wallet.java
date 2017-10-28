@@ -5,51 +5,55 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Wallet implements Comparable<Wallet>{
-	@Override
-	public int compareTo(Wallet o) {
-		return this.wallettID - o.wallettID;
-	}
+public class Wallet implements Comparable< Wallet > {
+    @Override
+    public int compareTo(Wallet o) {
+        return this.wallettID - o.wallettID;
+    }
 
-	private int wallettID;
-	private String name;
-	private BigDecimal amount;
-	private int userId;
-	private Set<Category> categories;
-	
-	public Wallet(String name, BigDecimal amount, int userId, Set<Category> categories) {
-		this.name = name;
-		this.amount = amount;
-		this.userId = userId;
-		this.categories = new HashSet<Category>();
-	}
-	public Wallet(String name, BigDecimal amount, int userId) {
-		this.name = name;
-		this.amount = amount;
-		this.userId = userId;
-		this.categories = new HashSet<Category>();
-	}
-	public long getWallettID() {
-		return wallettID;
-	}
+    private int wallettID;
+    private String name;
+    private BigDecimal amount;
+    private int userId;
+    private Set< Category > categories;
 
-	public void setWallettID(int wallettID) {
-		this.wallettID = wallettID;
-	}
+    public Wallet(int wallettID, String name, BigDecimal amount, int userId, Set< Category > categories) {
+        this.wallettID = wallettID;
+        this.name = name;
+        this.amount = amount;
+        this.userId = userId;
+        this.categories = new HashSet< Category >();
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Wallet(int wallettID,String name, BigDecimal amount, int userId) {
+        this.wallettID = wallettID;
+        this.name = name;
+        this.amount = amount;
+        this.userId = userId;
+        this.categories = new HashSet< Category >();
+    }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    public long getWallettID() {
+        return wallettID;
+    }
 
-	public long getUserId() {
-		return userId;
-	}
+    public void setWallettID(int wallettID) {
+        this.wallettID = wallettID;
+    }
 
-	public Set<Category> getTransactions() {
-		return Collections.unmodifiableSet(categories);
-	}
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public Set< Category > getTransactions() {
+        return Collections.unmodifiableSet(categories);
+    }
 }

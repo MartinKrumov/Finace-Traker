@@ -26,7 +26,7 @@ public class LoginSignUpController {
     @RequestMapping( value = "/signup", method = RequestMethod.POST )
     public String signupUser(@ModelAttribute User user,  HttpServletRequest request) {
         if ( user == null ) {
-            return "index";
+            return "redirect:index";
         }
         if ( !UserDAO.checkIfExists(user.getEmail()) ) {
             user.setProfilePic("a");

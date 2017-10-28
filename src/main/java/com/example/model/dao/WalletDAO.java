@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class WalletDAO {
 
@@ -68,20 +70,29 @@ public class WalletDAO {
     }
 
 
-    public static ResultSet selectUserWallets(long userId) throws NullPointerException {
-
-        ResultSet set = null;
-        boolean returnBool = false;
+    public static Set<Wallet> selectUserWallets(long userId) throws NullPointerException {
+        Set<Wallet> wallets = new TreeSet<Wallet>();
         try {
             conn = DBConnection.getInstance().getConnection();
             preparedStatement = conn.prepareStatement(SELECT_USER_WALLET);
             preparedStatement.setInt(1,(int) userId);
-            set = preparedStatement.executeQuery();
+            ResultSet set  = preparedStatement.executeQuery();
+//            private int wallettID;
+//            private String name;
+//            private BigDecimal amount;
+//            private int userId;
+//    public Wallet(int wallettID, String name, BigDecimal amount, int userId, Set< Category > categories) {
+
+            while(set.next()){
+                Wallet wallet = new Wallet(set.getInt("wallet_id"),set.getString("name"),set.getBigDecimal("amount"),set.getInt("user_id"));
+                wallets.add(wallet);
+            }
+            return wallets;
+
         } catch ( SQLException e ) {
             System.out.println("Wallet Trouble.");
             return null;
         }
-        return set;
     }
 
 
