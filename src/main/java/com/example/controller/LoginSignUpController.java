@@ -18,7 +18,7 @@ import java.io.IOException;
 //@Scope("session")
 public class LoginSignUpController {
     @RequestMapping( value = "/index", method = RequestMethod.GET )
-    public String sayHello(Model model) {
+    public String sayHello(@ModelAttribute User user,Model model) {
         model.addAttribute("user",new User());
         return "index";
     }

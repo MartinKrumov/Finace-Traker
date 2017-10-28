@@ -23,9 +23,8 @@
     <div class="tab-content">
         <div id="signup">
             <h1>Sign Up for Free</h1>
-
-            <%--@elvariable id="user" type=""--%>
-            <form:form commandName="user" action="signup" method="post">
+            <%--modelAttribute="signup"--%>
+            <form:form commandName="user" action="/signup" method="post">
 
                 <div class="top-row">
                     <div class="field-wrap">
@@ -75,25 +74,25 @@
         <div id="login">
             <h1>Welcome Back!</h1>
 
-            <form:form commandName="user" method="post" action="login">
+            <form:form commandName="user" method="post" action="/login">
 
                 <div class="field-wrap">
                     <label>
                         Email Address<span class="req">*</span>
                     </label>
-                    <input type="email" path="email" autocomplete="on"/>
+                    <form:input type="email" path="email" autocomplete="on"/>
                 </div>
                 <div class="field-wrap">
                     <label>
                         User Name<span class="req">*</span>
                     </label>
-                    <input type="text" path="username" autocomplete="on"/>
+                    <form:input type="text" path="username" autocomplete="on"/>
                 </div>
                 <div class="field-wrap">
                     <label>
                         Password<span class="req">*</span>
                     </label>
-                    <input type="password" path="password"/>
+                    <form:input type="password" path="password"/>
                 </div>
 
                 <p class="forgot"><a href="#">Forgot Password?</a></p>

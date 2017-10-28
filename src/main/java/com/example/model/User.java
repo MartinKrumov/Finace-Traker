@@ -1,5 +1,12 @@
-package com.example.model.pojo;
+package com.example.model;
 
+import com.example.model.pojo.Category;
+import com.example.model.pojo.Wallet;
+
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -11,20 +18,20 @@ import java.util.Set;
 
 public class User {
     private int userId;
-//    @NotBlank
+    //    @NotBlank
 //    @Length( min = 3, max = 128 )
     private String username;
-//    @NotBlank
+    //    @NotBlank
 //    @Length( min = 6, max = 128 )
     private String password;
-//    @NotBlank
+    //    @NotBlank
 //    @Length( max = 128 )
 //    @Email
     private String email;
-//    @NotBlank
+    //    @NotBlank
 //    @Length( min = 1, max = 128 )
     private String firstName;
-//    @NotBlank
+    //    @NotBlank
 //    @Length( min = 1, max = 128 )
     private String lastName;
     private String profilePic;
