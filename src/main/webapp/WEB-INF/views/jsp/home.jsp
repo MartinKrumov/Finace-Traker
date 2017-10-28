@@ -30,7 +30,7 @@
 
         <li><a href="/"><span>Home</span></a></li>
         <li><a href="/"><span>Tutorials</span></a></li>
-        <li><a id="walletuser" href="#" onclick=""><span>Wallets</span></a></li>
+        <li><a id="walletuser" href="<c:url value="/wallets"></c:url>" onclick=""><span>Wallets</span></a></li>
         <c:if test="${user_rights == 1}">
             <li><a href="#" id="userslist" onclick=""><span>List Users</span></a></li>
         </c:if>
@@ -40,7 +40,7 @@
 </div>
 
 xzcvdfvfgbfgbfgb
-
+<h1>User: ${sessionScope.user.username}</h1>
 <c:if test="${user_id != null }">
     <p> user_id ${user_id}</p>
     <p> username ${username}</p>

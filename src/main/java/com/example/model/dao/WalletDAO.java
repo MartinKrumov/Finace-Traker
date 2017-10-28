@@ -20,7 +20,7 @@ public class WalletDAO {
     private static Connection conn;
     private static PreparedStatement preparedStatement;
     private static final String INSERT_INTO_WALLET = "INSERT INTO `wallets`( `name`, `amount`, `user_id`) VALUES (?,?,?);";
-    private static final String SELECT_FROM_WALLET = "SELECT  * FROM wallets WHERE user_id = ?;";
+    private static final String SELECT_FROM_WALLET = "SELECT * FROM wallets WHERE user_id = ?;";
     private static final String DELETE_USER_FROM_WALLET = "DELETE FROM `wallets` WHERE user_id = ?;";
     private static final String SELECT_USER_WALLET = "SELECT * FROM `wallets` WHERE user_id = ?;";
 

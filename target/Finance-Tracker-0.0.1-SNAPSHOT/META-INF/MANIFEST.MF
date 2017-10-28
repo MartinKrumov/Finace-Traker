@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: Finance-Tracker
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: User
+Built-By: Martin
 Implementation-Vendor-Id: com.example
 Created-By: IntelliJ IDEA
-Build-Jdk: 1.8.0_91
+Build-Jdk: 1.8.0_144
 Main-Class: ${start-class}
 
