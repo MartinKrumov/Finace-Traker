@@ -71,7 +71,7 @@ public class LoginSignUpController {
                     response.addCookie(cookie);
                 }
         }
-        return "home";
+        return "redirect:index";
     }
 
 }
