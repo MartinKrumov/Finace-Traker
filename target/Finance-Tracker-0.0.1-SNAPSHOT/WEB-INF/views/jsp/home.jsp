@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<c:if test="${user_id} == null">
+<c:if test="${sessionScope.user.username} == null">
     <c:redirect url="index"/>
 </c:if>
 <div id="header">
@@ -38,10 +38,9 @@
     </ul>
 
 </div>
-
-xzcvdfvfgbfgbfgb
-<h1>User: ${sessionScope.user.blocked}</h1>
-<h1>User: ${sessionScope.user.rights}</h1>
+<h1>Username:${sessionScope.user.username}</h1>
+<h1>User blocked: ${sessionScope.user.blocked}</h1>
+<h1>User rights: ${sessionScope.user.rights}</h1>
 <%--<c:if test="${sessionScope.user!= null }">--%>
     <%--<p> user_id ${sessionScope.user.user_id}</p>--%>
     <%--<p> username ${sessionScope.user.username}</p>--%>
