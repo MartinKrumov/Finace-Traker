@@ -10,13 +10,15 @@ public class Transaction {
 	private LocalDateTime date;
 	private String description;
 	private long categoryId;
+	private long walletId;
 
-    public Transaction(TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {
+	public Transaction(TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId , long walletId) {
         this.type = type;
         this.amount = amount;
         this.date = date;
         this.description = description;
         this.categoryId = categoryId;
+        this.walletId = walletId;
     }
 
     public long getTransactionId() {
@@ -47,4 +49,7 @@ public class Transaction {
 		return categoryId;
 	}
 
+	public long getWalletId() {
+		return walletId;
+	}
 }
