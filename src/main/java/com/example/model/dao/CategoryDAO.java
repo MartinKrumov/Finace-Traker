@@ -2,21 +2,27 @@ package com.example.model.dao;
 
 import com.example.model.pojo.Category;
 import com.example.model.dao.DBConnection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
+@Component
 public class CategoryDAO {
+    @Autowired
+    DBConnection conn;
+
     public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES (?, ?, ?, ?, ?, ?)";
     private final static String CHECK = "SELECT * FROM categories WHERE user_id = ?";
     private static Connection connection;
 
-    public static void insertCategory(Category c) throws SQLException {
+    public void insertCategory(Category c) throws SQLException {
 
         if (checkIfCategoryExist(c)){
             System.out.println("The category already exists.");
             return;
         }
-        connection = DBConnection.getInstance().getConnection();
+        connection = conn.getConnection();
         PreparedStatement ps = connection.prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
 
         ps.setString(1, c.getName());
@@ -36,10 +42,10 @@ public class CategoryDAO {
         c.setCategoryId(resultSet.getInt(1));
     }
 
-    private static boolean checkIfCategoryExist(Category category) {
+    private boolean checkIfCategoryExist(Category category) {
         ResultSet resultSet;
         try {
-            connection = DBConnection.getInstance().getConnection();
+            connection = conn.getConnection();
             PreparedStatement ps = connection.prepareStatement(CHECK);
             ps.setLong(1, category.getUserId());
 

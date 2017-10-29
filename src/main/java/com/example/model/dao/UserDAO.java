@@ -9,11 +9,18 @@ import java.util.Set;
 
 import com.example.model.pojo.User;
 import com.example.model.pojo.Wallet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDAO {
+    @Autowired
+    DBConnection connection;
+
+    @Autowired
+    WalletDAO walletDAO;
 
     private static Connection conn;
-
     private final static String INSERT = "INSERT INTO `users`( `username`, `password`, `email`, `first_name`, `last_name`, `profile_pic`)  VALUES(?,SHA2(?,256),?,?,?,?)";
     private final static String SELECT_ALL = "SELECT * FROM users";
     private final static String SELECT_CHECK = "SELECT email FROM users WHERE email =?";
@@ -21,10 +28,10 @@ public class UserDAO {
     private final static String SELECT_LOGIN_USERNAME = "SELECT * FROM users WHERE username = ? AND password = SHA2(?,256)";
     private final static String DELETE_USER = "DELETE FROM `users` WHERE user_id = ?";
 
-    public static int insertUser(User user) {
+    public int insertUser(User user) {
 
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             if ( conn == null ) {
                 System.out.println("nullll ");
             }
@@ -49,10 +56,10 @@ public class UserDAO {
         return 0;
     }
 
-    public static ResultSet selecttUsers() {
+    public ResultSet selecttUsers() {
 
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             PreparedStatement prs = conn.prepareStatement(SELECT_ALL);
             return prs.executeQuery();
 
@@ -63,12 +70,12 @@ public class UserDAO {
 
     }
 
-    public static boolean checkIfExists(String email) {
+    public  boolean checkIfExists(String email) {
         boolean isExist = false;
         ResultSet set;
         try {
 
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             PreparedStatement prs = conn.prepareStatement(SELECT_CHECK);
 
             prs.setString(1, email);
@@ -86,7 +93,7 @@ public class UserDAO {
         return isExist;
     }
 
-    public static User login(String email, String username, String pass) {
+    public User login(String email, String username, String pass) {
         ResultSet set;
         String select = "";
         String login = "";
@@ -98,7 +105,7 @@ public class UserDAO {
             login = username;
         }
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
 
             PreparedStatement prs = conn.prepareStatement(select);
             prs.setString(1, login);
@@ -107,7 +114,7 @@ public class UserDAO {
             if ( set.next() ) {
                 User user = makeUser(set);
                 try {
-                    Set<Wallet> walletss= WalletDAO.selectUserWallets(user.getUserId());
+                    Set<Wallet> walletss= walletDAO.selectUserWallets(user.getUserId());
                     if(!walletss.isEmpty()){
                         user.wallets.addAll(walletss);
                     }
@@ -124,7 +131,7 @@ public class UserDAO {
         return null;
     }
 
-    private static User makeUser(ResultSet set) throws SQLException {
+    private  User makeUser(ResultSet set) throws SQLException {
 
         int user_id = set.getInt("user_id");
         int rights = set.getInt("rights");
@@ -139,10 +146,10 @@ public class UserDAO {
     }
 
 
-    public static boolean delUser(Integer user_id) {
+    public  boolean delUser(Integer user_id) {
         boolean returnbool = false;
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             PreparedStatement prs = conn.prepareStatement(DELETE_USER);
             prs.setInt(1, user_id);
             returnbool = prs.execute();

@@ -2,6 +2,8 @@ package com.example.model.dao;
 
 import com.example.model.dao.DBConnection;
 import com.example.model.pojo.Wallet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -11,12 +13,11 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
+@Component
 public class WalletDAO {
+    @Autowired
+    DBConnection connection;
 
-    private long wallettID;
-    private String name;
-    private BigDecimal amount;
-    private long userId;
     private static Connection conn;
     private static PreparedStatement preparedStatement;
     private static final String INSERT_INTO_WALLET = "INSERT INTO `wallets`( `name`, `amount`, `user_id`) VALUES (?,?,?);";
@@ -24,9 +25,9 @@ public class WalletDAO {
     private static final String DELETE_USER_FROM_WALLET = "DELETE FROM `wallets` WHERE user_id = ?;";
     private static final String SELECT_USER_WALLET = "SELECT * FROM `wallets` WHERE user_id = ?;";
 
-    public static long insertWallet(Wallet wallet) {
+    public long insertWallet(Wallet wallet) {
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             preparedStatement = conn.prepareStatement(INSERT_INTO_WALLET, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, wallet.getName());
             preparedStatement.setBigDecimal(2, wallet.getAmount());
@@ -44,9 +45,9 @@ public class WalletDAO {
         return 0;
     }
 
-    public static ResultSet selecttCurrentUserWallet(int userId) {
+    public  ResultSet selecttCurrentUserWallet(int userId) {
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             preparedStatement = conn.prepareStatement(SELECT_FROM_WALLET);
             preparedStatement.setInt(1, userId);
             return preparedStatement.executeQuery();
@@ -56,10 +57,10 @@ public class WalletDAO {
         return null;
     }
 
-    public static boolean deleteWallets(Integer userId) {
+    public boolean deleteWallets(Integer userId) {
         boolean returnBool = false;
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             preparedStatement = conn.prepareStatement(DELETE_USER_FROM_WALLET);
             preparedStatement.setInt(1, userId);
             returnBool = preparedStatement.execute();
@@ -70,10 +71,10 @@ public class WalletDAO {
     }
 
 
-    public static Set<Wallet> selectUserWallets(long userId) throws NullPointerException {
-        Set<Wallet> wallets = new TreeSet<Wallet>();
+    public Set<Wallet> selectUserWallets(long userId) throws NullPointerException {
+        Set<Wallet> wallets = new TreeSet<>();
         try {
-            conn = DBConnection.getInstance().getConnection();
+            conn = connection.getConnection();
             preparedStatement = conn.prepareStatement(SELECT_USER_WALLET);
             preparedStatement.setInt(1,(int) userId);
             ResultSet set  = preparedStatement.executeQuery();

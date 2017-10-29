@@ -1,11 +1,14 @@
 package com.example.model.dao;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@Component
 public class DBConnection {
-	public static DBConnection instance;
+//	public static DBConnection instance;
 	private Connection connection;
 	private static final String USERNAME = "root";
     private static final String PASSWORD = "123456";
@@ -23,16 +26,16 @@ public class DBConnection {
         }
     }
     
-    public static DBConnection getInstance() {
-    	if (instance == null) {
-    		synchronized (DBConnection.class) {
-    			if (instance == null) {
-    				instance = new DBConnection();
-    			}
-			}
-		}
-    	return instance;
-    }
+//    public static DBConnection getInstance() {
+//    	if (instance == null) {
+//    		synchronized (DBConnection.class) {
+//    			if (instance == null) {
+//    				instance = new DBConnection();
+//    			}
+//			}
+//		}
+//    	return instance;
+//    }
     
     public Connection getConnection() {
         return this.connection;	

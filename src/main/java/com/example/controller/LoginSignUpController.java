@@ -1,13 +1,13 @@
 package com.example.controller;
 
 import com.example.model.dao.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.model.pojo.User;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -17,6 +17,9 @@ import java.io.IOException;
 @Controller
 //@Scope("session")
 public class LoginSignUpController {
+    @Autowired
+    UserDAO userDAO;
+
     @RequestMapping( value = "/index", method = RequestMethod.GET )
     public String sayHello(@ModelAttribute User user,Model model) {
         model.addAttribute("user",new User());
@@ -28,10 +31,10 @@ public class LoginSignUpController {
         if ( user == null ) {
             return "redirect:index";
         }
-        if ( !UserDAO.checkIfExists(user.getEmail()) ) {
+        if ( !userDAO.checkIfExists(user.getEmail()) ) {
             user.setProfilePic("a");
             user.setRights(3);
-            user.setUserId(UserDAO.insertUser(user));
+            user.setUserId(userDAO.insertUser(user));
             user.setBlocked(0);
             System.out.println(user.getUserId());
             System.out.println(user.getEmail());
