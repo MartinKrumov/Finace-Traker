@@ -22,9 +22,9 @@
 </head>
 <body>
 
-<%--<c:if test="${user_id} == null">--%>
-    <%--<c:redirect url="index"/>--%>
-<%--</c:if>--%>
+<c:if test="${user_id} == null">
+    <c:redirect url="index"/>
+</c:if>
 <div id="header">
     <ul id="menu">
 
@@ -40,14 +40,15 @@
 </div>
 
 xzcvdfvfgbfgbfgb
-<h1>User: ${sessionScope.user.username}</h1>
-<c:if test="${user_id != null }">
-    <p> user_id ${user_id}</p>
-    <p> username ${username}</p>
-    <p> user_email ${user_email}</p>
-    <p> user_rights ${user_rights}</p>
-    <p> user_blocked ${user_blocked}</p>
-</c:if>
+<h1>User: ${sessionScope.user.blocked}</h1>
+<h1>User: ${sessionScope.user.rights}</h1>
+<%--<c:if test="${sessionScope.user!= null }">--%>
+    <%--<p> user_id ${sessionScope.user.user_id}</p>--%>
+    <%--<p> username ${sessionScope.user.username}</p>--%>
+    <%--<p> user_email ${sessionScope.user.user_email}</p>--%>
+    <%--<p> user_rights ${sessionScope.user.user_rights}</p>--%>
+    <%--<p> user_blocked ${sessionScope.user.user_blocked}</p>--%>
+<%--</c:if>--%>
 <div class="wrapper">
 
     <form action="wallet" method="post">

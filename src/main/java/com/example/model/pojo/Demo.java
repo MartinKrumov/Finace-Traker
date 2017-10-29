@@ -10,7 +10,7 @@ public class Demo {
     CategoryDAO categoryDAO;
 
     public static void main(String[] args) {
-        Category c = new Category("TONKA SERVLETA99", TransactionType.EXPENCE, "asdasd", "yes", 1, 1);
+//        Category c = new Category("TONKA SERVLETA99", TransactionType.EXPENCE, "asdasd", "yes", 1, 1);
         
     }
 }

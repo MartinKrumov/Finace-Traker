@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.dao.UserDAO;
 import com.example.model.pojo.User;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,7 +32,9 @@ public class UserController {
         if (user == null) {
             return "redirect:index";
         }
-
+        Gson json = new Gson();
+        String userjson= json.toJson(user);
+        System.out.println(userjson);
         session.setAttribute("user", user);
         return "home";
     }

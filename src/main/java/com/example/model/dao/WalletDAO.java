@@ -1,10 +1,12 @@
 package com.example.model.dao;
 
 import com.example.model.dao.DBConnection;
+import com.example.model.pojo.Category;
 import com.example.model.pojo.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,7 +47,7 @@ public class WalletDAO {
         return 0;
     }
 
-    public  ResultSet selecttCurrentUserWallet(int userId) {
+    public ResultSet selecttCurrentUserWallet(int userId) {
         try {
             conn = connection.getConnection();
             preparedStatement = conn.prepareStatement(SELECT_FROM_WALLET);
@@ -71,22 +73,30 @@ public class WalletDAO {
     }
 
 
-    public Set<Wallet> selectUserWallets(long userId) throws NullPointerException {
-        Set<Wallet> wallets = new TreeSet<>();
+    public Set< Wallet > selectUserWallets(int userId) {
+        Set< Wallet > wallets = new TreeSet<>();
         try {
             conn = connection.getConnection();
             preparedStatement = conn.prepareStatement(SELECT_USER_WALLET);
-            preparedStatement.setInt(1,(int) userId);
-            ResultSet set  = preparedStatement.executeQuery();
-//            private int wallettID;
-//            private String name;
-//            private BigDecimal amount;
-//            private int userId;
-//    public Wallet(int wallettID, String name, BigDecimal amount, int userId, Set< Category > categories) {
+            preparedStatement.setInt(1, userId);
+            ResultSet set = preparedStatement.executeQuery();
 
-            while(set.next()){
-                Wallet wallet = new Wallet(set.getInt("wallet_id"),set.getString("name"),set.getBigDecimal("amount"),set.getInt("user_id"));
-                wallets.add(wallet);
+            while ( set.next() ) {
+                System.out.println("user id : "+userId);
+                int wallet_id = set.getInt("wallet_id");
+                String name = set.getString("name");
+                BigDecimal amount = set.getBigDecimal("amount");
+                int user_id = set.getInt("user_id");
+                System.out.println("wallet id pri wallets: "+wallet_id);
+                try {
+                    Set< Category > categories = CategoryDAO.selectUserCategories(wallet_id , connection);
+                    System.out.println("categorie set : "+categories);
+                    Wallet wallet = new Wallet(wallet_id, name, amount, user_id);
+                    wallet.setCategories(categories);
+                    wallets.add(wallet);
+                }catch(NullPointerException e){
+                    e.printStackTrace();
+                }
             }
             return wallets;
 
