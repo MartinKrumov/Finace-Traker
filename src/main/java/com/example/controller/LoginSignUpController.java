@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.dao.UserDAO;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class LoginSignUpController {
     }
 
     @RequestMapping( value = "/signup", method = RequestMethod.POST )
-    public String signupUser(@ModelAttribute User user,  HttpServletRequest request) {
+    public String signupUser(@ModelAttribute User user,  HttpSession session) {
         if ( user == null ) {
             return "redirect:index";
         }
@@ -39,11 +40,10 @@ public class LoginSignUpController {
             System.out.println(user.getUserId());
             System.out.println(user.getEmail());
             System.out.println(user.getRights());
-            request.getSession().setAttribute("user_id", user.getUserId());
-            request.getSession(false).setAttribute("user_email", user.getEmail());
-            request.getSession(false).setAttribute("username", user.getUsername());
-            request.getSession(false).setAttribute("user_rights", user.getRights());
-            request.getSession(false).setAttribute("user_blocked", user.getBlocked());
+            Gson json = new Gson();
+            String userjson= json.toJson(user);
+            System.out.println(userjson);
+            session.setAttribute("user", user);
         }
         return "home";
     }
@@ -70,7 +70,6 @@ public class LoginSignUpController {
                     cookie.setMaxAge(0);
                     response.addCookie(cookie);
                 }
-
         }
         return "redirect:index";
     }

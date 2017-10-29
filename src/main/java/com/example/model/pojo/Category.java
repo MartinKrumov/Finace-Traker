@@ -1,9 +1,10 @@
 package com.example.model.pojo;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class Category {
+public class Category implements Comparable< Category > ,Serializable{
     private int categoryId;
     private String name;
     private TransactionType type;
@@ -14,7 +15,8 @@ public class Category {
     private List< Budget > budgets;
     private List< Transaction > transactions;
 
-    public Category(String name, TransactionType type, String imagePath, String isActive, int walletId, int userId) {
+    public Category(int categoryId, String name, TransactionType type, String imagePath, String isActive, int walletId, int userId) {
+        this.categoryId = categoryId;
         this.name = name;
         this.type = type;
         this.imagePath = imagePath;
@@ -93,5 +95,10 @@ public class Category {
         result = 31 * result + ( int ) (userId ^ (userId >>> 32));
         result = 31 * result + ( int ) (walletId ^ (walletId >>> 32));
         return result;
+    }
+
+    @Override
+    public int compareTo(Category o) {
+        return this.categoryId - o.categoryId;
     }
 }

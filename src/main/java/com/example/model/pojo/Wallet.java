@@ -1,11 +1,13 @@
 package com.example.model.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class Wallet implements Comparable< Wallet > {
+public class Wallet implements Comparable< Wallet >,Serializable {
     @Override
     public int compareTo(Wallet o) {
         return this.wallettID - o.wallettID;
@@ -17,18 +19,27 @@ public class Wallet implements Comparable< Wallet > {
     private int userId;
     private Set< Category > categories;
 
+    public Set< Category > getCategories() {
+        return categories;
+    }
+
     public Wallet(int wallettID, String name, BigDecimal amount, int userId, Set< Category > categories) {
         this.wallettID = wallettID;
         this.name = name;
         this.amount = amount;
         this.userId = userId;
-        this.categories = new HashSet< Category >();
+        this.categories = new TreeSet< Category >();
     }
 
-    public Wallet(int wallettID,String name, BigDecimal amount, int userId) {
+    public void setCategories(Set< Category > categories) {
+        this.categories = categories;
+    }
+
+    public Wallet(int wallettID, String name, BigDecimal amount, int userId) {
         this.wallettID = wallettID;
         this.name = name;
         this.amount = amount;
+
         this.userId = userId;
         this.categories = new HashSet< Category >();
     }

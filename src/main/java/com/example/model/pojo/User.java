@@ -1,15 +1,13 @@
 package com.example.model.pojo;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
-
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class User {
+public class User implements Serializable{
     private int userId;
 //    @NotBlank
 //    @Length( min = 3, max = 128 )
@@ -31,7 +29,7 @@ public class User {
     private LocalDateTime date;
     private int blocked;
     private int rights;
-    public Set< Wallet > wallets;
+    private Set< Wallet > wallets;
     private Set< Category > ownCategories;
 
 
@@ -46,15 +44,21 @@ public class User {
         this.blocked = blocked;
         this.rights = rights;
         this.date = date;
-        this.wallets = new HashSet< Wallet >();
+        this.wallets = new TreeSet< Wallet >();
         this.ownCategories = new HashSet<>();
+    }
+
+    public void setWallets(Set< Wallet > wallets) {
+        if(!wallets.isEmpty()) {
+            this.wallets = wallets;
+        }
     }
 
     public User() {
 
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 

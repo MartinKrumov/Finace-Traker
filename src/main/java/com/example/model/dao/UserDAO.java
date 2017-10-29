@@ -116,7 +116,7 @@ public class UserDAO {
                 try {
                     Set<Wallet> walletss= walletDAO.selectUserWallets(user.getUserId());
                     if(!walletss.isEmpty()){
-                        user.wallets.addAll(walletss);
+                        user.setWallets(walletss);
                     }
                 }catch(Exception e){
                     System.out.println(e.getMessage());
