@@ -6,6 +6,9 @@
     <title>Wallets</title>
 </head>
 <body>
+<c:if test="${empty sessionScope.user.username}">
+    <c:redirect url="index?error=loginerror"/>
+</c:if>
 <h1>User: ${sessionScope.user.username}</h1>
 
 <table>

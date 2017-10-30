@@ -15,20 +15,18 @@
 <head>
 
     <meta charset="UTF-8">
-
     <title>Finance Tracker</title>
-
 
 </head>
 <body>
 
-<c:if test="${sessionScope.user.username} == null">
-    <c:redirect url="/index"/>
+<c:if test="${empty sessionScope.user.username}">
+    <c:redirect url="index"/>
 </c:if>
 <div id="header">
     <ul id="menu">
 
-        <li><a href="/"><span>Home</span></a></li>
+        <li><a href="/home"><span>Home</span></a></li>
         <li><a href="/"><span>Tutorials</span></a></li>
         <li><a id="walletuser" href="wallets" onclick=""><span>Wallets</span></a></li>
         <c:if test="${sessionScope.user.rights == 1}">

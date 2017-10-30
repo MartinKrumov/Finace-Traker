@@ -28,9 +28,9 @@ public class WalletDAO {
     public long insertWallet(Wallet wallet) {
         try {
             Connection conn = connection.getConnection();
-            System.out.println(wallet.getName());
-            System.out.println(wallet.getAmount());
-            System.out.println(wallet.getUserId());
+//            System.out.println(wallet.getName());
+//            System.out.println(wallet.getAmount());
+//            System.out.println(wallet.getUserId());
             PreparedStatement preparedStatement = conn.prepareStatement(INSERT_INTO_WALLET, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, wallet.getName());
             preparedStatement.setBigDecimal(2, wallet.getAmount());
@@ -40,8 +40,8 @@ public class WalletDAO {
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if ( rs.next() ) {
                 long walletId = rs.getLong(1);
-                System.out.println(walletId);
-                System.out.println(wallet.getUserId());
+//                System.out.println(walletId);
+//                System.out.println(wallet.getUserId());
                 CategoryDAO.insertDefaultCategories( walletId, wallet.getUserId() ,connection);
                 return walletId;
             }
@@ -85,15 +85,15 @@ public class WalletDAO {
             preparedStatement.setInt(1, userId);
             ResultSet set = preparedStatement.executeQuery();
             while ( set.next() ) {
-                System.out.println("user id : " + userId);
+//                System.out.println("user id : " + userId);
                 int wallet_id = set.getInt("wallet_id");
                 String name = set.getString("name");
                 BigDecimal amount = set.getBigDecimal("amount");
                 int user_id = set.getInt("user_id");
-                System.out.println("wallet id pri wallets: " + wallet_id);
+//                System.out.println("wallet id pri wallets: " + wallet_id);
                 try {
                     Set< Category > categories = CategoryDAO.selectUserCategories(wallet_id, connection);
-                    System.out.println("categorie set : " + categories);
+//                    System.out.println("categorie set : " + categories);
                     Wallet wallet = new Wallet(wallet_id, name, amount, user_id);
                     wallet.setCategories(categories);
                     wallets.add(wallet);

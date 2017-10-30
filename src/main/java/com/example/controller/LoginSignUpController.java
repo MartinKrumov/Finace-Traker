@@ -22,17 +22,17 @@ public class LoginSignUpController {
     UserDAO userDAO;
 
     @RequestMapping( value = "/index", method = RequestMethod.GET )
-    public String sayHello(@ModelAttribute User user,Model model) {
+    public String sayHello(@ModelAttribute User user, Model model) {
 //        model.addAttribute("user",new User());
-
         return "index";
     }
 
     @RequestMapping( value = "/signup", method = RequestMethod.POST )
-    public String signupUser(@ModelAttribute User user,  HttpSession session) {
-        if ( user == null ) {
+    public String signupUser(@ModelAttribute User user, HttpSession session) {
+        if ( user.getPassword() == null ) {
             return "redirect:index";
         }
+
         if ( !userDAO.checkIfExists(user.getEmail()) ) {
             user.setProfilePic("a");
             user.setRights(3);
@@ -42,33 +42,32 @@ public class LoginSignUpController {
             System.out.println(user.getEmail());
             System.out.println(user.getRights());
             Gson json = new Gson();
-            String userjson= json.toJson(user);
+            String userjson = json.toJson(user);
             System.out.println(userjson);
+        }
+        if ( user != null || user.getUserId() != 0 ) {
             session.setAttribute("user", user);
         }
         return "home";
     }
 
-    @RequestMapping( value = "/logout" , method = RequestMethod.GET)
-    public String logout(HttpSession session ,HttpServletResponse response ,HttpServletRequest request)
-            throws ServletException, IOException {
-
-        if ( session.getAttribute("user") != null ) {
-            session.invalidate();
-            response.setHeader("Pragma", "No-cache");
-            response.setDateHeader("Expires", -1);
-            response.setHeader("Cache-Control", "no-cache");
-            response.setContentType("text/html");
-            Cookie[] cookies = request.getCookies();
-            if ( cookies != null )
-                for ( Cookie cookie : cookies ) {
-                    cookie.setValue("");
-                    cookie.setPath("/");
-                    cookie.setMaxAge(0);
-                    response.addCookie(cookie);
-                }
+    @RequestMapping( value = "/logout" )
+    public String logout(HttpSession session, HttpServletResponse response, HttpServletRequest request, Model model) throws ServletException, IOException {
+        session.removeAttribute("user");
+        session.invalidate();
+        response.setHeader("Pragma", "No-cache");
+        response.setDateHeader("Expires", -1);
+        response.setHeader("Cache-Control", "no-cache");
+        response.setContentType("text/html");
+        Cookie[] cookies = request.getCookies();
+        if ( cookies != null ) for ( Cookie cookie : cookies ) {
+            cookie.setValue("");
+            cookie.setPath("/");
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
         }
-        return "redirect:index";
+//        if ( model.containsAttribute("user") ) model.asMap().remove("user");
+        return "home";
     }
 
 }

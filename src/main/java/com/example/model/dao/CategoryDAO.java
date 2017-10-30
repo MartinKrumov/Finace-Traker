@@ -43,8 +43,8 @@ public class CategoryDAO {
 
     public static void insertDefaultCategories(long walletId, long userId, DBConnection conn) {
         try {
-            System.out.println("Wallet id " + walletId);
-            System.out.println("UserID : " + userId);
+//            System.out.println("Wallet id " + walletId);
+//            System.out.println("UserID : " + userId);
             connection = conn.getConnection();
             for(String s: insertDefQueerys){
                 preparedStatement = connection.prepareStatement(s);
@@ -53,7 +53,7 @@ public class CategoryDAO {
                 preparedStatement.executeUpdate();
             }
 
-            System.out.println("wallet id out of the loop: " + walletId);
+//            System.out.println("wallet id out of the loop: " + walletId);
         } catch ( SQLException e ) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -69,14 +69,14 @@ public class CategoryDAO {
             preparedStatement = connection.prepareStatement(SELECT_CATEGORYES);
             preparedStatement.setInt(1, walletId);
             ResultSet set = preparedStatement.executeQuery();
-            System.out.println("wallet id out of the loop: " + walletId);
+//            System.out.println("wallet id out of the loop: " + walletId);
             while ( set.next() ) {
-                System.out.println("wallet id pri categoriite : " + walletId);
+//                System.out.println("wallet id pri categoriite : " + walletId);
                 Category category = new Category(set.getInt("categories_id"), set.getString("name"), set.getInt("type") == 1 ? TransactionType.INCOME : TransactionType.EXPENCE, set.getString("img_path"), set.getString("isActive"), set.getInt("wallet_id"), set.getInt("user_id"));
                 categories.add(category);
             }
-            System.out.println(categories.isEmpty());
-            System.out.println(categories.toString());
+//            System.out.println(categories.isEmpty());
+//            System.out.println(categories.toString());
             return categories;
         } catch ( SQLException e ) {
             System.out.println(e.getMessage());

@@ -23,11 +23,11 @@ public class WalletController {
     public String getAllWallets(@ModelAttribute Wallet wallet,HttpSession session, Model model) {
         model.addAttribute("wallet", wallet);
         User user = ( User ) session.getAttribute("user");
-        System.out.println(user.getUserId());
-        Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
-
-        model.addAttribute("wallets", wallets);
-
+        if(user != null) {
+            System.out.println(user.getUserId());
+            Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
+            model.addAttribute("wallets", wallets);
+        }
         return "wallets";
     }
 

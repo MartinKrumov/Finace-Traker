@@ -19,30 +19,54 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     @Autowired
     UserDAO userDAO;
-
     @RequestMapping( value = "/login", method = RequestMethod.POST )
     public String loginUser(@ModelAttribute User user, HttpSession session) {
 
         if ( user.getEmail() != null ) {
             user = userDAO.login(user.getEmail(), "", user.getPassword());
+
+            session.setAttribute("user", user);
         } else if ( user.getUsername() != null ) {
             user = userDAO.login("", user.getUsername(), user.getPassword());
         }
-
-        if ( user == null ) {
+        if ( user != null || user.getUserId() != 0 ) {
+            session.setAttribute("user", user);
+        }
+        if ( user.getUsername() == null ) {
             return "redirect:index";
         }
+
         Gson json = new Gson();
         String userjson = json.toJson(user);
         System.out.println(userjson);
-        session.setAttribute("user", user);
-        return "home";
+
+        return "forward:home";
     }
 
-    @RequestMapping( value = "/home", method = RequestMethod.GET )
-    public String home(HttpSession session) {
+    @RequestMapping( value = "/login", method = RequestMethod.GET )
+    public String loginGet(HttpSession session) {
         User user = ( User ) session.getAttribute("user");
-        if ( session.getAttribute("user") != null ) {
+        if ( user != null ) {
+            return "home";
+        }
+        return "redirect:index?error=errorLogin";
+    }
+    @RequestMapping( value = "/home", method = RequestMethod.GET )
+    public String homeGet(HttpSession session) {
+        User user = ( User ) session.getAttribute("user");
+//        System.out.println("USER ID GET: "+user.getUserId());
+        if ( user != null ) {
+            return "home";
+        }
+        return "redirect:index?error=errorLogin";
+    }
+
+    @RequestMapping( value = "/home", method = RequestMethod.POST )
+    public String homePost(HttpSession session) {
+
+        User user = ( User ) session.getAttribute("user");
+        System.out.println("USER ID POST: "+user.getUserId());
+        if ( user.getUsername() != null ) {
             return "home";
         }
         return "index";
