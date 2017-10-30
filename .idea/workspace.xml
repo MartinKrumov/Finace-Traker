@@ -7,12 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46f1e4be-ae09-478f-a95e-bef013132f91" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/WalletController.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/WalletController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/controller/WalletController.class" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/WalletController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/CategoryDAO.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/CategoryDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/WalletDAO.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/WalletDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/dao/CategoryDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/dao/CategoryDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/dao/WalletDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/dao/WalletDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/wallets.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/wallets.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -101,15 +102,14 @@
       <file leaf-file-name="CategoryDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="312">
+              <caret line="50" column="62" lean-forward="true" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
               <folding>
-                <element signature="e#3544#3556#0" expanded="true" />
-                <marker date="1509377270510" expanded="true" signature="533:634" ph="INSERT INTO categories... " />
-                <marker date="1509377270510" expanded="true" signature="679:723" ph="SELECT * FRO... categories" />
-                <marker date="1509377270510" expanded="true" signature="780:824" ph="SELECT * FRO... categories" />
-                <marker date="1509377270510" expanded="true" signature="887:967" ph="SELECT * FRO... categories" />
-                <marker date="1509377270510" expanded="true" signature="2475:2597" ph="INSERT INTO categories... " />
+                <element signature="e#4376#4388#0" expanded="true" />
+                <marker date="1509378953883" expanded="true" signature="533:634" ph="INSERT INTO categories... " />
+                <marker date="1509378953883" expanded="true" signature="679:723" ph="SELECT * FRO... categories" />
+                <marker date="1509378953883" expanded="true" signature="780:824" ph="SELECT * FRO... categories" />
+                <marker date="1509378953883" expanded="true" signature="2809:2931" ph="INSERT INTO categories... " />
               </folding>
             </state>
           </provider>
@@ -511,7 +511,7 @@
       <option name="presentableId" value="Default" />
       <updated>1509346160807</updated>
       <workItem from="1509346171807" duration="2806000" />
-      <workItem from="1509361379064" duration="14630000" />
+      <workItem from="1509361379064" duration="16458000" />
     </task>
     <task id="LOCAL-00001" summary="wallet added to data base">
       <created>1509372383672</created>
@@ -520,11 +520,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509372383672</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="default category added">
+      <created>1509377572290</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1509377572290</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17436000" />
+    <option name="totallyTimeSpent" value="19264000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -571,7 +578,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="wallet added to data base" />
-    <option name="LAST_COMMIT_MESSAGE" value="wallet added to data base" />
+    <MESSAGE value="default category added" />
+    <option name="LAST_COMMIT_MESSAGE" value="default category added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -593,10 +601,10 @@
         <state relative-caret-position="4220">
           <caret line="211" column="11" lean-forward="false" selection-start-line="211" selection-start-column="11" selection-end-line="211" selection-end-column="11" />
           <folding>
-            <marker date="1509377460883" expanded="true" signature="49550:49567" ph="..." />
-            <marker date="1509377460883" expanded="true" signature="49550:49585" ph="..." />
-            <marker date="1509377460883" expanded="true" signature="49550:49598" ph="..." />
-            <marker date="1509377460883" expanded="true" signature="49550:49613" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50438" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50456" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50469" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50484" ph="..." />
           </folding>
         </state>
       </provider>
@@ -649,10 +657,10 @@
         <state relative-caret-position="4540">
           <caret line="227" column="11" lean-forward="false" selection-start-line="227" selection-start-column="11" selection-end-line="227" selection-end-column="11" />
           <folding>
-            <marker date="1509377460883" expanded="true" signature="49550:49567" ph="..." />
-            <marker date="1509377460883" expanded="true" signature="49550:49585" ph="..." />
-            <marker date="1509377460883" expanded="true" signature="49550:49598" ph="..." />
-            <marker date="1509377460883" expanded="true" signature="49550:49613" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50438" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50456" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50469" ph="..." />
+            <marker date="1509379175785" expanded="true" signature="50421:50484" ph="..." />
           </folding>
         </state>
       </provider>
@@ -790,17 +798,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="1316" column="17" lean-forward="false" selection-start-line="1316" selection-start-column="17" selection-end-line="1316" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="312">
+          <caret line="50" column="62" lean-forward="true" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
           <folding>
-            <element signature="e#3544#3556#0" expanded="true" />
-            <marker date="1509377270510" expanded="true" signature="533:634" ph="INSERT INTO categories... " />
-            <marker date="1509377270510" expanded="true" signature="679:723" ph="SELECT * FRO... categories" />
-            <marker date="1509377270510" expanded="true" signature="780:824" ph="SELECT * FRO... categories" />
-            <marker date="1509377270510" expanded="true" signature="887:967" ph="SELECT * FRO... categories" />
-            <marker date="1509377270510" expanded="true" signature="2475:2597" ph="INSERT INTO categories... " />
+            <element signature="e#4376#4388#0" expanded="true" />
+            <marker date="1509378953883" expanded="true" signature="533:634" ph="INSERT INTO categories... " />
+            <marker date="1509378953883" expanded="true" signature="679:723" ph="SELECT * FRO... categories" />
+            <marker date="1509378953883" expanded="true" signature="780:824" ph="SELECT * FRO... categories" />
+            <marker date="1509378953883" expanded="true" signature="2809:2931" ph="INSERT INTO categories... " />
           </folding>
         </state>
       </provider>
