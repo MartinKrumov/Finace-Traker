@@ -19,7 +19,7 @@ import java.util.TreeSet;
 public class WalletDAO {
     @Autowired
     DBConnection connection;
-
+    CategoryDAO categoryDAO;
     private static final String INSERT_INTO_WALLET = "INSERT INTO `wallets`( `name`, `amount`, `user_id`) VALUES (?,?,?);";
     private static final String SELECT_FROM_WALLET = "SELECT * FROM wallets WHERE user_id = ?;";
     private static final String DELETE_USER_FROM_WALLET = "DELETE FROM `wallets` WHERE user_id = ?;";
@@ -39,7 +39,11 @@ public class WalletDAO {
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if ( rs.next() ) {
-                return rs.getLong(1);
+                long walletId = rs.getLong(1);
+                System.out.println(walletId);
+                System.out.println(wallet.getUserId());
+                CategoryDAO.insertDefaultCategories( walletId, wallet.getUserId() ,connection);
+                return walletId;
             }
         } catch ( SQLException e ) {
             System.out.println(e.getMessage());
@@ -73,7 +77,6 @@ public class WalletDAO {
         return returnBool;
     }
 
-
     public Set< Wallet > selectUserWallets(int userId) {
         Set< Wallet > wallets = new TreeSet<>();
         try {
@@ -81,7 +84,6 @@ public class WalletDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(SELECT_USER_WALLET);
             preparedStatement.setInt(1, userId);
             ResultSet set = preparedStatement.executeQuery();
-
             while ( set.next() ) {
                 System.out.println("user id : " + userId);
                 int wallet_id = set.getInt("wallet_id");

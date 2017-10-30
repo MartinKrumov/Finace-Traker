@@ -15,28 +15,57 @@ import java.util.TreeSet;
 @Component
 public class CategoryDAO {
     @Autowired
-   static DBConnection conn;
+    DBConnection conn;
 
     public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES (?, ?, ?, ?, ?, ?);";
     private final static String CHECK = "SELECT * FROM categories WHERE wallet_id = ?;";
     private final static String SELECT_CATEGORYES = "SELECT * FROM categories WHERE wallet_id = ?;";
 
+    private final static String INSERT_CATEGORYES_HOME = "INSERT INTO categories ('Home', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_FOOD = "INSERT INTO categories ('Food', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_CAR = "INSERT INTO categories ('Car', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_BILS = "INSERT INTO categories ('Bills', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_FUN = "INSERT INTO categories ('Fun', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_FAMILY = "INSERT INTO categories ('Family', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_HEALTH = "INSERT INTO categories ('Health', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_GIGTS = "INSERT INTO categories ('Gifts', 1 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_SHOP = "INSERT INTO categories ('Shop', 0 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_SALARY = "INSERT INTO categories ('Salary', 1 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_INCOME = "INSERT INTO categories ('Another income', 1 , 'img', 1 , wallet_id, user_id) VALUES (?, ?);";
+    private final static String INSERT_CATEGORYES_OUTCOME = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Another expense', 0 , 'img', 1 ,?, ?);";
+
+
     private static Connection connection;
     private static PreparedStatement preparedStatement;
+public static void  insertDefaultCategories(long walletId,long userId , DBConnection conn){
+    try {
+        System.out.println("Wallet id "+walletId );
+        System.out.println("UserID : "+userId);
+        connection = conn.getConnection();
+        preparedStatement = connection.prepareStatement(INSERT_CATEGORYES_OUTCOME);
+        preparedStatement.setInt(1,(int) walletId);
+        preparedStatement.setInt(2,(int) userId);
+        preparedStatement.executeUpdate();
+        System.out.println("wallet id out of the loop: " + walletId);
+    } catch ( SQLException e ) {
+        System.out.println(e.getMessage());
+        e.printStackTrace();
+        return ;
+    }
+}
 
-    public static Set< Category > selectUserCategories(int walletId ,DBConnection conn ) throws NullPointerException {
-        Set< Category > categories = new TreeSet<Category>();
+
+    public static Set< Category > selectUserCategories(int walletId, DBConnection conn) throws NullPointerException {
+        Set< Category > categories = new TreeSet< Category >();
         try {
             connection = conn.getConnection();
             preparedStatement = connection.prepareStatement(SELECT_CATEGORYES);
             preparedStatement.setInt(1, walletId);
             ResultSet set = preparedStatement.executeQuery();
-            System.out.println("wallet id out of the loop: "+walletId);
+            System.out.println("wallet id out of the loop: " + walletId);
             while ( set.next() ) {
-                System.out.println("wallet id pri categoriite : "+walletId);
-                Category category = new Category(set.getInt("categories_id"),
-                        set.getString("name"), set.getInt("type") == 1 ? TransactionType.INCOME : TransactionType.EXPENCE,
-                        set.getString("img_path"), set.getString("isActive"), set.getInt("wallet_id"), set.getInt("user_id"));
+                System.out.println("wallet id pri categoriite : " + walletId);
+                Category category = new Category(set.getInt("categories_id"), set.getString("name"), set.getInt("type") == 1 ? TransactionType.INCOME : TransactionType.EXPENCE, set.getString("img_path"), set.getString("isActive"), set.getInt("wallet_id"), set.getInt("user_id"));
                 categories.add(category);
             }
             System.out.println(categories.isEmpty());

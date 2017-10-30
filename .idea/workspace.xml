@@ -7,30 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46f1e4be-ae09-478f-a95e-bef013132f91" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/example/model/dao/WalletDAO.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/LoginSignUpController.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/LoginSignUpController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/UserController.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/TransactionDAO.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/TransactionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/WalletDAO.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/WalletDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Demo.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Demo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Transaction.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Transaction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Wallet.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Wallet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/controller/LoginSignUpController.class" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/LoginSignUpController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/dao/TransactionDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/dao/TransactionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Demo.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Demo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Transaction.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Transaction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Wallet.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Wallet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/WalletController.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/WalletController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/controller/WalletController.class" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/WalletController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginSignUpController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginSignUpController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/WalletController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/WalletController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Wallet.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Wallet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/home.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/home.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/wallets.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/wallets.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wallets.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wallets.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state relative-caret-position="80">
+              <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -92,8 +74,8 @@
       <file leaf-file-name="UserDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/UserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-640">
-              <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            <state relative-caret-position="114">
+              <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
               <folding>
                 <marker date="1509367508883" expanded="true" signature="592:718" ph="INSERT INTO `users`... " />
                 <marker date="1509367508883" expanded="true" signature="767:786" ph="SELECT * FRO... users" />
@@ -109,9 +91,26 @@
       <file leaf-file-name="WalletController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/WalletController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+            <state relative-caret-position="220">
+              <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoryDAO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <element signature="e#3544#3556#0" expanded="true" />
+                <marker date="1509377270510" expanded="true" signature="533:634" ph="INSERT INTO categories... " />
+                <marker date="1509377270510" expanded="true" signature="679:723" ph="SELECT * FRO... categories" />
+                <marker date="1509377270510" expanded="true" signature="780:824" ph="SELECT * FRO... categories" />
+                <marker date="1509377270510" expanded="true" signature="887:967" ph="SELECT * FRO... categories" />
+                <marker date="1509377270510" expanded="true" signature="2475:2597" ph="INSERT INTO categories... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,13 +128,13 @@
       <file leaf-file-name="WalletDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="95" column="53" lean-forward="true" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
+            <state relative-caret-position="380">
+              <caret line="44" column="40" lean-forward="false" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
               <folding>
-                <marker date="1509369592183" expanded="true" signature="641:707" ph="INSERT INTO `wallets`... " />
-                <marker date="1509369592183" expanded="true" signature="765:804" ph="SELECT * FRO... wallets" />
-                <marker date="1509369592183" expanded="true" signature="867:906" ph="DELETE FROM " />
-                <marker date="1509369592183" expanded="true" signature="964:1005" ph="SELECT * FRO... wallets" />
+                <marker date="1509377092402" expanded="true" signature="669:735" ph="INSERT INTO `wallets`... " />
+                <marker date="1509377092402" expanded="true" signature="793:832" ph="SELECT * FRO... wallets" />
+                <marker date="1509377092402" expanded="true" signature="895:934" ph="DELETE FROM " />
+                <marker date="1509377092402" expanded="true" signature="992:1033" ph="SELECT * FRO... wallets" />
               </folding>
             </state>
           </provider>
@@ -158,11 +157,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/controller/LoginSignUpController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/model/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/controller/WalletController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Wallet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java" />
       </list>
     </option>
   </component>
@@ -511,12 +511,20 @@
       <option name="presentableId" value="Default" />
       <updated>1509346160807</updated>
       <workItem from="1509346171807" duration="2806000" />
-      <workItem from="1509361379064" duration="10116000" />
+      <workItem from="1509361379064" duration="14630000" />
     </task>
+    <task id="LOCAL-00001" summary="wallet added to data base">
+      <created>1509372383672</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1509372383672</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12922000" />
+    <option name="totallyTimeSpent" value="17436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -538,7 +546,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3132154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39646202" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -561,8 +569,14 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="wallet added to data base" />
+    <option name="LAST_COMMIT_MESSAGE" value="wallet added to data base" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -579,10 +593,10 @@
         <state relative-caret-position="4220">
           <caret line="211" column="11" lean-forward="false" selection-start-line="211" selection-start-column="11" selection-end-line="211" selection-end-column="11" />
           <folding>
-            <marker date="1509371933888" expanded="true" signature="51375:51392" ph="..." />
-            <marker date="1509371933888" expanded="true" signature="51375:51410" ph="..." />
-            <marker date="1509371933888" expanded="true" signature="51375:51423" ph="..." />
-            <marker date="1509371933888" expanded="true" signature="51375:51438" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49567" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49585" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49598" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49613" ph="..." />
           </folding>
         </state>
       </provider>
@@ -635,10 +649,10 @@
         <state relative-caret-position="4540">
           <caret line="227" column="11" lean-forward="false" selection-start-line="227" selection-start-column="11" selection-end-line="227" selection-end-column="11" />
           <folding>
-            <marker date="1509371933888" expanded="true" signature="51375:51392" ph="..." />
-            <marker date="1509371933888" expanded="true" signature="51375:51410" ph="..." />
-            <marker date="1509371933888" expanded="true" signature="51375:51423" ph="..." />
-            <marker date="1509371933888" expanded="true" signature="51375:51438" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49567" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49585" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49598" ph="..." />
+            <marker date="1509377460883" expanded="true" signature="49550:49613" ph="..." />
           </folding>
         </state>
       </provider>
@@ -656,18 +670,6 @@
         <state relative-caret-position="-2422">
           <caret line="132" column="8" lean-forward="false" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <marker date="1509288037584" expanded="true" signature="539:640" ph="INSERT INTO categories... " />
-            <marker date="1509288037584" expanded="true" signature="685:729" ph="SELECT * FRO... categories" />
-            <marker date="1509288037584" expanded="true" signature="786:830" ph="SELECT * FRO... categories" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -713,10 +715,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="46" column="9" lean-forward="true" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-640">
-          <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        <state relative-caret-position="114">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
             <marker date="1509367508883" expanded="true" signature="592:718" ph="INSERT INTO `users`... " />
             <marker date="1509367508883" expanded="true" signature="767:786" ph="SELECT * FRO... users" />
@@ -724,19 +750,6 @@
             <marker date="1509367508883" expanded="true" signature="931:993" ph="SELECT * FRO... users" />
             <marker date="1509367508883" expanded="true" signature="1053:1118" ph="SELECT * FRO... users" />
             <marker date="1509367508883" expanded="true" signature="1168:1205" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="95" column="53" lean-forward="true" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
-          <folding>
-            <marker date="1509369592183" expanded="true" signature="641:707" ph="INSERT INTO `wallets`... " />
-            <marker date="1509369592183" expanded="true" signature="765:804" ph="SELECT * FRO... wallets" />
-            <marker date="1509369592183" expanded="true" signature="867:906" ph="DELETE FROM " />
-            <marker date="1509369592183" expanded="true" signature="964:1005" ph="SELECT * FRO... wallets" />
           </folding>
         </state>
       </provider>
@@ -758,33 +771,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/WalletController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        <state relative-caret-position="220">
+          <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="46" column="9" lean-forward="true" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-          <folding />
+        <state relative-caret-position="380">
+          <caret line="44" column="40" lean-forward="false" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
+          <folding>
+            <marker date="1509377092402" expanded="true" signature="669:735" ph="INSERT INTO `wallets`... " />
+            <marker date="1509377092402" expanded="true" signature="793:832" ph="SELECT * FRO... wallets" />
+            <marker date="1509377092402" expanded="true" signature="895:934" ph="DELETE FROM " />
+            <marker date="1509377092402" expanded="true" signature="992:1033" ph="SELECT * FRO... wallets" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/home.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="374">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#3544#3556#0" expanded="true" />
+            <marker date="1509377270510" expanded="true" signature="533:634" ph="INSERT INTO categories... " />
+            <marker date="1509377270510" expanded="true" signature="679:723" ph="SELECT * FRO... categories" />
+            <marker date="1509377270510" expanded="true" signature="780:824" ph="SELECT * FRO... categories" />
+            <marker date="1509377270510" expanded="true" signature="887:967" ph="SELECT * FRO... categories" />
+            <marker date="1509377270510" expanded="true" signature="2475:2597" ph="INSERT INTO categories... " />
+          </folding>
         </state>
       </provider>
     </entry>
