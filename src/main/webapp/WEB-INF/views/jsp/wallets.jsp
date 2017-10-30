@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Martin
@@ -7,24 +6,56 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Wallets</title>
 </head>
 <body>
-    <h1>User: ${sessionScope.user.username}</h1>
+<h1>User: ${sessionScope.user.username}</h1>
 
-    <table>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+    </tr>
+    <c:forEach items="${wallets}" var="w">
         <tr>
-            <th>Name</th>
-            <th>Amount</th>
+            <td>${w.name}</td>
+            <c:forEach items="${w.categories}" var="cat">
+                <td>${cat.name}</td>
+                <td>${cat.categoryId}</td>
+                <td>${cat.userId}</td>
+            </c:forEach>
+            <td>${w.amount}</td>
         </tr>
-        <c:forEach items="${wallets}" var="w">
-            <tr>
-                <td>${w.name}</td>
-                <td>${w.amount}</td>
-            </tr>
-        </c:forEach>
-    </table>
+    </c:forEach>
+
+    <form:form commandName="wallet" method="post" action="wallet_insert">
+
+        <div class="field-wrap">
+            <label>
+                Wallet Name<span class="req">*</span>
+            </label>
+            <form:input type="text" path="name" autocomplete="on"/>
+        </div>
+        <div class="field-wrap">
+            <label>
+                Password<span class="req">*</span>
+            </label>
+            <form:input type="text" path="amount"/>
+        </div>
+
+
+        <button class="button button-block"/>
+        Insert</button>
+
+    </form:form>
+
+
+
+
+</table>
 </body>
 </html>

@@ -20,22 +20,31 @@ public class UserController {
     @Autowired
     UserDAO userDAO;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping( value = "/login", method = RequestMethod.POST )
     public String loginUser(@ModelAttribute User user, HttpSession session) {
 
-        if (user.getEmail() != null) {
+        if ( user.getEmail() != null ) {
             user = userDAO.login(user.getEmail(), "", user.getPassword());
-        } else if (user.getUsername() != null) {
+        } else if ( user.getUsername() != null ) {
             user = userDAO.login("", user.getUsername(), user.getPassword());
         }
 
-        if (user == null) {
+        if ( user == null ) {
             return "redirect:index";
         }
         Gson json = new Gson();
-        String userjson= json.toJson(user);
+        String userjson = json.toJson(user);
         System.out.println(userjson);
         session.setAttribute("user", user);
         return "home";
+    }
+
+    @RequestMapping( value = "/home", method = RequestMethod.GET )
+    public String home(HttpSession session) {
+        User user = ( User ) session.getAttribute("user");
+        if ( session.getAttribute("user") != null ) {
+            return "home";
+        }
+        return "index";
     }
 }

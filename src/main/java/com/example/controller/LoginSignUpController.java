@@ -23,7 +23,8 @@ public class LoginSignUpController {
 
     @RequestMapping( value = "/index", method = RequestMethod.GET )
     public String sayHello(@ModelAttribute User user,Model model) {
-        model.addAttribute("user",new User());
+//        model.addAttribute("user",new User());
+
         return "index";
     }
 
@@ -48,16 +49,12 @@ public class LoginSignUpController {
         return "home";
     }
 
-    @RequestMapping( value = "/logout" )
-    public String logout(HttpServletRequest request, HttpServletResponse response ,Model model)
+    @RequestMapping( value = "/logout" , method = RequestMethod.GET)
+    public String logout(HttpSession session ,HttpServletResponse response ,HttpServletRequest request)
             throws ServletException, IOException {
-       if( model.containsAttribute("user")){
-            model.addAttribute("user",null);
-        }
-        if ( request.getSession(false) != null ) {
-            request.getSession().setAttribute("id", null);
-            request.getSession().setAttribute("email", null);
-            request.getSession().invalidate();
+
+        if ( session.getAttribute("user") != null ) {
+            session.invalidate();
             response.setHeader("Pragma", "No-cache");
             response.setDateHeader("Expires", -1);
             response.setHeader("Cache-Control", "no-cache");
