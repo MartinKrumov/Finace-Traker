@@ -2,11 +2,12 @@ package com.example.model.pojo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Budget {
-	private long budgedId;
+	private long budgetId;
 	private String name;
     private BigDecimal initialAmount;
 	private BigDecimal amount;
@@ -16,9 +17,11 @@ public class Budget {
 	private long categoryID;
 	private List<Transaction> transactions;
 
-    public Budget(long budgedId, String name, BigDecimal initialAmount, BigDecimal amount, LocalDateTime fromDate, LocalDateTime toDate, long walletId, long categoryID, List<Transaction> transactions) {
-        this(name, initialAmount, amount, fromDate, toDate, walletId, categoryID, transactions);
-        this.budgedId = budgedId;
+    public Budget(long budgetId, String name, BigDecimal initialAmount, BigDecimal amount, LocalDateTime fromDate, LocalDateTime toDate,
+                  long accountId, long categoryId, List<Transaction> transactions) {
+        this(name, initialAmount, amount, fromDate, toDate, accountId, categoryId, transactions);
+
+        this.budgetId = budgetId;
     }
 
     public Budget(String name, BigDecimal initialAmount, BigDecimal amount, LocalDateTime fromDate, LocalDateTime toDate, long walletId, long categoryID, List<Transaction> transactions ) {
@@ -32,12 +35,12 @@ public class Budget {
         this.transactions = transactions;
     }
 
-    public long getBudgedId() {
-        return budgedId;
+    public long getBudgetId() {
+        return budgetId;
     }
 
     public void setBudgetId(long budgedId) {
-        this.budgedId = budgedId;
+        this.budgetId = budgedId;
     }
 
     public BigDecimal getAmount() {

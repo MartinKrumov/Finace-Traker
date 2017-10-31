@@ -21,7 +21,12 @@ public class Transaction {
         this.walletId = walletId;
     }
 
-    public long getTransactionId() {
+	public Transaction(long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId, long walletId) {
+		this(type, amount, date, description, categoryId, walletId);
+		this.transactionId = transactionId;
+	}
+
+	public long getTransactionId() {
 		return transactionId;
 	}
 	
