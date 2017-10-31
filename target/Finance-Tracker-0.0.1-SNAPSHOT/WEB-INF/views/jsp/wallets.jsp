@@ -10,6 +10,18 @@
     <c:redirect url="index?error=loginerror"/>
 </c:if>
 <h1>User: ${sessionScope.user.username}</h1>
+${ param.parameter }
+<%--<c:if test="${param.parameter.equals(add)}">--%>
+
+    <c:out value="${param.parameter}"/>
+    <c:out value="inside the if"/>
+    <%--<c:import var="data" url="${param.parameter}"/>--%>
+    ${param.parameter}
+<%--${request.contextPath}--%>
+    <jsp:include page="${param.parameter}.jsp"/>
+
+<%--</c:if>--%>
+
 
 <table>
     <tr>
@@ -19,12 +31,24 @@
     <c:forEach items="${wallets}" var="w">
         <tr>
             <td>${w.name}</td>
-            <c:forEach items="${w.categories}" var="cat">
-                <td>${cat.name}</td>
-                <td>${cat.categoryId}</td>
-                <td>${cat.userId}</td>
-            </c:forEach>
             <td>${w.amount}</td>
+            <table border=1>
+                <tr>
+                    <th>Cat Name</th>
+                    <th>Cat Id</th>
+                    <th>Cat userId</th>
+                    <th>Options</th>
+                </tr>
+                <c:forEach items="${w.categories}" var="cat">
+                    <tr>
+                        <td>${cat.name}</td>
+                        <td>${cat.categoryId}</td>
+                        <td>${cat.userId}</td>
+                        <td><a href="wallets?parameter=add">Add</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+
         </tr>
     </c:forEach>
 

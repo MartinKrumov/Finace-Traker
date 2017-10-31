@@ -24,7 +24,6 @@ public class UserController {
 
         if ( user.getEmail() != null ) {
             user = userDAO.login(user.getEmail(), "", user.getPassword());
-
             session.setAttribute("user", user);
         } else if ( user.getUsername() != null ) {
             user = userDAO.login("", user.getUsername(), user.getPassword());
