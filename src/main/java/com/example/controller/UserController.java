@@ -45,7 +45,7 @@ public class UserController {
         String userjson = json.toJson(user);
 //        model.addAttribute("wallets", wallets);
         System.out.println(userjson);
-        return "forward:home";
+        return "home";
     }
 
     @RequestMapping( value = "/login", method = RequestMethod.GET )
@@ -55,7 +55,7 @@ public class UserController {
             System.out.println(user.getUserId());
             Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
             model.addAttribute("wallets", wallets);
-            return "forward:home";
+            return "home";
         }
         return "redirect:index?error=errorLogin";
     }
@@ -68,7 +68,7 @@ public class UserController {
                 System.out.println(user.getUserId());
                 Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
                 model.addAttribute("wallets", wallets);
-            return "forward:home";
+            return "home";
         }
         return "redirect:index?error=errorLogin";
     }
@@ -79,8 +79,8 @@ public class UserController {
         User user = ( User ) session.getAttribute("user");
         System.out.println("USER ID POST: "+user.getUserId());
         if ( user.getUsername() != null ) {
-            return "forward:home";
+            return "home";
         }
-        return "forward:index";
+        return "index";
     }
 }

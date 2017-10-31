@@ -26,7 +26,7 @@
 <div id="header">
     <ul id="menu">
         <li><a href="/home"><span>Home</span></a></li>
-        <li><a href="/"><span>Tutorials</span></a></li>
+        <li><a href="/home?parameter=statistic"><span>Statistics</span></a></li>
         <li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>
         </li>
         <c:if test="${sessionScope.user.rights == 1}">

@@ -39,6 +39,7 @@
             <%--<th>Options</th>--%>
             <th>Income/Expense</th>
             <th>Description</th>
+            <th>Amount</th>
             <th>Submit</th>
         </tr>
         <c:forEach items="${w.categories}" var="cat">
@@ -50,6 +51,7 @@
                 <form  method="post" action="transaction">
                     <td><input type="checkbox" name="isIncome" value="1"/></td>
                     <td><input type="text" name="description"/></td>
+                    <td><input type="number" name="amount"/></td>
                     <input style="display: none;" type="hidden" name="categoryId" value = "${cat.categoryId}"/>
                     <td><input type="submit" name="submitsTrans" value="Add"/></td>
                 </form>
