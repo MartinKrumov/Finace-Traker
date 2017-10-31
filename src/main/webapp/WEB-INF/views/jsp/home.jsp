@@ -28,7 +28,7 @@
 
         <li><a href="/home"><span>Home</span></a></li>
         <li><a href="/"><span>Tutorials</span></a></li>
-        <li><a id="walletuser" href="wallets" onclick=""><span>Wallets</span></a></li>
+        <li><a id="walletuser" href="wallets?parameter=add" onclick=""><span>Wallets</span></a></li>
         <c:if test="${sessionScope.user.rights == 1}">
             <li><a href="#" id="userslist" onclick=""><span>List Users</span></a></li>
         </c:if>
