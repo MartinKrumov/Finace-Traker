@@ -2,10 +2,7 @@ package com.example.model.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Wallet implements Comparable< Wallet >,Serializable {
     @Override
@@ -18,10 +15,8 @@ public class Wallet implements Comparable< Wallet >,Serializable {
     private BigDecimal amount;
     private int userId;
     private Set< Category > categories;
+//    private List<Wallet> wallets;
 
-    public Set< Category > getCategories() {
-        return categories;
-    }
 
 
     public Wallet (){}
@@ -45,6 +40,10 @@ public class Wallet implements Comparable< Wallet >,Serializable {
 
         this.userId = userId;
         this.categories = new TreeSet< Category >();
+    }
+
+    public Set< Category > getCategories() {
+        return categories;
     }
 
     public long getWallettID() {

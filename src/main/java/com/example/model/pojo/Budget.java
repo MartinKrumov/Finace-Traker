@@ -2,28 +2,45 @@ package com.example.model.pojo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Budget {
-	private long budgedId;
-//	private String name;
+	private long budgetId;
+	private String name;
+    private BigDecimal initialAmount;
 	private BigDecimal amount;
 	private LocalDateTime fromDate;
 	private LocalDateTime toDate;
-	private long category;
+    private long walletId;
+	private long categoryID;
+	private List<Transaction> transactions;
 
-    public Budget(BigDecimal amount, LocalDateTime fromDate, LocalDateTime toDate, long category) {
+    public Budget(long budgetId, String name, BigDecimal initialAmount, BigDecimal amount, LocalDateTime fromDate, LocalDateTime toDate,
+                  long accountId, long categoryId, List<Transaction> transactions) {
+        this(name, initialAmount, amount, fromDate, toDate, accountId, categoryId, transactions);
+
+        this.budgetId = budgetId;
+    }
+
+    public Budget(String name, BigDecimal initialAmount, BigDecimal amount, LocalDateTime fromDate, LocalDateTime toDate, long walletId, long categoryID, List<Transaction> transactions ) {
+        this.name = name;
+        this.initialAmount = initialAmount;
         this.amount = amount;
         this.fromDate = fromDate;
         this.toDate = toDate;
-        this.category = category;
+        this.walletId = walletId;
+        this.categoryID = categoryID;
+        this.transactions = transactions;
     }
 
-    public long getBudgedId() {
-        return budgedId;
+    public long getBudgetId() {
+        return budgetId;
     }
 
-    public void setBudgedId(long budgedId) {
-        this.budgedId = budgedId;
+    public void setBudgetId(long budgedId) {
+        this.budgetId = budgedId;
     }
 
     public BigDecimal getAmount() {
@@ -50,11 +67,27 @@ public class Budget {
         this.toDate = toDate;
     }
 
-    public long getCategory() {
-        return category;
+    public long getCategoryID() {
+        return categoryID;
     }
 
-    public void setCategory(long category) {
-        this.category = category;
+    public void setCategoryID(long categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getInitialAmount() {
+        return initialAmount;
+    }
+
+    public long getWalletId() {
+        return walletId;
+    }
+
+    public List<Transaction> getTransactions() {
+        return Collections.unmodifiableList(transactions);
     }
 }
