@@ -23,6 +23,9 @@ public class Wallet implements Comparable< Wallet >,Serializable {
         return categories;
     }
 
+
+    public Wallet (){}
+
     public Wallet(int wallettID, String name, BigDecimal amount, int userId, Set< Category > categories) {
         this.wallettID = wallettID;
         this.name = name;
@@ -41,7 +44,7 @@ public class Wallet implements Comparable< Wallet >,Serializable {
         this.amount = amount;
 
         this.userId = userId;
-        this.categories = new HashSet< Category >();
+        this.categories = new TreeSet< Category >();
     }
 
     public long getWallettID() {
@@ -60,11 +63,23 @@ public class Wallet implements Comparable< Wallet >,Serializable {
         return amount;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public long getUserId() {
         return userId;
     }
 
     public Set< Category > getTransactions() {
         return Collections.unmodifiableSet(categories);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

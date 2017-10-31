@@ -24,7 +24,7 @@
         <div id="signup">
             <h1>Sign Up for Free</h1>
             <%--modelAttribute="signup"--%>
-            <form:form commandName="user" action="/signup" method="post">
+            <form:form commandName="user" action="signup" method="post">
 
                 <div class="top-row">
                     <div class="field-wrap">
@@ -74,7 +74,7 @@
         <div id="login">
             <h1>Welcome Back!</h1>
 
-            <form:form commandName="user" method="post" action="/login">
+            <form:form commandName="user" method="post" action="login">
 
                 <div class="field-wrap">
                     <label>

@@ -6,16 +6,33 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd727f1c-7c17-4832-ab62-68bdbaad19d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/TransactionDAO.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/TransactionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Demo.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Demo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Transaction.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Transaction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/dao/TransactionDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/dao/TransactionDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Demo.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Demo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Transaction.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Transaction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Budget.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Budget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+    <list default="true" id="3e17177f-22f1-42a6-96e3-392be633ecbb" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/LoginSignUpController.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/LoginSignUpController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/UserController.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/WalletController.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/controller/WalletController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/CategoryDAO.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/CategoryDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/WalletDAO.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/dao/WalletDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Wallet.class" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/model/pojo/Wallet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/controller/LoginSignUpController.class" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/LoginSignUpController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/controller/WalletController.class" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/WalletController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/dao/CategoryDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/dao/CategoryDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/dao/WalletDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/dao/WalletDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Wallet.class" afterPath="$PROJECT_DIR$/target/classes/com/example/model/pojo/Wallet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginSignUpController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginSignUpController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/WalletController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/WalletController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/dao/BudgetDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/dao/BudgetDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/dao/WalletDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Wallet.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Wallet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/home.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jsp/wallets.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/home.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/home.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/wallets.jsp" afterPath="$PROJECT_DIR$/target/Finance-Tracker-0.0.1-SNAPSHOT/WEB-INF/views/jsp/wallets.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,90 +43,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Budget.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/pojo/Budget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-              <folding>
-                <element signature="e#2070#2071#0" expanded="true" />
-                <element signature="e#2097#2098#0" expanded="true" />
-                <element signature="e#2141#2142#0" expanded="true" />
-                <element signature="e#2177#2178#0" expanded="true" />
-                <element signature="e#2210#2211#0" expanded="true" />
-                <element signature="e#2241#2242#0" expanded="true" />
-                <element signature="e#2291#2292#0" expanded="true" />
-                <element signature="e#2356#2357#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BudgetDAO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/BudgetDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1509406816151" expanded="true" signature="344:535" ph="INSERT INTO budgets... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransactionDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/TransactionDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="81" />
-              <folding>
-                <marker date="1509356226214" expanded="true" signature="492:586" ph="INSERT INTO transactions... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/UserDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-777">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <marker date="1509356226215" expanded="true" signature="592:718" ph="INSERT INTO `users`... " />
-                <marker date="1509356226215" expanded="true" signature="767:786" ph="SELECT * FRO... users" />
-                <marker date="1509356226215" expanded="true" signature="837:875" ph="SELECT email... users" />
-                <marker date="1509356226215" expanded="true" signature="931:993" ph="SELECT * FRO... users" />
-                <marker date="1509356226215" expanded="true" signature="1053:1118" ph="SELECT * FRO... users" />
-                <marker date="1509356226215" expanded="true" signature="1168:1205" ph="DELETE FROM " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoryDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <marker date="1509356226212" expanded="true" signature="539:640" ph="INSERT INTO categories... " />
-                <marker date="1509356226212" expanded="true" signature="685:729" ph="SELECT * FRO... categories" />
-                <marker date="1509356226212" expanded="true" signature="786:830" ph="SELECT * FRO... categories" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,8 +56,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/example/model/pojo/Budget.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/model/dao/BudgetDAO.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -140,12 +73,6 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
-  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -161,6 +88,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -171,66 +100,14 @@
             <path>
               <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
               <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Finance-Traker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Finance-Traker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,9 +127,10 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.FinanceTracker">
-    <configuration name="FinanceTracker" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.471" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="FinanceTracker" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.47" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8085/" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
         <artifact name="MyProject:war exploded">
           <settings>
@@ -261,8 +139,10 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Finance-Traker" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Finance-Traker_2" />
+        <option name="DEPLOY_TOMCAT_APPS" value="true" />
         <option name="HTTP_PORT" value="8085" />
+        <option name="PRESERVE_SESSIONS" value="true" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -271,7 +151,7 @@
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="11489" />
+        <option name="DEBUG_PORT" value="18358" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -409,30 +289,26 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bd727f1c-7c17-4832-ab62-68bdbaad19d1" name="Default" comment="" />
-      <created>1509386894243</created>
+      <changelist id="3e17177f-22f1-42a6-96e3-392be633ecbb" name="Default" comment="" />
+      <created>1509434283502</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1509386894243</updated>
-      <workItem from="1509386903669" duration="7950000" />
+      <updated>1509434283502</updated>
+      <workItem from="1509434293955" duration="577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7950000" />
+    <option name="totallyTimeSpent" value="577000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.271632" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -451,7 +327,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -475,68 +351,19 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/UserDAO.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-777">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <marker date="1509356226215" expanded="true" signature="592:718" ph="INSERT INTO `users`... " />
-            <marker date="1509356226215" expanded="true" signature="767:786" ph="SELECT * FRO... users" />
-            <marker date="1509356226215" expanded="true" signature="837:875" ph="SELECT email... users" />
-            <marker date="1509356226215" expanded="true" signature="931:993" ph="SELECT * FRO... users" />
-            <marker date="1509356226215" expanded="true" signature="1053:1118" ph="SELECT * FRO... users" />
-            <marker date="1509356226215" expanded="true" signature="1168:1205" ph="DELETE FROM " />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/CategoryDAO.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <marker date="1509356226212" expanded="true" signature="539:640" ph="INSERT INTO categories... " />
-            <marker date="1509356226212" expanded="true" signature="685:729" ph="SELECT * FRO... categories" />
-            <marker date="1509356226212" expanded="true" signature="786:830" ph="SELECT * FRO... categories" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/TransactionDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="81" />
-          <folding>
-            <marker date="1509356226214" expanded="true" signature="492:586" ph="INSERT INTO transactions... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/pojo/Budget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="e#2070#2071#0" expanded="true" />
-            <element signature="e#2097#2098#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2177#2178#0" expanded="true" />
-            <element signature="e#2210#2211#0" expanded="true" />
-            <element signature="e#2241#2242#0" expanded="true" />
-            <element signature="e#2291#2292#0" expanded="true" />
-            <element signature="e#2356#2357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/dao/BudgetDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1509406816151" expanded="true" signature="344:535" ph="INSERT INTO budgets... " />
-          </folding>
+        <state relative-caret-position="336">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
