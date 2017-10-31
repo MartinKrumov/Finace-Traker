@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46f1e4be-ae09-478f-a95e-bef013132f91" name="Default" comment="charts added" />
+    <list default="true" id="46f1e4be-ae09-478f-a95e-bef013132f91" name="Default" comment="charts added">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -135,7 +137,7 @@
             <state relative-caret-position="418">
               <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
-                <marker date="1509466243661" expanded="true" signature="492:598" ph="INSERT INTO transactions... " />
+                <marker date="1509466455930" expanded="true" signature="492:598" ph="INSERT INTO transactions... " />
               </folding>
             </state>
           </provider>
@@ -542,7 +544,7 @@
       <workItem from="1509361379064" duration="26601000" />
       <workItem from="1509431078731" duration="3412000" />
       <workItem from="1509435297108" duration="679000" />
-      <workItem from="1509437907319" duration="19900000" />
+      <workItem from="1509437907319" duration="20072000" />
     </task>
     <task id="LOCAL-00001" summary="wallet added to data base">
       <created>1509372383672</created>
@@ -597,7 +599,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53398000" />
+    <option name="totallyTimeSpent" value="53570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1021,7 +1023,7 @@
         <state relative-caret-position="418">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <marker date="1509466243661" expanded="true" signature="492:598" ph="INSERT INTO transactions... " />
+            <marker date="1509466455930" expanded="true" signature="492:598" ph="INSERT INTO transactions... " />
           </folding>
         </state>
       </provider>
