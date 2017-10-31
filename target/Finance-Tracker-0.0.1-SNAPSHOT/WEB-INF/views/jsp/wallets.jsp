@@ -9,66 +9,74 @@
 <c:if test="${empty sessionScope.user.username}">
     <c:redirect url="index?error=loginerror"/>
 </c:if>
-<h1>User: ${sessionScope.user.username}</h1>
-${ param.parameter }
+<%--<h1>User: ${sessionScope.user.username}</h1>--%>
+<%--${ param.parameter }--%>
 <%--<c:if test="${param.parameter.equals(add)}">--%>
 
-    <c:out value="${param.parameter}"/>
-    <c:out value="inside the if"/>
-    <%--<c:import var="data" url="${param.parameter}"/>--%>
-    ${param.parameter}
+<%--<c:out value="${param.parameter}"/>--%>
+<%--<c:out value="inside the if"/>--%>
+<%--<c:import var="data" url="${param.parameter}"/>--%>
+<%--${param.parameter}--%>
 <%--${request.contextPath}--%>
-    <jsp:include page="${param.parameter}.jsp"/>
+<%--<jsp:include page="${param.parameter}.jsp"/>--%>
 
 <%--</c:if>--%>
+<%--<select name="select">--%>
 
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-    </tr>
-    <c:forEach items="${wallets}" var="w">
+<%--<option value="1">1</option>--%>
+<%--<option value="2">2</option>--%>
+<%--<option value="3">3</option>--%>
+<%--</select>--%>
+<%--<c:out value="${param.select}"/>--%>
+<c:forEach items="${sessionScope.user.wallets}" var="w">
+    Wallet name: ${w.name}<br/>
+    Wallet Categories:
+    <table border=1>
         <tr>
-            <td>${w.name}</td>
-            <td>${w.amount}</td>
-            <table border=1>
-                <tr>
-                    <th>Cat Name</th>
-                    <th>Cat Id</th>
-                    <th>Cat userId</th>
-                    <th>Options</th>
-                </tr>
-                <c:forEach items="${w.categories}" var="cat">
-                    <tr>
-                        <td>${cat.name}</td>
-                        <td>${cat.categoryId}</td>
-                        <td>${cat.userId}</td>
-                        <td><a href="wallets?parameter=add">Add</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-
+            <th>Cat Name</th>
+            <th>Cat Id</th>
+            <th>Cat userId</th>
+            <%--<th>Options</th>--%>
+            <th>Income/Expense</th>
+            <th>Description</th>
+            <th>Submit</th>
         </tr>
-    </c:forEach>
+        <c:forEach items="${w.categories}" var="cat">
+            <tr>
+                <td>${cat.name}</td>
+                <td>${cat.categoryId}</td>
+                <td>${cat.userId}</td>
+<%--long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {--%>
+                <form  method="post" action="/transaction">
+                    <td><input type="checkbox" name="isIncome" value="1"/></td>
+                    <td><input type="text" name="description"/></td>
+                    <td><input style="display: none;" type="hidden" name="categoryId" value = "${cat.categoryId}"/></td>
+                    <td><input type="submit" name="submitsTrans" value="Add"/></td>
+                </form>
+            </tr>
+        </c:forEach>
+    </table>
 
-    <form:form commandName="wallet" method="post" action="wallet_insert">
 
-        <div class="field-wrap">
-            <label>
-                Wallet Name<span class="req">*</span>
-            </label>
-            <form:input type="text" path="name" autocomplete="on"/>
-        </div>
-        <div class="field-wrap">
-            <label>
-                Amount<span class="req">*</span>
-            </label>
-            <form:input type="text" path="amount"/>
-        </div>
-        <button class="button button-block"/>
-        Insert</button>
-    </form:form>
+</c:forEach>
+
+<%--<form:form commandName="wallet" method="post" action="wallet_insert">--%>
+
+<%--<div class="field-wrap">--%>
+<%--<label>--%>
+<%--Wallet Name<span class="req">*</span>--%>
+<%--</label>--%>
+<%--<form:input type="text" path="name" autocomplete="on"/>--%>
+<%--</div>--%>
+<%--<div class="field-wrap">--%>
+<%--<label>--%>
+<%--Amount<span class="req">*</span>--%>
+<%--</label>--%>
+<%--<form:input type="text" path="amount"/>--%>
+<%--</div>--%>
+<%--<button class="button button-block"/>--%>
+<%--Insert</button>--%>
+<%--</form:form>--%>
 
 </table>
 </body>
