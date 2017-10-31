@@ -47,10 +47,10 @@
                 <td>${cat.categoryId}</td>
                 <td>${cat.userId}</td>
 <%--long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {--%>
-                <form  method="post" action="/transaction">
+                <form  method="post" action="transaction">
                     <td><input type="checkbox" name="isIncome" value="1"/></td>
                     <td><input type="text" name="description"/></td>
-                    <td><input style="display: none;" type="hidden" name="categoryId" value = "${cat.categoryId}"/></td>
+                    <input style="display: none;" type="hidden" name="categoryId" value = "${cat.categoryId}"/>
                     <td><input type="submit" name="submitsTrans" value="Add"/></td>
                 </form>
             </tr>

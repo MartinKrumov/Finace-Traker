@@ -16,7 +16,7 @@ public class TransActionController {
 
     //    public Transaction(long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {
     @RequestMapping( value = "/transaction", method = RequestMethod.POST )
-    public String insertTransaction(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String transaction(HttpServletRequest request, HttpServletResponse response, Model model) {
         String income = request.getParameter("isIncome");
         String descrip = request.getParameter("description");
         String catId = request.getParameter("categoryId");
@@ -24,8 +24,6 @@ public class TransActionController {
         System.out.println("type " + income);
         System.out.println("category_id " + catId);
         System.out.println("amount " + descrip);
-        return "home?parameter=wallets";
+        return "forward:home?parameter=wallets";
     }
-
-
 }

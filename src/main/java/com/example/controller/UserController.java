@@ -55,7 +55,7 @@ public class UserController {
             System.out.println(user.getUserId());
             Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
             model.addAttribute("wallets", wallets);
-            return "home";
+            return "forward:home";
         }
         return "redirect:index?error=errorLogin";
     }
@@ -68,7 +68,7 @@ public class UserController {
                 System.out.println(user.getUserId());
                 Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
                 model.addAttribute("wallets", wallets);
-            return "home";
+            return "forward:home";
         }
         return "redirect:index?error=errorLogin";
     }
@@ -79,8 +79,8 @@ public class UserController {
         User user = ( User ) session.getAttribute("user");
         System.out.println("USER ID POST: "+user.getUserId());
         if ( user.getUsername() != null ) {
-            return "home";
+            return "forward:home";
         }
-        return "index";
+        return "forward:index";
     }
 }
