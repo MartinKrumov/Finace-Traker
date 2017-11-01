@@ -10,6 +10,11 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
 # Package Files #
 *.jar
 *.war
@@ -22,6 +27,7 @@
 hs_err_pid*
 /build/
 
+*/target/*
 /target/
 
 .settings
@@ -31,3 +37,4 @@ hs_err_pid*
 .mvn
 .DS_Store
 .cmd
+

@@ -18,6 +18,8 @@ public class TransactionDAO {
     private static final String INSERT_TRANSACTION = "INSERT INTO transactions (type, amount, description, date, category_id) VALUES (?, ?, ?, ?, ?)";
     public static final String SELECT_TRANSACTIONS_FOR_CURRENT_WALLET = "SELECT * FROM transactions WHERE wallet_id = ?";
 
+    public static final String SELECT_TRANSACTION_BY_TRAN_ID = "SELECT transaction_type, amount, date, description, category_id, wallet_id FROM transactions WHERE transaction_id = ?";
+
     public synchronized void insertTransaction(Transaction t) throws SQLException {
         conn = connection.getConnection();
 
@@ -45,20 +47,24 @@ public class TransactionDAO {
         }
     }
 
-//    public void getAllTransactionsByWallet() throws SQLException {
-//        PreparedStatement ps = null;
-//        ps = connection.getConnection().prepareStatement(SELECT_TRANSACTIONS_FOR_CURRENT_WALLET);
-//        ps.setLong(1, wallet.getWalletId());
-//        ResultSet resultSet = ps.executeQuery();
-//        while (resultSet.next()) {
-//            long transactionId = resultSet.getInt("transaction_id");
-//            String type = resultSet.getString("transaction_type");
-//            TransactionType transactionType = TransactionType.valueOf(type);
-//            LocalDateTime date = resultSet.getTimestamp("date").toLocalDateTime();
-//            BigDecimal amount = resultSet.getBigDecimal("amount");
-//            String description = resultSet.getString("description");
-//            int categoryId = resultSet.getInt("category_id");
-//            Transaction t = new Transaction(transactionId, transactionType, amount, date, description, categoryId );
-//        }
-//    }
+    public Transaction getTransactionByTransactionId(long transactionId) throws SQLException {
+
+        PreparedStatement ps = connection.getConnection().prepareStatement(SELECT_TRANSACTION_BY_TRAN_ID);
+        ps.setLong(1, transactionId);
+
+        ResultSet resultSet = ps.executeQuery();
+        resultSet.next();
+
+        TransactionType transactionType = TransactionType.valueOf(resultSet.getString("type"));
+        BigDecimal amount = resultSet.getBigDecimal("amount");
+        LocalDateTime date = resultSet.getTimestamp("date").toLocalDateTime();
+        String description = resultSet.getString("description");
+        int categoryId = resultSet.getInt("category_id");
+        int walletId = resultSet.getInt("wallet_id");
+
+
+        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
+
+        return transaction;
+    }
 }
