@@ -25,27 +25,42 @@
 </c:if>
 <div id="header">
     <ul id="menu">
-
         <li><a href="/home"><span>Home</span></a></li>
-        <li><a href="/"><span>Tutorials</span></a></li>
-        <li><a id="walletuser" href="wallets?parameter=add" onclick=""><span>Wallets</span></a></li>
+        <li><a href="/home?parameter=statistic"><span>Statistics</span></a></li>
+        <li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>
+        </li>
         <c:if test="${sessionScope.user.rights == 1}">
             <li><a href="#" id="userslist" onclick=""><span>List Users</span></a></li>
         </c:if>
         <li><a href="logout"><span>Logout</span></a></li>
     </ul>
-
+    <div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>
+    </div>
 </div>
-<h1>Username:${sessionScope.user.username}</h1>
-<h1>User blocked: ${sessionScope.user.blocked}</h1>
-<h1>User rights: ${sessionScope.user.rights}</h1>
+<%--<h1>User blocked: ${sessionScope.user.blocked}</h1>--%>
+<%--<h1>User rights: ${sessionScope.user.rights}</h1>--%>
 <%--<c:if test="${sessionScope.user!= null }">--%>
-    <%--<p> user_id ${sessionScope.user.user_id}</p>--%>
-    <%--<p> username ${sessionScope.user.username}</p>--%>
-    <%--<p> user_email ${sessionScope.user.user_email}</p>--%>
-    <%--<p> user_rights ${sessionScope.user.user_rights}</p>--%>
-    <%--<p> user_blocked ${sessionScope.user.user_blocked}</p>--%>
+<%--<p> user_id ${sessionScope.user.user_id}</p>--%>
+<%--<p> username ${sessionScope.user.username}</p>--%>
+<%--<p> user_email ${sessionScope.user.user_email}</p>--%>
+<%--<p> user_rights ${sessionScope.user.user_rights}</p>--%>
+<%--<p> user_blocked ${sessionScope.user.user_blocked}</p>--%>
 <%--</c:if>--%>
+<%--<c:set var="req" value="${pageContext.request}"/>--%>
+<%--<c:set var="baseURL" value="${fn:replace(req.requestURL, req.requestURI, '')}" />--%>
+<%--<c:set var="params" value="${requestScope['javax.servlet.forward.query_string']}"/>--%>
+<%--<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}"/>--%>
+<%--<c:set var="pageUrl" value="${ baseURL }${ requestPath }${ not empty params?'?'+=params:'' }"/>--%>
+
+<%--<c:out value="requestPath"/>--%>
+<%--<c:out value="${requestScope['javax.servlet.forward.query_string']}"/><br/>--%>
+<%--<c:out value="${requestScope['javax.servlet.forward.request_uri']}"/><br/>--%>
+<%--<c:out value="${pageContext.request}"/><br/>--%>
+<%--<c:out value="${pageContext.request}"/><br/>--%>
+
+<c:if test="${param.parameter !=null }">
+    <jsp:include page="${param.parameter}.jsp"/>
+</c:if>
 <div class="wrapper">
 
     <form action="wallet" method="post">

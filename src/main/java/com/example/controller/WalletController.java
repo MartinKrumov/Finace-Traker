@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,9 +20,11 @@ public class WalletController {
     @Autowired
     WalletDAO walletDAO;
 
-    @RequestMapping( value = "/wallets", method = RequestMethod.GET )
-    public String getAllWallets(@ModelAttribute Wallet wallet,HttpSession session, Model model) {
+    @RequestMapping( value = {"/wallets","/home/{parameter}"}, method = RequestMethod.GET )
+    public String getAllWallets(@ModelAttribute Wallet wallet, HttpSession session, Model model , @PathVariable("parameter") String page) {
         model.addAttribute("wallet", wallet);
+        System.out.println("in the wallets");
+        System.err.println("Page parameter : "+page);
         User user = ( User ) session.getAttribute("user");
         if(user != null) {
             System.out.println(user.getUserId());
@@ -30,8 +33,13 @@ public class WalletController {
         }
         return "wallets";
     }
-
-
+    @RequestMapping( value = {"/home/{parameter}/wallets"}, method = RequestMethod.GET )
+    public String getParam(@ModelAttribute Wallet wallet, HttpSession session, Model model , @PathVariable("parameter") String page) {
+        model.addAttribute("wallet", wallet);
+        System.out.println("in the wallets");
+        System.err.println("Page parameter : "+page);
+        return "wallets";
+    }
     @RequestMapping( value = "/wallet_insert", method = RequestMethod.POST )
     public String InsertWallet(@ModelAttribute Wallet wallet, HttpSession session, Model model) {
         model.addAttribute("wallet", wallet);
