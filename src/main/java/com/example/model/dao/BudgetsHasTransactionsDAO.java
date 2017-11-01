@@ -39,9 +39,9 @@ public class BudgetsHasTransactionsDAO {
 
         List<Transaction> transactions = new ArrayList<>();
 
-        while(res.next()) {
-            transactions.add(transactionDAO.getTransactionByTransactionId(res.getLong("transaction_id")));
-        }
+//        while(res.next()) {
+//            transactions.add(transactionDAO.getTransactionByTransactionId(res.getLong("transaction_id")));
+//        }
 
         return transactions;
     }

@@ -20,6 +20,13 @@ public class Transaction {
         this.categoryId = categoryId;
         this.walletId = walletId;
     }
+	public Transaction(TransactionType type, BigDecimal amount, String description, long categoryId ) {
+		this.type = type;
+		this.amount = amount;
+		this.description = description;
+		this.categoryId = categoryId;
+		this.walletId = walletId;
+	}
 
     public long getTransactionId() {
 		return transactionId;
