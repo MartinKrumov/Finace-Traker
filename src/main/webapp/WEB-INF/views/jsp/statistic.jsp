@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <%--<title>Title</title>--%>
@@ -15,15 +16,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link href="index.css" rel="stylesheet">
-    <title>Home</title>
 </head>
 <body>
 
-
-
-<script src="/static/AdminLTE-2.3.11/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="/static/AdminLTE-2.3.11/plugins/chartjs/Chart.min.js"></script>
+<script src="Finance-Traker/src/main/webapp/static/AdminLTE-2.3.11/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="Finance-Traker/src/main/webapp/static/AdminLTE-2.3.11/plugins/chartjs/Chart.min.js"></script>
 
 <script>
     function chart(){
@@ -129,7 +126,7 @@
             //Boolean - Whether to fill the dataset with a color
             datasetFill: true,
             //String - A legend template
-            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%=datasets[i].label%></li><%}%></ul>",
+            legendTemplate: "<ul class=\"name.toLowerCase()-legend\"><% for (int i=0; i<8; i++){%><li><span style=\"background-color:black\"></span></li><%}%></ul>",
             //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
             maintainAspectRatio: true,
             //Boolean - whether to make the chart responsive to window resizing
@@ -145,7 +142,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Facebook page check</h3>
+                <h3 class="box-title">Statistics</h3>
             </div>
             <div class="box-body">
                 <div class="row">

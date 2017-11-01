@@ -55,7 +55,7 @@ public class UserController {
             System.out.println(user.getUserId());
             Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
             model.addAttribute("wallets", wallets);
-            return "home";
+            return "redirect:home";
         }
         return "redirect:index?error=errorLogin";
     }

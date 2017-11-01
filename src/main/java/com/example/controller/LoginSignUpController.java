@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.dao.UserDAO;
+import com.example.model.pojo.Wallet;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import com.example.model.pojo.User;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Set;
+import java.util.TreeSet;
 
 //@SessionAttributes()
 @Controller
@@ -28,7 +31,7 @@ public class LoginSignUpController {
     }
 
     @RequestMapping( value = "/signup", method = RequestMethod.POST )
-    public String signupUser(@ModelAttribute User user, HttpSession session) {
+    public String signupUser(@ModelAttribute User user, HttpSession session ,Model model) {
         if ( user.getPassword() == null ) {
             return "redirect:index";
         }
@@ -47,8 +50,10 @@ public class LoginSignUpController {
         }
         if ( user != null || user.getUserId() != 0 ) {
             session.setAttribute("user", user);
+            Set< Wallet > wallets = new TreeSet<>();
+            model.addAttribute("wallets", wallets);
         }
-        return "home";
+        return "redirect:home";
     }
 
     @RequestMapping( value = "/logout" )
