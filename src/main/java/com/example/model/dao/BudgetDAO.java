@@ -29,8 +29,10 @@ public class BudgetDAO {
     public static final String SELECT_BUDGETS = "SELECT budget_id, name, initial_amount, amount, from_date, to_date, category_id FROM budgets WHERE wallet_id = ?";
 
     public void insertBudget(Budget b) throws SQLException {
+        Connection con = dbConnection.getConnection();
+        PreparedStatement ps = con.prepareStatement(INSERT_BUDGET, Statement.RETURN_GENERATED_KEYS);
 
-        PreparedStatement ps = dbConnection.getConnection().prepareStatement(INSERT_BUDGET, Statement.RETURN_GENERATED_KEYS);
+
         ps.setString(1, b.getName());
         ps.setBigDecimal(2, b.getInitialAmount());
         ps.setBigDecimal(3, b.getAmount());
@@ -67,7 +69,7 @@ public class BudgetDAO {
         PreparedStatement ps = dbConnection.getConnection().prepareStatement(SELECT_BUDGETS);
         ps.setLong(1, walletId);
 
-        List<Budget> budgets  = new ArrayList<>();
+        List<Budget> budgets = new ArrayList<>();
 
         ResultSet resultSet = ps.executeQuery();
 
