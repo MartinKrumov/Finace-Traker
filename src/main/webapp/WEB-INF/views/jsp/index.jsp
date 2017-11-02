@@ -22,21 +22,21 @@
     <div class="tab-content">
         <div id="signup">
             <h1>Sign Up for Free</h1>
-            <form:form commandName="user" action="signup" method="post">
+            <form commandName="user" action="signup" method="post">
 
                 <div class="top-row">
                     <div class="field-wrap">
                         <label>
                             First Name<span class="req">*</span>
                         </label>
-                        <form:input path="firstName" />
+                        <input name="firstName" />
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             Last Name<span class="req">*</span>
                         </label>
-                        <form:input  path="lastName" />
+                        <input  name="lastName" />
                     </div>
 
                 </div>
@@ -44,20 +44,20 @@
                     <label>
                         User Name<span class="req">*</span>
                     </label>
-                    <form:input  path="username"/>
+                    <input  name="username"/>
                 </div>
                 <div class="field-wrap">
                     <label>
                         Email Address<span class="req">*</span>
                     </label>
-                    <form:input type="email" path="email" />
+                    <input type="email" name="email" />
                 </div>
 
                 <div class="field-wrap">
                     <label>
                         Set A Password<span class="req">*</span>
                     </label>
-                    <form:input type="password" path="password" />
+                    <input type="password" name="password" />
                 </div>
                 <!-- <div class="field-wrap"> -->
                 <!-- <input type="file" name = "profilpic" /> -->
@@ -65,32 +65,32 @@
                 <button type="submit" class="button button-block"/>
                 Get Started</button>
 
-            </form:form>
+            </form>
 
         </div>
 
         <div id="login">
             <h1>Welcome Back!</h1>
 
-            <form:form commandName="user" method="post" action="login">
+            <form commandName="user" method="post" action="login">
 
                 <div class="field-wrap">
                     <label>
                         Email Address<span class="req">*</span>
                     </label>
-                    <form:input type="email" path="email" autocomplete="on"/>
+                    <input type="email" name="email" autocomplete="on"/>
                 </div>
                 <div class="field-wrap">
                     <label>
                         User Name<span class="req">*</span>
                     </label>
-                    <form:input type="text" path="username" autocomplete="on"/>
+                    <input type="text" name="username" autocomplete="on"/>
                 </div>
                 <div class="field-wrap">
                     <label>
                         Password<span class="req">*</span>
                     </label>
-                    <form:input type="password" path="password"/>
+                    <input type="password" name="password"/>
                 </div>
 
                 <p class="forgot"><a href="#">Forgot Password?</a></p>
@@ -98,7 +98,7 @@
                 <button class="button button-block"/>
                 Log In</button>
 
-            </form:form>
+            </form>
 
         </div>
 

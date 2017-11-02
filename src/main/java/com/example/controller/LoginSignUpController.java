@@ -27,7 +27,7 @@ public class LoginSignUpController {
     @RequestMapping( value = "/index", method = RequestMethod.GET )
     public String sayHello( Model model) {
 //        model.addAttribute("user",new User());
-        return "redirect:index";
+        return "index";
     }
 
     @RequestMapping( value = "/signup", method = RequestMethod.POST )

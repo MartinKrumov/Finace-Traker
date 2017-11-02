@@ -14,10 +14,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-@ServletSecurity
 public class LogoutController {
 
-    @RequestMapping( value = {"/logout" ,"/home" })
+    @RequestMapping( value = "/logout"  )
     public String logout(HttpSession session, HttpServletResponse response, HttpServletRequest request, Model model) throws ServletException, IOException {
         session.removeAttribute("user");
         session.invalidate();
