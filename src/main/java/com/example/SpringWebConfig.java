@@ -35,7 +35,6 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 		resolver.setViewClass(JstlView.class);
 		resolver.setPrefix("/WEB-INF/views/jsp/");
 		resolver.setSuffix(".jsp");
-		
 		return resolver;
 	}
 	
@@ -46,7 +45,6 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 		messageSource.setBasename("messages");
 		return messageSource;
 	}
-	
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();

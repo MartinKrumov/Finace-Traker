@@ -9,7 +9,6 @@
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -23,7 +22,6 @@
     <div class="tab-content">
         <div id="signup">
             <h1>Sign Up for Free</h1>
-            <%--modelAttribute="signup"--%>
             <form:form commandName="user" action="signup" method="post">
 
                 <div class="top-row">

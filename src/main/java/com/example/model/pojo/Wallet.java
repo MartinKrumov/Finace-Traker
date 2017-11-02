@@ -1,10 +1,12 @@
 package com.example.model.pojo;
 
+import org.springframework.context.annotation.Bean;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Wallet implements Comparable< Wallet >,Serializable {
+public class Wallet implements Comparable< Wallet >, Serializable {
     @Override
     public int compareTo(Wallet o) {
         return this.wallettID - o.wallettID;
@@ -18,8 +20,16 @@ public class Wallet implements Comparable< Wallet >,Serializable {
 //    private List<Wallet> wallets;
 
 
+    public Wallet() {
+    }
 
-    public Wallet (){}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Wallet(int wallettID, String name, BigDecimal amount, int userId, Set< Category > categories) {
         this.wallettID = wallettID;
@@ -54,9 +64,6 @@ public class Wallet implements Comparable< Wallet >,Serializable {
         this.wallettID = wallettID;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -74,9 +81,6 @@ public class Wallet implements Comparable< Wallet >,Serializable {
         return Collections.unmodifiableSet(categories);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;

@@ -20,27 +20,27 @@
 </head>
 <body>
 
-<%--<form:form commandName="wallet" method="post" action="wallet_insert">--%>
+<form  commandName="wallet" method="post" action="/walletInsert">
 
-<%--<div class="field-wrap">--%>
-<%--<label>--%>
-<%--Wallet Name<span class="req">*</span>--%>
-<%--</label>--%>
-<%--<form:input type="text" path="name" autocomplete="on"/>--%>
-<%--</div>--%>
-<%--<div class="field-wrap">--%>
-<%--<label>--%>
-<%--Amount<span class="req">*</span>--%>
-<%--</label>--%>
-<%--<form:input type="text" path="amount"/>--%>
-<%--</div>--%>
-<%--<button class="button button-block"/>--%>
-<%--Insert</button>--%>
-<%--</form:form>--%>
+    <div class="field-wrap">
+        <label>
+            Wallet Name<span class="req">*</span>
+        </label>
+        <input type="text" name="name" />
+    </div>
+    <div class="field-wrap">
+        <label>
+            Amount<span class="req">*</span>
+        </label>
+        <input type="text" name="amount"/>
+    </div>
+    <button class="button button-block"/>
+    Insert</button>
+</form>
 
 
 <c:if test="${empty sessionScope.user.username}">
-    <c:redirect url="index"/>
+    <c:redirect url="/index"/>
 </c:if>
 <div id="header">
     <ul id="menu">

@@ -25,9 +25,9 @@ public class LoginSignUpController {
     UserDAO userDAO;
 
     @RequestMapping( value = "/index", method = RequestMethod.GET )
-    public String sayHello(@ModelAttribute User user, Model model) {
+    public String sayHello( Model model) {
 //        model.addAttribute("user",new User());
-        return "index";
+        return "redirect:index";
     }
 
     @RequestMapping( value = "/signup", method = RequestMethod.POST )
@@ -56,23 +56,6 @@ public class LoginSignUpController {
         return "redirect:home";
     }
 
-    @RequestMapping( value = "/logout" )
-    public String logout(HttpSession session, HttpServletResponse response, HttpServletRequest request, Model model) throws ServletException, IOException {
-        session.removeAttribute("user");
-        session.invalidate();
-        response.setHeader("Pragma", "No-cache");
-        response.setDateHeader("Expires", -1);
-        response.setHeader("Cache-Control", "no-cache");
-        response.setContentType("text/html");
-        Cookie[] cookies = request.getCookies();
-        if ( cookies != null ) for ( Cookie cookie : cookies ) {
-            cookie.setValue("");
-            cookie.setPath("/");
-            cookie.setMaxAge(0);
-            response.addCookie(cookie);
-        }
-//        if ( model.containsAttribute("user") ) model.asMap().remove("user");
-        return "home";
-    }
+
 
 }
