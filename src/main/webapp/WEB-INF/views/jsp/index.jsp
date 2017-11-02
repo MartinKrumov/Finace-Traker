@@ -52,7 +52,6 @@
                     </label>
                     <input type="email" name="email" />
                 </div>
-
                 <div class="field-wrap">
                     <label>
                         Set A Password<span class="req">*</span>
@@ -74,12 +73,6 @@
 
             <form commandName="user" method="post" action="login">
 
-                <div class="field-wrap">
-                    <label>
-                        Email Address<span class="req">*</span>
-                    </label>
-                    <input type="email" name="email" autocomplete="on"/>
-                </div>
                 <div class="field-wrap">
                     <label>
                         User Name<span class="req">*</span>

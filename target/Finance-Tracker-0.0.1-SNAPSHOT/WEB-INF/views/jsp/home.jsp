@@ -13,34 +13,14 @@
 <link type="text/css" rel="stylesheet" href="css/jspstyle.css">
 <html>
 <head>
-
     <meta charset="UTF-8">
     <title>Finance Tracker</title>
-
 </head>
 <body>
 
-<form  commandName="wallet" method="post" action="/walletInsert">
-
-    <div class="field-wrap">
-        <label>
-            Wallet Name<span class="req">*</span>
-        </label>
-        <input type="text" name="name" />
-    </div>
-    <div class="field-wrap">
-        <label>
-            Amount<span class="req">*</span>
-        </label>
-        <input type="text" name="amount"/>
-    </div>
-    <button class="button button-block"/>
-    Insert</button>
-</form>
-
 
 <c:if test="${empty sessionScope.user.username}">
-    <c:redirect url="/index"/>
+    <c:redirect url="index"/>
 </c:if>
 <div id="header">
     <ul id="menu">
@@ -56,44 +36,26 @@
     <div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>
     </div>
 </div>
-<%--<h1>User blocked: ${sessionScope.user.blocked}</h1>--%>
-<%--<h1>User rights: ${sessionScope.user.rights}</h1>--%>
-<%--<c:if test="${sessionScope.user!= null }">--%>
-<%--<p> user_id ${sessionScope.user.user_id}</p>--%>
-<%--<p> username ${sessionScope.user.username}</p>--%>
-<%--<p> user_email ${sessionScope.user.user_email}</p>--%>
-<%--<p> user_rights ${sessionScope.user.user_rights}</p>--%>
-<%--<p> user_blocked ${sessionScope.user.user_blocked}</p>--%>
-<%--</c:if>--%>
-<%--<c:set var="req" value="${pageContext.request}"/>--%>
-<%--<c:set var="baseURL" value="${fn:replace(req.requestURL, req.requestURI, '')}" />--%>
-<%--<c:set var="params" value="${requestScope['javax.servlet.forward.query_string']}"/>--%>
-<%--<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}"/>--%>
-<%--<c:set var="pageUrl" value="${ baseURL }${ requestPath }${ not empty params?'?'+=params:'' }"/>--%>
-
-<%--<c:out value="requestPath"/>--%>
-<%--<c:out value="${requestScope['javax.servlet.forward.query_string']}"/><br/>--%>
-<%--<c:out value="${requestScope['javax.servlet.forward.request_uri']}"/><br/>--%>
-<%--<c:out value="${pageContext.request}"/><br/>--%>
-<%--<c:out value="${pageContext.request}"/><br/>--%>
 
 <c:if test="${param.parameter !=null }">
     <jsp:include page="${param.parameter}.jsp"/>
 </c:if>
-<div class="wrapper">
-
-    <form action="wallet" method="post">
-        <input type="text" name="wallet_name">
-        <select name="categories" id="">
-            <option value="1">option 1</option>
-            <option value="2">option 1</option>
-            <option value="3">option 1</option>
-        </select>
-        <input type="checkbox" name="check" value="Car" checked>
-        <input type="submit" value="insert">
-    </form>
-
-</div>
+<form commandName="wallet" method="post" action="walletInsert">
+    <div class="field-wrap">
+        <label>
+            Wallet Name<span class="req">*</span>
+        </label>
+        <input type="text" name="name"/>
+    </div>
+    <div class="field-wrap">
+        <label>
+            Amount<span class="req">*</span>
+        </label>
+        <input type="text" name="amount"/>
+    </div>
+    <button class="button button-block"/>
+    Insert</button>
+</form>
 
 <div id="tableprint"></div>
 

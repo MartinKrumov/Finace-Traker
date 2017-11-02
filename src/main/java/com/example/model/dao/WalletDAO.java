@@ -20,33 +20,42 @@ public class WalletDAO {
     @Autowired
     DBConnection connection;
     CategoryDAO categoryDAO;
-    private static final String INSERT_INTO_WALLET = "INSERT INTO `wallets`( `name`, `amount`, `user_id`) VALUES (?,?,?);";
+    private static final String INSERT_INTO_WALLET = "INSERT INTO `wallets` VALUES (null,?,?,?);";
     private static final String SELECT_FROM_WALLET = "SELECT * FROM wallets WHERE user_id = ?;";
     private static final String DELETE_USER_FROM_WALLET = "DELETE FROM `wallets` WHERE user_id = ?;";
     private static final String SELECT_USER_WALLET = "SELECT * FROM `wallets` WHERE user_id = ?;";
+    private static final String INSERT_USER_CATEGORIES = "INSERT INTO users_has_categories Values(?,?);";
 
-    public long insertWallet(Wallet wallet) {
+
+    public long insertWallet(Wallet wallet , long userId) throws SQLException {
+        Connection conn = null;
         try {
-            Connection conn = connection.getConnection();
-//            System.out.println(wallet.getName());
-//            System.out.println(wallet.getAmount());
-//            System.out.println(wallet.getUserId());
+            conn = connection.getConnection();
+            System.out.println("wallet name " + wallet.getName());
+            System.out.println(wallet.getAmount());
+            System.out.println(userId);
             PreparedStatement preparedStatement = conn.prepareStatement(INSERT_INTO_WALLET, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, wallet.getName());
             preparedStatement.setBigDecimal(2, wallet.getAmount());
-            preparedStatement.setLong(3, wallet.getUserId());
-//			statement.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
+            preparedStatement.setLong(3, userId);
             preparedStatement.executeUpdate();
+
+
+            for ( int i = 3; i <= 9; i++ ) {
+                PreparedStatement preparedStm = conn.prepareStatement(INSERT_USER_CATEGORIES);
+                preparedStm.setLong(1, userId);
+                preparedStm.setLong(2, i);
+                preparedStm.executeUpdate();
+                System.out.println("i: "+i);
+            }
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if ( rs.next() ) {
                 long walletId = rs.getLong(1);
-//                System.out.println(walletId);
-//                System.out.println(wallet.getUserId());
-                CategoryDAO.insertDefaultCategories( walletId, wallet.getUserId() ,connection);
+                System.out.println("wallet id in wallets " + walletId);
                 return walletId;
             }
         } catch ( SQLException e ) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             return -1;
         }
         return 0;
@@ -77,12 +86,12 @@ public class WalletDAO {
         return returnBool;
     }
 
-    public Set< Wallet > selectUserWallets(int userId) {
+    public Set< Wallet > selectUserWallets(long userId) {
         Set< Wallet > wallets = new TreeSet<>();
         try {
             Connection conn = connection.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(SELECT_USER_WALLET);
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setLong(1, userId);
             ResultSet set = preparedStatement.executeQuery();
             while ( set.next() ) {
 //                System.out.println("user id : " + userId);

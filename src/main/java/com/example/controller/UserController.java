@@ -25,19 +25,19 @@ public class UserController {
     UserDAO userDAO;
     @Autowired
     WalletDAO walletDAO;
-    @RequestMapping( value = "/login", method = RequestMethod.POST )
-    public String loginUser(@ModelAttribute("user") User user, HttpSession session) {
 
-        if ( user.getEmail() != null ) {
-            user = userDAO.login(user.getEmail(), "", user.getPassword());
-            session.setAttribute("user", user);
-        } else if ( user.getUsername() != null ) {
-            user = userDAO.login("", user.getUsername(), user.getPassword());
+    @RequestMapping( value = "/login", method = RequestMethod.POST )
+    public String loginUser(@ModelAttribute( "user" ) User user, HttpSession session) {
+
+        if ( user != null && user.getUsername() != null && user.getPassword() != null ) {
+            user = userDAO.login(user.getUsername(), user.getPassword());
+        } else {
+            return "index";
         }
-        if ( user != null || user.getUserId() != 0 ) {
+        if ( user != null && user.getUserId() != 0 ) {
             session.setAttribute("user", user);
         }
-        if ( user.getUsername() == null ) {
+        if ( user != null && user.getUsername() == null ) {
             return "redirect:index";
         }
         Gson json = new Gson();
@@ -46,26 +46,27 @@ public class UserController {
         return "redirect:home";
     }
 
-    @RequestMapping( value = "/login", method = RequestMethod.GET )
-    public String loginGet(HttpSession session , Model model) {
+//    @RequestMapping( value = "/login", method = RequestMethod.GET )
+//    public String loginGet(HttpSession session, Model model) {
+//        User user = ( User ) session.getAttribute("user");
+//        if ( user != null ) {
+//            System.out.println(user.getUserId());
+//            Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
+//            model.addAttribute("wallets", wallets);
+//            return "redirect:home";
+//        }
+//        return "redirect:index?error=errorLogin";
+//    }
+
+    @RequestMapping( value = "/home", method = RequestMethod.GET )
+    public String homeGet(HttpSession session, Model model) {
         User user = ( User ) session.getAttribute("user");
-        if ( user != null ) {
+//        System.out.println("USER ID GET: "+user.getUserId());
+        if ( user != null && user.getUsername() != null ) {
+            System.out.println("in the wallets");
             System.out.println(user.getUserId());
             Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
             model.addAttribute("wallets", wallets);
-            return "redirect:home";
-        }
-        return "redirect:index?error=errorLogin";
-    }
-    @RequestMapping( value = "/home", method = RequestMethod.GET )
-    public String homeGet(HttpSession session,Model model) {
-        User user = ( User ) session.getAttribute("user");
-//        System.out.println("USER ID GET: "+user.getUserId());
-        if ( user != null && user.getUsername() != null) {
-            System.out.println("in the wallets");
-                System.out.println(user.getUserId());
-                Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
-                model.addAttribute("wallets", wallets);
             return "home";
         }
         return "redirect:index?error=errorLogin";
@@ -75,8 +76,8 @@ public class UserController {
     public String homePost(HttpSession session) {
 
         User user = ( User ) session.getAttribute("user");
-        System.out.println("USER ID POST: "+user.getUserId());
-        if ( user.getUsername() != null && user.getUsername() != null) {
+        System.out.println("USER ID POST: " + user.getUserId());
+        if ( user.getUsername() != null && user.getUsername() != null ) {
             return "home";
         }
         return "redirect:index";

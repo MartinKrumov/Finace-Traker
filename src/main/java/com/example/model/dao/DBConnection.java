@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 @Component
 public class DBConnection {
-//	public static DBConnection instance;
 	private Connection connection;
 	private static final String USERNAME = "root";
     private static final String PASSWORD = "123456";
@@ -22,23 +21,12 @@ public class DBConnection {
         } catch (ClassNotFoundException e) {
             System.out.println("Unable to load database driver: " + e.getMessage());
         } catch (SQLException e) {
-
-//            to do throw exception and catch it with the error page
+//            todo throw exception and catch it with the error page
             System.out.println("Unable to connect to database: " + e.getMessage());
         }
     }
     
-//    public static DBConnection getInstance() {
-//    	if (instance == null) {
-//    		synchronized (DBConnection.class) {
-//    			if (instance == null) {
-//    				instance = new DBConnection();
-//    			}
-//			}
-//		}
-//    	return instance;
-//    }
-    
+
     public Connection getConnection() {
         return this.connection;	
     }

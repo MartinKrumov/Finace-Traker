@@ -8,45 +8,83 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class User implements Serializable{
-    private int userId;
-//    @NotBlank
-//    @Length( min = 3, max = 128 )
+    private long userId;
     private String username;
-//    @NotBlank
-//    @Length( min = 6, max = 128 )
     private String password;
-//    @NotBlank
-//    @Length( max = 128 )
-//    @Email
     private String email;
-//    @NotBlank
-//    @Length( min = 1, max = 128 )
     private String firstName;
-//    @NotBlank
-//    @Length( min = 1, max = 128 )
     private String lastName;
-    private String profilePic;
     private LocalDateTime date;
     private int blocked;
     private int rights;
     private Set< Wallet > wallets;
     private Set< Category > ownCategories;
+    public User() {
 
-
-
-    public User(int userId, String username, String email, String firstName, String lastName, String profilePic, int blocked, int rights, LocalDateTime date) {
+    }
+    public User(long userId, String username, String email, String firstName, String lastName, int blocked, int rights, LocalDateTime date) {
         this.userId = userId;
-        this.username = username;
-        this.email = email;
-        this.firstName = firstName;
+        setUsername(username);
+        setEmail(email);
+        setFirstName(firstName);
         this.lastName = lastName;
-        this.profilePic = profilePic;
         this.blocked = blocked;
         this.rights = rights;
         this.date = date;
         this.wallets = new TreeSet< Wallet >();
         this.ownCategories = new HashSet<>();
     }
+    public void setUsername(String username) {
+        if ( checkString(username)) {
+            this.username = username;
+        }
+    }
+
+    public void setPassword(String password) {
+        if ( checkString(password)) {
+            this.password = password;
+        }
+    }
+
+    public void setFirstName(String firstName) {
+        if (  checkString(firstName)) {
+            this.firstName = firstName;
+        }
+    }
+
+    public void setLastName(String lastName) {
+        if (  checkString(lastName)) {
+            this.lastName = lastName;
+        }
+    }
+
+    public void setEmail(String email) {
+        if (  checkString(email)) {
+            this.email = email;
+        }
+    }
+
+    public void setBlocked(int blocked) {
+        this.blocked = blocked;
+    }
+
+    public int getBlocked() {
+        return blocked;
+    }
+
+    public int getRights() {
+        return rights;
+    }
+
+    public void setRights(int rights) {
+        this.rights = rights;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+
 
     public void setWallets(Set< Wallet > wallets) {
         if(!wallets.isEmpty()) {
@@ -54,11 +92,9 @@ public class User implements Serializable{
         }
     }
 
-    public User() {
 
-    }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
@@ -82,10 +118,6 @@ public class User implements Serializable{
         return lastName;
     }
 
-    public String getProfilePic() {
-        return profilePic;
-    }
-
     public Set< Wallet > getWallets() {
         return Collections.unmodifiableSet(wallets);
     }
@@ -94,57 +126,7 @@ public class User implements Serializable{
         return date;
     }
 
-    public void setUsername(String username) {
-        if ( username != null && !username.isEmpty() ) {
-            this.username = username;
-        }
-    }
 
-    public void setPassword(String password) {
-        if ( password != null && !password.isEmpty() ) {
-            this.password = password;
-        }
-    }
-
-    public void setFirstName(String firstName) {
-        if ( firstName != null && !firstName.isEmpty() ) {
-            this.firstName = firstName;
-        }
-    }
-
-    public void setLastName(String lastName) {
-        if ( lastName != null && !lastName.isEmpty() ) {
-            this.lastName = lastName;
-        }
-    }
-
-    public void setEmail(String email) {
-        if ( email != null && !email.isEmpty() ) {
-            this.email = email;
-        }
-    }
-    public void setBlocked(int blocked) {
-        this.blocked = blocked;
-    }
-
-    public int getBlocked() {
-        return blocked;
-    }
-
-    public int getRights() {
-        return rights;
-    }
-
-    public void setRights(int rights) {
-        this.rights = rights;
-    }
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
-    }
 
     public Set< Category > getOwnCategories() {
         return Collections.unmodifiableSet(ownCategories);
@@ -152,5 +134,9 @@ public class User implements Serializable{
 
     public void addOwnCategory(Category c) {
         this.ownCategories.add(c);
+    }
+
+    public boolean checkString(String str) {
+        return str != null && !str.isEmpty();
     }
 }
