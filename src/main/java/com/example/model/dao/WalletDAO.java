@@ -24,7 +24,6 @@ public class WalletDAO {
     private static final String SELECT_FROM_WALLET = "SELECT * FROM wallets WHERE user_id = ?;";
     private static final String DELETE_USER_FROM_WALLET = "DELETE FROM `wallets` WHERE user_id = ?;";
     private static final String SELECT_USER_WALLET = "SELECT * FROM `wallets` WHERE user_id = ?;";
-    private static final String INSERT_USER_CATEGORIES = "INSERT INTO users_has_categories Values(?,?);";
 
 
     public long insertWallet(Wallet wallet , long userId) throws SQLException {
@@ -40,14 +39,6 @@ public class WalletDAO {
             preparedStatement.setLong(3, userId);
             preparedStatement.executeUpdate();
 
-
-            for ( int i = 3; i <= 9; i++ ) {
-                PreparedStatement preparedStm = conn.prepareStatement(INSERT_USER_CATEGORIES);
-                preparedStm.setLong(1, userId);
-                preparedStm.setLong(2, i);
-                preparedStm.executeUpdate();
-                System.out.println("i: "+i);
-            }
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if ( rs.next() ) {
                 long walletId = rs.getLong(1);

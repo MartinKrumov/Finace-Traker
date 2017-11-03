@@ -7,10 +7,6 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class Wallet implements Comparable< Wallet >, Serializable {
-    @Override
-    public int compareTo(Wallet o) {
-        return this.wallettID - o.wallettID;
-    }
 
     private int wallettID;
     private String name;
@@ -47,7 +43,6 @@ public class Wallet implements Comparable< Wallet >, Serializable {
         this.wallettID = wallettID;
         this.name = name;
         this.amount = amount;
-
         this.userId = userId;
         this.categories = new TreeSet< Category >();
     }
@@ -81,8 +76,13 @@ public class Wallet implements Comparable< Wallet >, Serializable {
         return Collections.unmodifiableSet(categories);
     }
 
-
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    @Override
+    public int compareTo(Wallet o) {
+        return this.wallettID - o.wallettID;
+    }
+
 }

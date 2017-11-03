@@ -84,15 +84,11 @@ public class User implements Serializable{
         this.userId = userId;
     }
 
-
-
     public void setWallets(Set< Wallet > wallets) {
         if(!wallets.isEmpty()) {
             this.wallets = wallets;
         }
     }
-
-
 
     public long getUserId() {
         return userId;
@@ -125,8 +121,6 @@ public class User implements Serializable{
     public LocalDateTime getDate() {
         return date;
     }
-
-
 
     public Set< Category > getOwnCategories() {
         return Collections.unmodifiableSet(ownCategories);

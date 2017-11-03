@@ -38,12 +38,12 @@ public class UserController {
             session.setAttribute("user", user);
         }
         if ( user != null && user.getUsername() == null ) {
-            return "redirect:index";
+            return "index";
         }
         Gson json = new Gson();
         String userjson = json.toJson(user);
         System.out.println(userjson);
-        return "redirect:home";
+        return "forward:home";
     }
 
 //    @RequestMapping( value = "/login", method = RequestMethod.GET )

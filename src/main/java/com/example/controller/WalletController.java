@@ -22,7 +22,7 @@ public class WalletController {
     @Autowired
     WalletDAO walletDAO;
 
-    @RequestMapping( value = {"/wallets", "/home/{parameter}"}, method = RequestMethod.GET )
+    @RequestMapping( value = "/wallets", method = RequestMethod.GET )
     public String getAllWallets(@ModelAttribute Wallet wallet, HttpSession session, Model model, @PathVariable( "parameter" ) String page) {
         model.addAttribute("wallet", wallet);
         System.out.println("in the wallets");

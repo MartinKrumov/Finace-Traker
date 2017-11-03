@@ -9,6 +9,7 @@
 <%--<%@ page session="false" %>--%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link type="text/css" rel="stylesheet" href="css/jspstyle.css">
 <html>
@@ -37,9 +38,16 @@
     </div>
 </div>
 
+
 <c:if test="${param.parameter !=null }">
+    <%--<c:import url="${requestScope.param.parameter}"/>--%>
     <jsp:include page="${param.parameter}.jsp"/>
 </c:if>
+<%--<c:if test="${udf:fileExists('${param.parameter}.jsp')}">--%>
+<%--<c:if test="${param.parameter !=null }">--%>
+<%--<jsp:include page="${param.parameter}.jsp"/>--%>
+<%--</c:if>--%>
+<%--</c:if>--%>
 <form commandName="wallet" method="post" action="walletInsert">
     <div class="field-wrap">
         <label>
@@ -58,6 +66,50 @@
 </form>
 
 <div id="tableprint"></div>
+
+<%--rivate long transactionId;--%>
+<%--private TransactionType type;--%>
+<%--private BigDecimal amount;--%>
+<%--private LocalDateTime date;--%>
+<%--private String description;--%>
+<%--private long categoryId;--%>
+<%--private long walletId;--%>
+
+<form commandName="transaction" method="post" action="transactionInsert">
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--Transaction type<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<input type="checkbox" name="type"/>--%>
+    <%--</div>--%>
+    <div class="field-wrap">
+        <label>
+            Amount<span class="req">*</span>
+        </label>
+        <input type="number" name="amount"/>
+    </div>
+    <div class="field-wrap">
+        <label>
+            Description<span class="req">*</span>
+        </label>
+        <input type="text" name="description"/>
+    </div>
+    <div class="field-wrap">
+        <label>
+            CategoryId<span class="req">*</span>
+        </label>
+        <input type="text" name="categoryId"/>
+    </div>
+    <div class="field-wrap">
+        <label>
+            WalletId<span class="req">*</span>
+        </label>
+        <input type="text" name="walletId"/>
+    </div>
+    <button class="button button-block"/>
+    Insert</button>
+</form>
+
 
 <script type="text/javascript"
         src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

@@ -22,15 +22,17 @@ public class TransActionController {
     TransactionDAO transactionDAO;
 
     //    public Transaction(long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {
-    @RequestMapping( value = "/transaction", method = RequestMethod.POST )
+    @RequestMapping( value = "/transactionInsert", method = RequestMethod.POST )
     public String transaction(HttpServletRequest request, HttpServletResponse response, Model model) {
-        String income = request.getParameter("isIncome");
+
+        String income = request.getParameter("type");
         String amount = request.getParameter("amount");
         String descrip = request.getParameter("description");
         String catId = request.getParameter("categoryId");
+        String walletID = request.getParameter("walletId");
 //        if ( amount.trim().matches("[0-9]") ) {
             BigDecimal amounts = new BigDecimal(amount);
-            Transaction transaction = new Transaction(income == null ? TransactionType.EXPENCE : TransactionType.INCOME, amounts, descrip, Long.parseLong(catId));
+            Transaction transaction = new Transaction(income == null ? TransactionType.EXPENCE : TransactionType.INCOME, amounts, descrip, Long.parseLong(catId),Long.parseLong(walletID));
             try {
                 System.out.println("Trans amount "+transaction.getAmount());
                 transactionDAO.insertTransaction(transaction);
@@ -42,6 +44,7 @@ public class TransActionController {
         System.out.println("category_id " + catId);
         System.out.println("amount " + descrip);
 
-        return "redirect:home?parameter=wallets";
+        return "redirect:home";
     }
 }
+
