@@ -25,7 +25,7 @@ public class TransactionDAO {
     @Autowired
     private CategoryDAO categoryDAO;
 
-    private static final String INSERT_TRANSACTION = "INSERT INTO transactions (type, amount, description, date, category_id) VALUES (?, ?, ?, ?, ?)";
+    private static final String INSERT_TRANSACTION = "INSERT INTO transactions (type, amount, description, date, category_id, wallet_id) VALUES (?, ?, ?, ?, ?, ?)";
     public static final String SELECT_TRANSACTIONS_FOR_CURRENT_WALLET = "SELECT * FROM transactions WHERE wallet_id = ?";
 
     public static final String SELECT_TRANSACTION_BY_TRAN_ID = "SELECT type, amount, date, description, category_id, wallet_id FROM transactions WHERE transaction_id = ?";
@@ -40,6 +40,7 @@ public class TransactionDAO {
         prepareStatement.setString(3, transaction.getDescription());
         prepareStatement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
         prepareStatement.setLong(5, transaction.getCategoryId());
+        prepareStatement.setLong(6, transaction.getWalletId());
         prepareStatement.executeUpdate();
 
         ResultSet resultSet = prepareStatement.getGeneratedKeys();
