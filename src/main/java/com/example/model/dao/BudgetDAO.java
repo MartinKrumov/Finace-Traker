@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -86,6 +87,63 @@ public class BudgetDAO {
             Budget budget = new Budget(budgetId, name, initialAmount, amount, fromDate, toDate, walletId, categoryId, transactions);
 
             budgets.add(budget);
+        }
+
+        return budgets;
+    }
+
+    public synchronized boolean existsBudget(LocalDateTime date, long categoryId, long accountId) throws SQLException {
+        String sql = "SELECT from_date, to_date, account_id, category_id FROM budgets WHERE category_id = ? AND account_id = ?;";
+
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(sql);
+        ps.setLong(1, categoryId);
+        ps.setLong(2, accountId);
+
+        ResultSet res = ps.executeQuery();
+
+        while (res.next()) {
+            LocalDateTime fromDate = res.getTimestamp("from_date").toLocalDateTime();
+            LocalDateTime toDate = res.getTimestamp("to_date").toLocalDateTime();
+
+            if (isBetweenTwoDates(date, fromDate, toDate)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean isBetweenTwoDates(LocalDateTime currentDate, LocalDateTime fromDate, LocalDateTime toDate) {
+        if (!currentDate.isBefore(fromDate) && !currentDate.isAfter(toDate)) {
+            return true;
+        }
+        return false;
+    }
+
+    public Set<Budget> getBudgetsByWalletDateCategory(LocalDateTime date, long categoryId, long accountId) throws SQLException {
+        String sql = "SELECT budget_id, name, initial_amount, amount, from_date, to_date, account_id, category_id FROM budgets WHERE category_id = ? AND account_id = ?;";
+
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(sql);
+        ps.setLong(1, categoryId);
+        ps.setLong(2, accountId);
+
+        ResultSet res = ps.executeQuery();
+        Set<Budget> budgets = new HashSet<>();
+
+        while (res.next()) {
+            long budgetId = res.getLong("budget_id");
+            String name = res.getString("name");
+            BigDecimal initialAmount = res.getBigDecimal("initial_amount");
+            BigDecimal amount = res.getBigDecimal("amount");
+            LocalDateTime fromDate = res.getTimestamp("from_date").toLocalDateTime();
+            LocalDateTime toDate = res.getTimestamp("to_date").toLocalDateTime();
+            List<Transaction> transactions = budgetsHasTransactionsDAO.getAllTransactionsByBudgetId(budgetId);
+
+            Budget b = new Budget(budgetId, name, initialAmount, amount, fromDate, toDate, accountId, categoryId, transactions);
+
+            if (isBetweenTwoDates(date, fromDate, toDate)) {
+                budgets.add(b);
+            }
         }
 
         return budgets;
