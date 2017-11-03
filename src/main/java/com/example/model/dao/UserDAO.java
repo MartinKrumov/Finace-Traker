@@ -23,6 +23,7 @@ public class UserDAO {
     private final static String SELECT_CHECK = "SELECT email FROM users WHERE email =?";
     private final static String SELECT_LOGIN_USERNAME = "SELECT * FROM users WHERE username = ? AND password = SHA2(?,256)";
     private final static String DELETE_USER = "DELETE FROM `users` WHERE user_id = ?";
+    private static final String INSERT_USER_CATEGORIES = "INSERT INTO users_has_categories Values(?,?);";
 
     public long insertUser(User user) {
 
@@ -34,12 +35,22 @@ public class UserDAO {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getFirstName());
             statement.setString(5, user.getLastName());
-			statement.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
             statement.executeUpdate();
+
 
             ResultSet rs = statement.getGeneratedKeys();
             if ( rs.next() ) {
-                return rs.getLong(1);
+                long userId = rs.getLong(1);
+
+                for ( int i = 1; i <= 14; i++ ) {
+                    PreparedStatement preparedStm = conn.prepareStatement(INSERT_USER_CATEGORIES);
+                    preparedStm.setLong(1, userId);
+                    preparedStm.setLong(2, i);
+                    preparedStm.executeUpdate();
+                    System.out.println("i: " + i);
+                }
+                return userId;
             }
 
         } catch ( SQLException e ) {
@@ -128,7 +139,7 @@ public class UserDAO {
         String firstname = set.getString("first_name");
         String lastName = set.getString("last_name");
         int blocked = set.getInt("blocked");
-        User user = new User(user_id, username, email, firstname, lastName,  blocked, rights, LocalDateTime.now());
+        User user = new User(user_id, username, email, firstname, lastName, blocked, rights, LocalDateTime.now());
         return user;
     }
 

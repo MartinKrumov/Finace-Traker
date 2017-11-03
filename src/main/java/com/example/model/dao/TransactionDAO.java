@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.Date;
+
 
 @Component
 public class TransactionDAO {
@@ -25,17 +26,18 @@ public class TransactionDAO {
     @Autowired
     private CategoryDAO categoryDAO;
 
-    private static final String INSERT_TRANSACTION = "INSERT INTO transactions (type, amount, description, date, category_id, wallet_id) VALUES (?, ?, ?, ?, ?, ?)";
     public static final String SELECT_TRANSACTIONS_FOR_CURRENT_WALLET = "SELECT * FROM transactions WHERE wallet_id = ?";
 
     public static final String SELECT_TRANSACTION_BY_TRAN_ID = "SELECT type, amount, date, description, category_id, wallet_id FROM transactions WHERE transaction_id = ?";
 
+    private static final String INSERT_TRANSACTION = "INSERT INTO transactions (type, amount, description, date, category_id, wallet_id) VALUES (?, ?, ?, ?, ?, ?)";
+
+
     public synchronized void insertTransaction(Transaction transaction) throws SQLException {
+        Connection conn = dbConnection.getConnection();
+        PreparedStatement prepareStatement = conn.prepareStatement(INSERT_TRANSACTION, Statement.RETURN_GENERATED_KEYS);
 
-        PreparedStatement prepareStatement = dbConnection.getConnection().prepareStatement(INSERT_TRANSACTION,
-                Statement.RETURN_GENERATED_KEYS);
-
-        prepareStatement.setInt(1, transaction.getType() == TransactionType.EXPENCE ? 0 : 1 );
+        prepareStatement.setInt(1, transaction.getType() == TransactionType.EXPENCE ? 0 : 1);
         prepareStatement.setBigDecimal(2, transaction.getAmount());
         prepareStatement.setString(3, transaction.getDescription());
         prepareStatement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
@@ -47,29 +49,28 @@ public class TransactionDAO {
         resultSet.next();
         transaction.setTransactionId(resultSet.getLong(1));
 
-        try {
-            dbConnection.getConnection().setAutoCommit(false);
-
-            boolean existsBudget = budgetDAO.existsBudget(transaction.getDate(), transaction.getCategoryId(),
-                    transaction.getWalletId());
-            Set<Budget> budgets = budgetDAO.getBudgetsByWalletDateCategory(transaction.getDate(), transaction.getCategoryId(), transaction.getWalletId());
-            if (existsBudget) {
-                for (Budget budget : budgets) {
-                    budgetsHasTransactionsDAO.insertTransactionBudget(budget.getBudgetId(), transaction.getTransactionId());
-                    if (transaction.getType().equals(TransactionType.EXPENCE)) {
-                        budget.setAmount(budget.getAmount().add(transaction.getAmount()));
-                    }
-                    budgetDAO.updateBudget(budget);
-                }
-            }
-
-            dbConnection.getConnection().commit();
-        } catch (SQLException e) {
-            dbConnection.getConnection().rollback();
-            throw new SQLException();
-        } finally {
-            dbConnection.getConnection().setAutoCommit(true);
-        }
+//            conn.setAutoCommit(false);
+        Date date = new Date();
+        boolean hasBudget = budgetDAO.existsBudgetBetwen(date, transaction.getCategoryId(), transaction.getWalletId(), transaction.getAmount());
+        System.out.println("has budget "+hasBudget);
+//                Set< Budget > budgets = budgetDAO.getBudgetsByWalletDateCategory(transaction.getDate(), transaction.getCategoryId(), transaction.getWalletId());
+//                if ( existsBudget ) {
+//                    for ( Budget budget : budgets ) {
+//                        budgetsHasTransactionsDAO.insertTransactionBudget(budget.getBudgetId(), transaction.getTransactionId());
+//                        if ( transaction.getType().equals(TransactionType.EXPENCE) ) {
+//                            budget.setAmount(budget.getAmount().add(transaction.getAmount()));
+//                        }
+//                        budgetDAO.updateBudget(budget);
+//                    }
+//        }
+//            conn.commit();
+//        } catch ( SQLException e ) {
+//            conn.rollback();
+//            e.printStackTrace();
+//        }
+//        finally {
+//            conn.setAutoCommit(true);
+//        }
     }
 
     public Transaction getTransactionByTransactionId(long transactionId) throws SQLException {
@@ -82,7 +83,7 @@ public class TransactionDAO {
 
         TransactionType transactionType = TransactionType.valueOf(resultSet.getString("type"));
         BigDecimal amount = resultSet.getBigDecimal("amount");
-        LocalDateTime date = resultSet.getTimestamp("date").toLocalDateTime();
+        Date date = resultSet.getDate("date");
         String description = resultSet.getString("description");
         int categoryId = resultSet.getInt("category_id");
         int walletId = resultSet.getInt("wallet_id");
