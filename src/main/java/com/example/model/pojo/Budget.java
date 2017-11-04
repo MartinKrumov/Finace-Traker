@@ -46,6 +46,8 @@ public class Budget {
         this.transactions = transactions;
     }
 
+
+
     public Budget() {}
 
     public long getBudgetId() {

@@ -9,17 +9,18 @@ import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
 @Component
 public class CategoryDAO {
     @Autowired
-    DBConnection conn;
+    private DBConnection dbConnection;
 
     public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES (?, ?, ?, ?, ?, ?);";
     private final static String CHECK = "SELECT * FROM categories WHERE wallet_id = ?;";
-    private final static String SELECT_CATEGORYES = "SELECT * FROM categories WHERE wallet_id = ?;";
+    private final static String SELECT_CATEGORYES = "SELECT * FROM categories;";
 
     private static Connection connection;
     private static PreparedStatement preparedStatement;
@@ -29,7 +30,7 @@ public class CategoryDAO {
         try {
             connection = conn.getConnection();
             preparedStatement = connection.prepareStatement(SELECT_CATEGORYES);
-            preparedStatement.setInt(1, walletId);
+//            preparedStatement.setInt(1, walletId);
             ResultSet set = preparedStatement.executeQuery();
             while ( set.next() ) {
 //                System.out.println("wallet id pri categoriite : " + walletId);
@@ -53,8 +54,8 @@ public class CategoryDAO {
             System.out.println("The category already exists.");
             return;
         }
-        connection = conn.getConnection();
-        PreparedStatement ps = connection.prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
+
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
 
         ps.setString(1, c.getName());
         ps.setString(2, c.getType().toString());
@@ -75,8 +76,7 @@ public class CategoryDAO {
     private boolean checkIfCategoryExist(Category category) {
         ResultSet resultSet;
         try {
-            connection = conn.getConnection();
-            PreparedStatement ps = connection.prepareStatement(CHECK);
+            PreparedStatement ps = dbConnection.getConnection().prepareStatement(CHECK);
             ps.setLong(1, category.getUserId());
 
             resultSet = ps.executeQuery();
@@ -91,5 +91,21 @@ public class CategoryDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Set<String> getAllCategoriesByType(long userId, String type) throws SQLException {
+        Set<String> categoriesNames = new HashSet<>();
+        String query = "SELECT name, user_id, type FROM categories WHERE user_id = ?  AND type = ?";
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(query);
+        ps.setLong(1, userId);
+        ps.setString(2, type);
+
+        ResultSet resultSet = ps.executeQuery();
+        while(resultSet.next()) {
+            String name = resultSet.getString("name");
+            categoriesNames.add(name);
+        }
+
+        return categoriesNames;
     }
 }
