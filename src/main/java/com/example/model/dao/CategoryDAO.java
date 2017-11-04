@@ -20,11 +20,50 @@ public class CategoryDAO {
 
     public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES (?, ?, ?, ?, ?, ?);";
     private final static String CHECK = "SELECT * FROM categories WHERE wallet_id = ?;";
-    private final static String SELECT_CATEGORIES = "SELECT c.category_id , c.name , c.type , c.img_path FROM categories c , users_has_categories u WHERE c.category_id= u.category_id AND u.user_id = ?;";
+    private final static String SELECT_CATEGORYES = "SELECT * FROM categories WHERE wallet_id = ?;";
+
+    private final static String INSERT_CATEGORYES_HOME = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Home', 0 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_FOOD = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Food', 0 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_CAR = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Car', 0 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_BILS = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Bills', 0 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_FUN = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Fun', 0 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_FAMILY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Family', 0 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_HEALTH = "INSERT INTO categories (name, type, img_path, isActive,wallet_id, user_id) VALUES ('Health', 0 , 'img', 1 , ?, ?);";
+    private final static String INSERT_CATEGORYES_GIGTS = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Gifts', 1 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_SHOP = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Shop', 0 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_SALARY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Salary', 1 , 'img', 1 ,?, ?);";
+    private final static String INSERT_CATEGORYES_INCOME = "INSERT INTO categories ( name, type, img_path, isActive,wallet_id, user_id) VALUES ('Another income', 1 , 'img', 1 ,?, ?);";
+    private final static String INSERT_DCATEGORYES = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES ('Another expense', 0 , 'img', 1 ,?, ?);";
+    private static final String[] insertDefQueerys = {INSERT_CATEGORYES_HOME,
+            INSERT_CATEGORYES_FOOD,INSERT_CATEGORYES_CAR,INSERT_CATEGORYES_BILS,INSERT_CATEGORYES_FUN
+            ,INSERT_CATEGORYES_FAMILY,INSERT_CATEGORYES_HEALTH,INSERT_CATEGORYES_GIGTS,INSERT_CATEGORYES_SHOP,INSERT_CATEGORYES_SALARY
+            ,INSERT_CATEGORYES_INCOME,INSERT_DCATEGORYES};
+
     private static Connection connection;
+    private static PreparedStatement preparedStatement;
+
+    public static void insertDefaultCategories(long walletId, long userId, DBConnection conn) {
+        try {
+//            System.out.println("Wallet id " + walletId);
+//            System.out.println("UserID : " + userId);
+            connection = conn.getConnection();
+            for(String s: insertDefQueerys){
+                preparedStatement = connection.prepareStatement(s);
+                preparedStatement.setInt(1, ( int ) walletId);
+                preparedStatement.setInt(2, ( int ) userId);
+                preparedStatement.executeUpdate();
+            }
+
+//            System.out.println("wallet id out of the loop: " + walletId);
+        } catch ( SQLException e ) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+    }
 
 
-    public Set< Category > selectUserCategories(long userId, long walletId, Connection conn) {
+    public static Set< Category > selectUserCategories(int walletId, DBConnection conn) throws NullPointerException {
         Set< Category > categories = new TreeSet< Category >();
         Set< Transaction > transactions = new TreeSet< Transaction >();
         try {
@@ -32,6 +71,7 @@ public class CategoryDAO {
             preparedStatement = conn.prepareStatement(SELECT_CATEGORIES);
             preparedStatement.setLong(1, userId);
             ResultSet set = preparedStatement.executeQuery();
+//            System.out.println("wallet id out of the loop: " + walletId);
             while ( set.next() ) {
                 long category_id = set.getLong("category_id");
                 preparedStatement = conn.prepareStatement("SELECT * FROM  transactions WHERE category_id = ? AND wallet_id = ?");
@@ -66,8 +106,8 @@ public class CategoryDAO {
             System.out.println("The category already exists.");
             return;
         }
-        connection = conn.getConnection();
-        PreparedStatement ps = connection.prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
+
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
 
         ps.setString(1, c.getName());
         ps.setString(2, c.getType().toString());
@@ -88,8 +128,7 @@ public class CategoryDAO {
     private boolean checkIfCategoryExist(Category category) {
         ResultSet resultSet;
         try {
-            connection = conn.getConnection();
-            PreparedStatement ps = connection.prepareStatement(CHECK);
+            PreparedStatement ps = dbConnection.getConnection().prepareStatement(CHECK);
             ps.setLong(1, category.getUserId());
 
             resultSet = ps.executeQuery();
@@ -104,5 +143,21 @@ public class CategoryDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Set<String> getAllCategoriesByType(long userId, String type) throws SQLException {
+        Set<String> categoriesNames = new HashSet<>();
+        String query = "SELECT name, user_id, type FROM categories WHERE user_id = ?  AND type = ?";
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(query);
+        ps.setLong(1, userId);
+        ps.setString(2, type);
+
+        ResultSet resultSet = ps.executeQuery();
+        while(resultSet.next()) {
+            String name = resultSet.getString("name");
+            categoriesNames.add(name);
+        }
+
+        return categoriesNames;
     }
 }

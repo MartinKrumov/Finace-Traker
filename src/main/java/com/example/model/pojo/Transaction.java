@@ -33,6 +33,14 @@ public class Transaction implements Comparable< Transaction > {
         this.walletId = walletId;
     }
 
+    public Transaction(long transactionId, TransactionType type, BigDecimal amount, Date date, long categoryId, long walletId) {
+        this.transactionId = transactionId;
+        this.type = type;
+        this.amount = amount;
+        this.date = date;
+        this.categoryId = categoryId;
+        this.walletId = walletId;
+    }
 
     public void setType(TransactionType type) {
         this.type = type;

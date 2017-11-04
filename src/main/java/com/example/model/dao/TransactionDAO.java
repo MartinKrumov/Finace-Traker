@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Component
@@ -93,5 +95,28 @@ public class TransactionDAO {
 //        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
 
         return null;
+    }
+
+    public List<Transaction> getAllTransactionsByWalletId(long walletId) throws SQLException {
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement("SELECT * FROM transactions WHERE wallet_id = ?;");
+        ps.setLong(1, walletId);
+
+        List<Transaction> transactions = new ArrayList<>();
+        ResultSet resultSet = ps.executeQuery();
+
+        while(resultSet.next()) {
+            long transactionId = resultSet.getLong("transaction_id");
+
+            TransactionType transactionType = TransactionType.valueOf(resultSet.getString("type"));
+            BigDecimal amount = resultSet.getBigDecimal("amount");
+            Date date = resultSet.getDate("date");
+            int categoryId = resultSet.getInt("category_id");
+
+            Transaction t = new Transaction(transactionId, transactionType, amount, date,  categoryId, walletId);
+            transactions.add(t);
+        }
+
+        return transactions;
+
     }
 }
