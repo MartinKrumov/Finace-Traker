@@ -8,40 +8,27 @@ import java.util.*;
 
 public class Wallet implements Comparable< Wallet >, Serializable {
 
-    private int wallettID;
+    private long walletId;
     private String name;
     private BigDecimal amount;
     private long userId;
     private Set< Category > categories;
     private List<Transaction> transactions;
-//    private List<Wallet> wallets;
 
 
     public Wallet() {
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Wallet(long wallettID, String name, BigDecimal amount, long userId, Set< Category > categories) {
-        this.wallettID = wallettID;
+    public Wallet(long walletId, String name, BigDecimal amount, long userId, Set< Category > categories) {
+        this.walletId = walletId;
         this.name = name;
         this.amount = amount;
         this.userId = userId;
         this.categories = new TreeSet< Category >();
     }
 
-    public void setCategories(Set< Category > categories) {
-        this.categories = categories;
-    }
-
-    public Wallet(long wallettID, String name, BigDecimal amount, long userId) {
-        this.wallettID = wallettID;
+    public Wallet(long walletId, String name, BigDecimal amount, long userId) {
+        this.walletId = walletId;
         this.name = name;
         this.amount = amount;
         this.userId = userId;
@@ -63,16 +50,28 @@ public class Wallet implements Comparable< Wallet >, Serializable {
         this.categories = new HashSet<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCategories(Set< Category > categories) {
+        this.categories = categories;
+    }
+
     public Set< Category > getCategories() {
         return categories;
     }
 
-    public long getWallettID() {
-        return wallettID;
+    public long getWalletId() {
+        return walletId;
     }
 
-    public void setWallettID(int wallettID) {
-        this.wallettID = wallettID;
+    public void setWalletId(long wallettID) {
+        this.walletId = wallettID;
     }
 
 
@@ -98,7 +97,7 @@ public class Wallet implements Comparable< Wallet >, Serializable {
 
     @Override
     public int compareTo(Wallet o) {
-        return (int)(this.wallettID - o.wallettID);
+        return (int)(this.walletId - o.walletId);
     }
 
 }

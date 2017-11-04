@@ -98,7 +98,7 @@ public class WalletDAO {
             ResultSet set = preparedStatement.executeQuery();
             while ( set.next() ) {
 //                System.out.println("user id : " + userId);
-                int wallet_id = set.getInt("wallet_id");
+                long wallet_id = set.getInt("wallet_id");
                 String name = set.getString("name");
                 BigDecimal amount = set.getBigDecimal("amount");
                 long user_id = set.getLong("user_id");
@@ -130,14 +130,14 @@ public class WalletDAO {
         ResultSet res = ps.executeQuery();
 
         while(res.next()) {
-            long walletId = res.getInt("wallet_id");
+            long walletId = res.getLong("wallet_id");
             String name = res.getString("name");
             BigDecimal amount = new BigDecimal(res.getDouble("amount"));
             List<Transaction> transactions = transactionDAO.getAllTransactionsByWalletId(walletId);
             List<Budget> budgets = budgetDAO.getAllBudgetsByWalletId(walletId);
 
             Wallet wallet = new Wallet(name, amount, userId, transactions);
-            wallet.setWallettID((int)walletId);
+            wallet.setWalletId(walletId);
 
             wallets.add(wallet);
 
@@ -160,21 +160,9 @@ public class WalletDAO {
         BigDecimal amount = res.getBigDecimal("amount");
 
         Wallet wallet = new Wallet(name, amount, userId);
-        wallet.setWallettID((int) walletId);
+        wallet.setWalletId(walletId);
 
         return wallet;
     }
 
-
-//    public static ResultSet selectWalletsForAdmin(int userId) {
-//        try {
-//            conn = DBConnection.getInstance().getConnection();
-//            preparedStatement = conn.prepareStatement(SELECT_FROM_WALLET);
-//            preparedStatement.setInt(1,userId);
-//            return preparedStatement.executeQuery();
-//        } catch ( SQLException e ) {
-//            System.out.println("Wallet Trouble.");
-//        }
-//        return null;
-//    }
 }

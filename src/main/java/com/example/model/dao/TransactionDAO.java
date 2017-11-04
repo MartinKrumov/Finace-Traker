@@ -107,7 +107,7 @@ public class TransactionDAO {
         while(resultSet.next()) {
             long transactionId = resultSet.getLong("transaction_id");
 
-            TransactionType transactionType = TransactionType.valueOf(resultSet.getString("type"));
+            TransactionType transactionType = resultSet.getInt("type") == 1 ? TransactionType.INCOME:TransactionType.EXPENSE;
             BigDecimal amount = resultSet.getBigDecimal("amount");
             Date date = resultSet.getDate("date");
             int categoryId = resultSet.getInt("category_id");

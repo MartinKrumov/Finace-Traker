@@ -81,7 +81,7 @@ public class BudgetController {
             LocalDateTime dateFrom = LocalDateTime.now();
             LocalDateTime dateTo = LocalDateTime.of(yearTo, monthTo, dayOfMonthTo, 0, 0, 0);
 
-            Budget b = new Budget(name, amount, BigDecimal.valueOf(0), dateFrom, dateTo, wallet.getWallettID(), 13, new ArrayList<>());
+            Budget b = new Budget(name, amount, BigDecimal.valueOf(0), dateFrom, dateTo, wallet.getWalletId(), 13, new ArrayList<>());
 
             budgetDao.insertBudget(b);
 

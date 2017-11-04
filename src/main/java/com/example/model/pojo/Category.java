@@ -37,6 +37,15 @@ public class Category implements Comparable< Category >, Serializable {
         this.transactions = new TreeSet<>();
     }
 
+
+    public long getWalletId() {
+        return walletId;
+    }
+
+    public void setWalletId(long walletId) {
+        this.walletId = walletId;
+    }
+
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
@@ -55,10 +64,6 @@ public class Category implements Comparable< Category >, Serializable {
 
     public void setUserId(long userId) {
         this.userId = userId;
-    }
-
-    public void setWalletId(long walletId) {
-        this.walletId = walletId;
     }
 
     public void setBudgets(List< Budget > budgets) {
@@ -101,9 +106,6 @@ public class Category implements Comparable< Category >, Serializable {
         return imagePath;
     }
 
-    public long getWalletId() {
-        return walletId;
-    }
 
     @Override
     public int compareTo(Category o) {
