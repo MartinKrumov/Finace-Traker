@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class User implements Serializable{
+public class User implements Serializable {
     private long userId;
     private String username;
     private String password;
@@ -19,9 +19,12 @@ public class User implements Serializable{
     private int rights;
     private Set< Wallet > wallets;
     private Set< Category > ownCategories;
+    private Set< Transaction > userTransaction;
+
     public User() {
 
     }
+
     public User(long userId, String username, String email, String firstName, String lastName, int blocked, int rights, LocalDateTime date) {
         this.userId = userId;
         setUsername(username);
@@ -32,34 +35,44 @@ public class User implements Serializable{
         this.rights = rights;
         this.date = date;
         this.wallets = new TreeSet< Wallet >();
-        this.ownCategories = new HashSet<>();
+        this.ownCategories = new TreeSet<>();
+        this.userTransaction = new TreeSet<>();
     }
+
+    public Set< Transaction > getUserTransaction() {
+        return userTransaction;
+    }
+
+    public void setUserTransaction(Set< Transaction > userTransaction) {
+        this.userTransaction = userTransaction;
+    }
+
     public void setUsername(String username) {
-        if ( checkString(username)) {
+        if ( checkString(username) ) {
             this.username = username;
         }
     }
 
     public void setPassword(String password) {
-        if ( checkString(password)) {
+        if ( checkString(password) ) {
             this.password = password;
         }
     }
 
     public void setFirstName(String firstName) {
-        if (  checkString(firstName)) {
+        if ( checkString(firstName) ) {
             this.firstName = firstName;
         }
     }
 
     public void setLastName(String lastName) {
-        if (  checkString(lastName)) {
+        if ( checkString(lastName) ) {
             this.lastName = lastName;
         }
     }
 
     public void setEmail(String email) {
-        if (  checkString(email)) {
+        if ( checkString(email) ) {
             this.email = email;
         }
     }
@@ -85,7 +98,7 @@ public class User implements Serializable{
     }
 
     public void setWallets(Set< Wallet > wallets) {
-        if(!wallets.isEmpty()) {
+        if ( !wallets.isEmpty() ) {
             this.wallets = wallets;
         }
     }

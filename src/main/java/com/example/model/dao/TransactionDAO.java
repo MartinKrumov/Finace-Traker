@@ -36,8 +36,8 @@ public class TransactionDAO {
     public synchronized void insertTransaction(Transaction transaction) throws SQLException {
         Connection conn = dbConnection.getConnection();
         PreparedStatement prepareStatement = conn.prepareStatement(INSERT_TRANSACTION, Statement.RETURN_GENERATED_KEYS);
-
-        prepareStatement.setInt(1, transaction.getType() == TransactionType.EXPENCE ? 0 : 1);
+//        transaction.getType() == TransactionType.EXPENSE ? 0 : 1
+        prepareStatement.setBoolean(1, transaction.getType() == TransactionType.EXPENSE ? false : true);
         prepareStatement.setBigDecimal(2, transaction.getAmount());
         prepareStatement.setString(3, transaction.getDescription());
         prepareStatement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
@@ -75,6 +75,7 @@ public class TransactionDAO {
 
     public Transaction getTransactionByTransactionId(long transactionId) throws SQLException {
 
+
         PreparedStatement ps = dbConnection.getConnection().prepareStatement(SELECT_TRANSACTION_BY_TRAN_ID);
         ps.setLong(1, transactionId);
 
@@ -89,8 +90,8 @@ public class TransactionDAO {
         int walletId = resultSet.getInt("wallet_id");
 
 
-        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
+//        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
 
-        return transaction;
+        return null;
     }
 }

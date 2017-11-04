@@ -32,7 +32,7 @@ public class TransActionController {
         String walletID = request.getParameter("walletId");
 //        if ( amount.trim().matches("[0-9]") ) {
             BigDecimal amounts = new BigDecimal(amount);
-            Transaction transaction = new Transaction(income == null ? TransactionType.EXPENCE : TransactionType.INCOME, amounts, descrip, Long.parseLong(catId),Long.parseLong(walletID));
+            Transaction transaction = new Transaction( TransactionType.INCOME, amounts, descrip, Long.parseLong(catId),Long.parseLong(walletID));
             try {
                 System.out.println("Trans amount "+transaction.getAmount());
                 transactionDAO.insertTransaction(transaction);

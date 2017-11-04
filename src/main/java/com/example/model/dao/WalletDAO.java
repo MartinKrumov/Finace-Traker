@@ -19,6 +19,7 @@ import java.util.TreeSet;
 public class WalletDAO {
     @Autowired
     DBConnection connection;
+    @Autowired
     CategoryDAO categoryDAO;
     private static final String INSERT_INTO_WALLET = "INSERT INTO `wallets` VALUES (null,?,?,?);";
     private static final String SELECT_FROM_WALLET = "SELECT * FROM wallets WHERE user_id = ?;";
@@ -77,7 +78,7 @@ public class WalletDAO {
         return returnBool;
     }
 
-    public Set< Wallet > selectUserWallets(long userId) {
+    public Set< Wallet > selectUserWallets(long userId ) {
         Set< Wallet > wallets = new TreeSet<>();
         try {
             Connection conn = connection.getConnection();
@@ -85,15 +86,12 @@ public class WalletDAO {
             preparedStatement.setLong(1, userId);
             ResultSet set = preparedStatement.executeQuery();
             while ( set.next() ) {
-//                System.out.println("user id : " + userId);
                 int wallet_id = set.getInt("wallet_id");
                 String name = set.getString("name");
                 BigDecimal amount = set.getBigDecimal("amount");
-                int user_id = set.getInt("user_id");
-//                System.out.println("wallet id pri wallets: " + wallet_id);
+                long user_id = set.getLong("user_id");
                 try {
-                    Set< Category > categories = CategoryDAO.selectUserCategories(wallet_id, connection);
-//                    System.out.println("categorie set : " + categories);
+                    Set< Category > categories = categoryDAO.selectUserCategories(wallet_id, userId, conn);
                     Wallet wallet = new Wallet(wallet_id, name, amount, user_id);
                     wallet.setCategories(categories);
                     wallets.add(wallet);

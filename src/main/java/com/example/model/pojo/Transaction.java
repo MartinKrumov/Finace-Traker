@@ -3,7 +3,7 @@ package com.example.model.pojo;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Transaction {
+public class Transaction implements Comparable< Transaction > {
     private long transactionId;
     private TransactionType type;
     private BigDecimal amount;
@@ -15,7 +15,8 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(TransactionType type, BigDecimal amount, Date date, String description, long categoryId, long walletId) {
+    public Transaction(long transactionId, TransactionType type, BigDecimal amount, Date date, String description, long categoryId, long walletId) {
+        this.transactionId = transactionId;
         this.type = type;
         this.amount = amount;
         this.date = date;
@@ -74,7 +75,6 @@ public class Transaction {
     }
 
     public Date getDate() {
-
         return date;
     }
 
@@ -88,5 +88,10 @@ public class Transaction {
 
     public long getWalletId() {
         return walletId;
+    }
+
+    @Override
+    public int compareTo(Transaction o) {
+        return ( int ) (this.getTransactionId() - o.getTransactionId());
     }
 }

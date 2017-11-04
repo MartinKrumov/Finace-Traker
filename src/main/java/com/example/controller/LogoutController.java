@@ -33,10 +33,6 @@ public class LogoutController {
             cookie.setMaxAge(0);
             response.addCookie(cookie);
         }
-
-        dbConnection.closeConnection();
-        return "home";
+        return "redirect:index";
     }
-
-
 }

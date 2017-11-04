@@ -37,13 +37,10 @@ public class UserController {
         if ( user != null && user.getUserId() != 0 ) {
             session.setAttribute("user", user);
         }
-        if ( user != null && user.getUsername() == null ) {
-            return "index";
-        }
         Gson json = new Gson();
         String userjson = json.toJson(user);
         System.out.println(userjson);
-        return "forward:home";
+        return "redirect:home";
     }
 
 //    @RequestMapping( value = "/login", method = RequestMethod.GET )
@@ -63,8 +60,6 @@ public class UserController {
         User user = ( User ) session.getAttribute("user");
 //        System.out.println("USER ID GET: "+user.getUserId());
         if ( user != null && user.getUsername() != null ) {
-            System.out.println("in the wallets");
-            System.out.println(user.getUserId());
             Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
             model.addAttribute("wallets", wallets);
             return "home";
@@ -76,7 +71,6 @@ public class UserController {
     public String homePost(HttpSession session) {
 
         User user = ( User ) session.getAttribute("user");
-        System.out.println("USER ID POST: " + user.getUserId());
         if ( user.getUsername() != null && user.getUsername() != null ) {
             return "home";
         }

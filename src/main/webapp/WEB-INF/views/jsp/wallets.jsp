@@ -28,6 +28,7 @@
 <%--<option value="3">3</option>--%>
 <%--</select>--%>
 <%--<c:out value="${param.select}"/>--%>
+
 <c:forEach items="${sessionScope.user.wallets}" var="w">
     Wallet name: ${w.name}<br/>
     Wallet Categories:
