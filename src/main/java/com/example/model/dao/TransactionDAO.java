@@ -84,7 +84,7 @@ public class TransactionDAO {
         ResultSet resultSet = ps.executeQuery();
         resultSet.next();
 
-        TransactionType transactionType = TransactionType.valueOf(resultSet.getString("type"));
+        TransactionType transactionType = resultSet.getInt("type") == 1 ? TransactionType.EXPENSE : TransactionType.INCOME;
         BigDecimal amount = resultSet.getBigDecimal("amount");
         Date date = resultSet.getDate("date");
         String description = resultSet.getString("description");
