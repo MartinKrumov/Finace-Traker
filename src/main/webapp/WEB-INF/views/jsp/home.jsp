@@ -26,12 +26,15 @@
 </c:if>
 <div id="header">
     <ul id="menu">
-        <li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=transaction"><span>Home</span></a></li>
-        <li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=statistic"><span>Statistics</span></a></li>
+        <li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=transaction"><span>Home</span></a>
+        </li>
+        <li>
+            <a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=statistic"><span>Statistics</span></a>
+        </li>
         <li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>
         </li>
         <c:if test="${sessionScope.user.rights == 1}">
-            <li><a href="/printallusers" ><span>List Users</span></a></li>
+            <li><a href="/printallusers"><span>List Users</span></a></li>
         </c:if>
         <li><a href="logout"><span>Logout</span></a></li>
     </ul>
@@ -61,8 +64,7 @@
     Insert</button>
 </form>
 
-
-
+<c:set var="count" value="0" scope="page"/>
 <form commandName="transaction" method="post" action="transactionInsert">
     <div class="field-wrap">
         <label>
@@ -80,13 +82,26 @@
         <label>
             CategoryId<span class="req">*</span>
         </label>
-        <input type="text" name="categoryId"/>
+        <select name="categoryId">
+            <c:forEach items="${sessionScope.user.wallets}" var="w">
+                <c:if test="${count == 0}">
+                    <c:forEach items="${w.categories}" var="cat">
+                        <option value="${cat.categoryId}"> ${cat.name}</option>
+                    </c:forEach>
+                </c:if>
+                <c:set var="count" value="${count + 1}" scope="page"/>
+            </c:forEach>
+        </select>
     </div>
     <div class="field-wrap">
         <label>
             WalletId<span class="req">*</span>
         </label>
-        <input type="text" name="walletId"/>
+        <select name="walletId">
+            <c:forEach items="${sessionScope.user.wallets}" var="w">
+                <option value="${w.walletId}"> ${w.name}</option>
+            </c:forEach>
+        </select>
     </div>
     <button class="button button-block"/>
     Insert</button>

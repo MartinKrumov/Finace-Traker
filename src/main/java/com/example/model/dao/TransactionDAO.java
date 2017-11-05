@@ -35,11 +35,14 @@ public class TransactionDAO {
     private static final String INSERT_TRANSACTION = "INSERT INTO transactions (type, amount, description, date, category_id, wallet_id) VALUES (?, ?, ?, ?, ?, ?)";
 
 
-    public synchronized void insertTransaction(Transaction transaction) throws SQLException {
+    public synchronized void insertTransaction(Transaction transaction , BigDecimal walletAmount) throws SQLException {
+
+
         Connection conn = dbConnection.getConnection();
+        conn.setAutoCommit(false);
         PreparedStatement prepareStatement = conn.prepareStatement(INSERT_TRANSACTION, Statement.RETURN_GENERATED_KEYS);
 //        transaction.getType() == TransactionType.EXPENSE ? 0 : 1
-        prepareStatement.setBoolean(1, transaction.getType() == TransactionType.EXPENSE ? false : true);
+        prepareStatement.setInt(1, transaction.getType() == TransactionType.EXPENSE ? 0 : 1);
         prepareStatement.setBigDecimal(2, transaction.getAmount());
         prepareStatement.setString(3, transaction.getDescription());
         prepareStatement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
@@ -51,28 +54,20 @@ public class TransactionDAO {
         resultSet.next();
         transaction.setTransactionId(resultSet.getLong(1));
 
-//            conn.setAutoCommit(false);
+        walletAmount = walletAmount.subtract(transaction.getAmount());
+        System.out.println("In trans wallet amount "+walletAmount);
+
+        prepareStatement = conn.prepareStatement("UPDATE  wallets SET amount = ? WHERE wallet_id = ?");
+        prepareStatement.setBigDecimal(1, walletAmount);
+        prepareStatement.setLong(2, transaction.getWalletId());
+        prepareStatement.executeUpdate();
+
         Date date = new Date();
         boolean hasBudget = budgetDAO.existsBudgetBetwen(date, transaction.getCategoryId(), transaction.getWalletId(), transaction.getAmount());
         System.out.println("has budget "+hasBudget);
-//                Set< Budget > budgets = budgetDAO.getBudgetsByWalletDateCategory(transaction.getDate(), transaction.getCategoryId(), transaction.getWalletId());
-//                if ( existsBudget ) {
-//                    for ( Budget budget : budgets ) {
-//                        budgetsHasTransactionsDAO.insertTransactionBudget(budget.getBudgetId(), transaction.getTransactionId());
-//                        if ( transaction.getType().equals(TransactionType.EXPENCE) ) {
-//                            budget.setAmount(budget.getAmount().add(transaction.getAmount()));
-//                        }
-//                        budgetDAO.updateBudget(budget);
-//                    }
-//        }
-//            conn.commit();
-//        } catch ( SQLException e ) {
-//            conn.rollback();
-//            e.printStackTrace();
-//        }
-//        finally {
-//            conn.setAutoCommit(true);
-//        }
+            conn.commit();
+
+
     }
 
     public Transaction getTransactionByTransactionId(long transactionId) throws SQLException {

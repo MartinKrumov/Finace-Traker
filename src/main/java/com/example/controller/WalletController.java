@@ -56,8 +56,14 @@ public class WalletController {
 //        model.addAttribute("wallets", wallets);
         long walletId = 0;
         try {
-            walletId = walletDAO.insertWallet(wallet , user.getUserId());
-            System.out.println("wallet id into controller "+walletId);
+            walletId = walletDAO.insertWallet(wallet, user.getUserId());
+            wallet.setWalletId(walletId);
+//            if ( walletId > 0 ) {
+//                Set< Wallet > newWallets = user.getWallets();
+//                newWallets.add(wallet);
+//                user.setWallets(newWallets);
+//            }
+            System.out.println("wallet id into controller " + walletId);
         } catch ( SQLException e ) {
             e.printStackTrace();
         }
