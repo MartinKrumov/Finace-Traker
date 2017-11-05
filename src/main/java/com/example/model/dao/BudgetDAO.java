@@ -207,11 +207,11 @@ public class BudgetDAO {
         BigDecimal amount = resultSet.getBigDecimal("amount");
         LocalDateTime fromDate = resultSet.getTimestamp("from_date").toLocalDateTime();
         LocalDateTime toDate = resultSet.getTimestamp("to_date").toLocalDateTime();
-        long accountId = resultSet.getLong("wallet_id");
+        long walletId = resultSet.getLong("wallet_id");
         long categoryId = resultSet.getLong("category_id");
         List<Transaction> transactions = budgetsHasTransactionsDAO.getAllTransactionsByBudgetId(budgetId);
 
-        Budget b = new Budget(budgetId, name, initialAmount, amount, fromDate, toDate, accountId, categoryId, transactions);
+        Budget b = new Budget(budgetId, name, initialAmount, amount, fromDate, toDate, walletId, categoryId, transactions);
 
         return b;
     }

@@ -43,6 +43,7 @@ public class Budget {
         this.toDate = toDate;
         this.walletId = walletId;
         this.categoryID = categoryID;
+        this.transactions = new ArrayList<>();
         this.transactions = transactions;
     }
 

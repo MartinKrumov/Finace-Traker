@@ -34,22 +34,16 @@ public class BudgetController {
     @Autowired
     private WalletDAO walletDAO;
 
-    @Autowired
-    private BudgetsHasTransactionsDAO budgetsHasTransactionsDAO;
-
-    @Autowired
-    private TransactionDAO transactionDAO;
-
     @RequestMapping(value = "/addBudget", method = RequestMethod.GET)
     public String createBudget(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
 
         try {
             Set<Wallet> wallets = walletDAO.getAllWalletsByUserId(user.getUserId());
-//            Set<String> categories = categoryDao.getAllCategoriesByType(user.getUserId(), "EXPENCE");
+            Set<String> categories = categoryDao.getAllCategoriesByType(user.getUserId(),0);
 
             model.addAttribute("wallets", wallets);
-//            model.addAttribute("categories", categories);
+            model.addAttribute("categories", categories);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -66,8 +60,7 @@ public class BudgetController {
         try {
             String name = request.getParameter("name");
             Wallet wallet = walletDAO.getWalletByUserIDAndWalletName(user.getUserId(), request.getParameter("wallet"));
-            //TODO: get category by name
-            //Category category = request.getParameter("category");
+            Category category = categoryDao.getCategoryByName(request.getParameter("category"));
             BigDecimal amount = new BigDecimal(request.getParameter("amount"));
             String date = request.getParameter("date");
 
@@ -80,17 +73,26 @@ public class BudgetController {
             int yearTo = Integer.valueOf(inputDate[0]);
 
             LocalDateTime dateFrom = LocalDateTime.now();
-
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-//            LocalDateTime dateTo = LocalDateTime.parse(date, formatter);
             LocalDateTime dateTo = LocalDateTime.of(yearTo, monthTo, dayOfMonthTo, 0, 0, 0);
 
-            Budget b = new Budget(name, amount, BigDecimal.valueOf(0), dateFrom, dateTo, wallet.getWalletId(), 13, new ArrayList<>());
+            if (dateFrom.isAfter(dateTo)) {
+                Set<Wallet> wallets = walletDAO.getAllWalletsByUserId(user.getUserId());
+                Set<String> categories = categoryDao.getAllCategoriesByType(user.getUserId(),0);
+
+                model.addAttribute("wallets", wallets);
+                model.addAttribute("categories", categories);
+
+                System.err.println("Enter valid date: The date must be after today's date :)");
+                return "addBudget";
+            }
+
+            Budget b = new Budget(name, amount, BigDecimal.valueOf(0), dateFrom, dateTo, wallet.getWalletId(), category.getCategoryId(), new ArrayList<>());
 
             budgetDao.insertBudget(b);
 
         } catch (SQLException e) {
             e.printStackTrace();
+            System.err.println(e.getMessage());
             return "error500";
         }
 
@@ -108,7 +110,7 @@ public class BudgetController {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
 //            return "error500";
         }
         return "budgets";
@@ -129,7 +131,7 @@ public class BudgetController {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
             //return "error500";
         }
         return  "budgetTransactions";

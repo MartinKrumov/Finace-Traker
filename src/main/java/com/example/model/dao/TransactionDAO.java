@@ -92,9 +92,9 @@ public class TransactionDAO {
         int walletId = resultSet.getInt("wallet_id");
 
 
-//        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
+        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
 
-        return null;
+        return transaction;
     }
 
     public List<Transaction> getAllTransactionsByWalletId(long walletId) throws SQLException {

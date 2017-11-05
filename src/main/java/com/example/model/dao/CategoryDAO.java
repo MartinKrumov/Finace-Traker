@@ -1,23 +1,23 @@
 package com.example.model.dao;
 
-import com.example.model.pojo.Category;
+import com.example.model.pojo.*;
 import com.example.model.dao.DBConnection;
-import com.example.model.pojo.Transaction;
-import com.example.model.pojo.TransactionType;
-import com.example.model.pojo.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 @Component
 public class CategoryDAO {
     @Autowired
-    DBConnection dbConnection;
+    private DBConnection dbConnection;
+
+    @Autowired
+    private BudgetDAO budgetDao;
+
+    @Autowired
+    private TransactionDAO transactionDAO;
 
     public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES (?, ?, ?, ?, ?, ?);";
     private final static String CHECK = "SELECT * FROM categories WHERE wallet_id = ?;";
@@ -105,12 +105,12 @@ public class CategoryDAO {
         return false;
     }
 
-    public Set<String> getAllCategoriesByType(long userId, String type) throws SQLException {
+    public Set<String> getAllCategoriesByType(long userId, int type) throws SQLException {
         Set<String> categoriesNames = new HashSet<>();
-        String query = "SELECT name, user_id, type FROM categories WHERE user_id = ?  AND type = ?";
+        String query = "SELECT * FROM users_has_categories m , categories c WHERE m.category_id = c.category_id AND m.user_id = ? AND c.type = ?;";
         PreparedStatement ps = dbConnection.getConnection().prepareStatement(query);
         ps.setLong(1, userId);
-        ps.setString(2, type);
+        ps.setInt(2, type);
 
         ResultSet resultSet = ps.executeQuery();
         while(resultSet.next()) {
@@ -119,5 +119,24 @@ public class CategoryDAO {
         }
 
         return categoriesNames;
+    }
+
+    public Category getCategoryByName(String categoryName) throws SQLException {
+        String query = "SELECT * FROM categories WHERE name = ?";
+        PreparedStatement statement = dbConnection.getConnection().prepareStatement(query);
+        statement.setString(1, categoryName);
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+
+        long categoryId = resultSet.getLong("category_id");
+        String name = resultSet.getString("name");
+        TransactionType type = resultSet.getInt("type") == 0 ? TransactionType.EXPENSE : TransactionType.INCOME;
+        String imgPath = resultSet.getString("img_path");
+
+        Category category = new Category(categoryId, name, type, imgPath);
+        category.setCategoryId(categoryId);
+
+        return category;
     }
 }
