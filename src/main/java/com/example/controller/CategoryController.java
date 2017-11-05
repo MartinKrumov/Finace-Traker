@@ -35,5 +35,9 @@ public class CategoryController {
         }
         return "home";
     }
+    @RequestMapping( value = "/test", method = RequestMethod.GET )
+    public String Inse(HttpServletRequest request, HttpSession session, Model model) {
 
+        return "test";
+    }
 }

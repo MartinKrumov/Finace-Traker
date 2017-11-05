@@ -15,10 +15,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Finance Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--%>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
+    <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1500px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #5aeec5;
+            height: 100%;
+            padding: 0;!important;
+            float: left;!important;
+            clear:both; !important;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: #60ff16;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 0;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
 
 <c:if test="${empty sessionScope.user.username}">
     <c:redirect url="index"/>
@@ -40,6 +76,24 @@
     <div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>
     </div>
 </div>
+
+<%--<div class="row content">--%>
+    <%--<div class="col-sm-3 sidenav">--%>
+        <%--<h4>Dashboard</h4>--%>
+        <%--<ul class="nav nav-pills nav-stacked">--%>
+            <%--<li <c:if test="${param.section == 'section1'}">class="active"--%>
+            <%--</c:if><a href="?section=section1">Home</a></li>--%>
+            <%--<li <c:if test="${param.section == 'section2'}">class="active" </c:if>><a href="?section=section2">Friends</a>--%>
+            <%--</li>--%>
+            <%--<li <c:if test="${param.section == 'section3'}">class="active" </c:if>><a href="?section=section3">Family</a>--%>
+            <%--</li>--%>
+            <%--<li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a href="?section=section4">Photos</a>--%>
+            <%--</li>--%>
+        <%--</ul>--%>
+        <%--<br>--%>
+    <%--</div>--%>
+<%--</div>--%>
+
 <div id="tableprint"></div>
 
 <%try{%>
