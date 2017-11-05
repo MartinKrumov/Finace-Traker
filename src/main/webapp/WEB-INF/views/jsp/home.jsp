@@ -17,6 +17,7 @@
     <meta charset="UTF-8">
     <title>Finance Tracker</title>
 </head>
+
 <body>
 
 
@@ -25,29 +26,24 @@
 </c:if>
 <div id="header">
     <ul id="menu">
-        <li><a href="/home?parameter=transaction"><span>Home</span></a></li>
-        <li><a href="/home?parameter=statistic"><span>Statistics</span></a></li>
+        <li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=transaction"><span>Home</span></a></li>
+        <li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=statistic"><span>Statistics</span></a></li>
         <li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>
         </li>
         <c:if test="${sessionScope.user.rights == 1}">
-            <li><a href="#" id="userslist" onclick=""><span>List Users</span></a></li>
+            <li><a href="/printallusers" ><span>List Users</span></a></li>
         </c:if>
         <li><a href="logout"><span>Logout</span></a></li>
     </ul>
     <div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>
     </div>
 </div>
+<div id="tableprint"></div>
 
 
 <c:if test="${param.parameter !=null }">
-    <%--<c:import url="${requestScope.param.parameter}"/>--%>
     <jsp:include page="${param.parameter}.jsp"/>
 </c:if>
-<%--<c:if test="${udf:fileExists('${param.parameter}.jsp')}">--%>
-<%--<c:if test="${param.parameter !=null }">--%>
-<%--<jsp:include page="${param.parameter}.jsp"/>--%>
-<%--</c:if>--%>
-<%--</c:if>--%>
 <form commandName="wallet" method="post" action="walletInsert">
     <div class="field-wrap">
         <label>
@@ -65,23 +61,9 @@
     Insert</button>
 </form>
 
-<div id="tableprint"></div>
 
-<%--rivate long transactionId;--%>
-<%--private TransactionType type;--%>
-<%--private BigDecimal amount;--%>
-<%--private LocalDateTime date;--%>
-<%--private String description;--%>
-<%--private long categoryId;--%>
-<%--private long walletId;--%>
 
 <form commandName="transaction" method="post" action="transactionInsert">
-    <%--<div class="field-wrap">--%>
-        <%--<label>--%>
-            <%--Transaction type<span class="req">*</span>--%>
-        <%--</label>--%>
-        <%--<input type="checkbox" name="type"/>--%>
-    <%--</div>--%>
     <div class="field-wrap">
         <label>
             Amount<span class="req">*</span>
@@ -118,8 +100,8 @@
 
         var onDeleteClick = function (e) {
             e.preventDefault();
-            var user_id = $(this).data('user-id');
-//                this.getProperty('data-user-id')
+            var user_id = this.getProperty('data-id');
+//                this.getProperty('data-id')
             alert("u id " + user_id);
             return;
             var $parent = $(this).parents('tr');
@@ -133,12 +115,27 @@
                 }
             })
         };
-
+//        $(".userdel").click(function (e) {
+////            var user_id = $(this).data("id");
+//            var user_id = e;
+//
+////                this.getProperty('data-user-id')
+//            alert("u id " + user_id);
+//            return;
+//            $.ajax({
+//                url: 'PrintAllUserWithAjax',
+//                success: function (data) {
+////                    document.getElementById("tableprint").innerHTML = data;
+//                    $("#tableprint").html(data);
+//                    console.log($(".optionsAdmin").length);
+//                    $(".optionsAdmin").click(onDeleteClick);
+//                }
+//            });
+//        });
         $("#userslist").click(function () {
             $.ajax({
-                url: 'ajaxJsp/PrintAllUserWithAjax.jsp',
+                url: 'PrintAllUserWithAjax',
                 success: function (data) {
-//                        alert("success");
 //                    document.getElementById("tableprint").innerHTML = data;
                     $("#tableprint").html(data);
                     console.log($(".optionsAdmin").length);

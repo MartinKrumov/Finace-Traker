@@ -44,10 +44,10 @@
                     <table class="table">
                 </c:if>
                 <c:if test="${trans.type == 'INCOME'}">
-                    <tr class="success">
+                    <tr class="bg-success">
                 </c:if>
                 <c:if test="${trans.type == 'EXPENSE'}">
-                    <tr class="danger">
+                    <tr class="bg-danger">
                 </c:if>
                 <td>${trans.transactionId}</td>
                 <td>${trans.type}</td>

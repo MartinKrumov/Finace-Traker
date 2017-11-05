@@ -2,8 +2,10 @@ package com.example.model.dao;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Set;
-
+import java.util.TreeSet;
+import java.util.Date;
 import com.example.model.pojo.User;
 import com.example.model.pojo.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,13 +62,19 @@ public class UserDAO {
         return 0;
     }
 
-    public ResultSet selecttUsers() {
+    public Set< User > selecttUsers() {
 
         try {
             conn = connection.getConnection();
             PreparedStatement prs = conn.prepareStatement(SELECT_ALL);
-            return prs.executeQuery();
-
+            ResultSet set = prs.executeQuery();
+            Set< User > users = new TreeSet<>();
+            while ( set.next() ) {
+                User user = new User(set.getLong("user_id"), set.getString("username"), set.getString("email"), set.getString("first_name"), set.getString("last_name"), set.getInt("blocked"), set.getInt("rights"), set.getDate("date"));
+                users.add(user);
+            }
+            System.out.println("USers size in user dao "+users.size());
+            return users;
         } catch ( SQLException e ) {
             System.out.println("Problem with result set.");
         }
@@ -139,21 +147,53 @@ public class UserDAO {
         String firstname = set.getString("first_name");
         String lastName = set.getString("last_name");
         int blocked = set.getInt("blocked");
-        User user = new User(user_id, username, email, firstname, lastName, blocked, rights, LocalDateTime.now());
+        User user = new User(user_id, username, email, firstname, lastName, blocked, rights, new Date());
         return user;
     }
 
 
-    public boolean delUser(Integer user_id) {
+    public boolean delUser(long user_id) throws SQLException {
         boolean returnbool = false;
         try {
+            conn.setAutoCommit(false);
             conn = connection.getConnection();
-            PreparedStatement prs = conn.prepareStatement(DELETE_USER);
-            prs.setInt(1, user_id);
-            returnbool = prs.execute();
-        } catch ( SQLException e ) {
+
+            PreparedStatement prs = conn.prepareStatement("DELETE FROM users_has_categories WHERE user_id = ?");
+            prs.setLong(1, user_id);
+            prs.executeUpdate();
+
+            prs = conn.prepareStatement("SELECT * FROM wallets WHERE user_id = ?");
+            prs.setLong(1, user_id);
+            ResultSet set = prs.executeQuery();
+
+            ArrayList<Long> walletsId = new ArrayList<>();
+            while(set.next()){
+                long walletId = set.getLong("wallet_id");
+                walletsId.add(walletId);
+                System.out.println("wallet id in userdelete "+walletId);
+                prs = conn.prepareStatement("DELETE FROM transactions WHERE wallet_id = ?");
+                prs.setLong(1, walletId);
+                prs.executeUpdate();
+
+                prs = conn.prepareStatement("DELETE FROM budgets WHERE wallet_id = ?");
+                prs.setLong(1, walletId);
+                prs.executeUpdate();
+            }
+            System.out.println("wallet id sizeeeee "+walletsId.size());
+            for ( Long walletId: walletsId) {
+                prs = conn.prepareStatement("DELETE FROM wallets WHERE wallet_id = ?");
+                prs.setLong(1, walletId);
+                prs.executeUpdate();
+            }
+            prs = conn.prepareStatement(DELETE_USER);
+            prs.setLong(1, user_id);
+            prs.executeUpdate();
+
+            conn.commit();
+        } catch ( Exception e ) {
             System.out.println(e.getMessage());
             System.out.println(" trouble with the delete ");
+            conn.rollback();
             return false;
         }
         return returnbool;

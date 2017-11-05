@@ -2,19 +2,16 @@ package com.example.model.pojo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
-public class User implements Serializable {
+public class User implements Serializable, Comparable< User >{
     private long userId;
     private String username;
     private String password;
     private String email;
     private String firstName;
     private String lastName;
-    private LocalDateTime date;
+    private Date date;
     private int blocked;
     private int rights;
     private Set< Wallet > wallets;
@@ -25,7 +22,7 @@ public class User implements Serializable {
 
     }
 
-    public User(long userId, String username, String email, String firstName, String lastName, int blocked, int rights, LocalDateTime date) {
+    public User(long userId, String username, String email, String firstName, String lastName, int blocked, int rights, Date date) {
         this.userId = userId;
         setUsername(username);
         setEmail(email);
@@ -131,7 +128,7 @@ public class User implements Serializable {
         return Collections.unmodifiableSet(wallets);
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -145,5 +142,10 @@ public class User implements Serializable {
 
     public boolean checkString(String str) {
         return str != null && !str.isEmpty();
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return ( int ) (this.userId - o.userId);
     }
 }
