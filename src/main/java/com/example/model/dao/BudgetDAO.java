@@ -2,16 +2,15 @@ package com.example.model.dao;
 
 import com.example.model.pojo.Budget;
 import com.example.model.pojo.Transaction;
-import com.example.model.pojo.Wallet;
+
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.Date;
 
 @Component
@@ -30,20 +29,24 @@ public class BudgetDAO {
     public static final String SELECT_BUDGETS = "SELECT budget_id, name, initial_amount, amount, from_date, to_date, category_id FROM budgets WHERE wallet_id = ?";
 
     public void insertBudget(Budget b) throws SQLException {
-        Connection con = dbConnection.getConnection();
-        PreparedStatement ps = con.prepareStatement(INSERT_BUDGET, Statement.RETURN_GENERATED_KEYS);
+        String sql = "INSERT INTO budgets (name, initial_amount, amount, from_date, to_date, wallet_id, category_id) VALUES (?, ?, ?, STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), ?, ?)";
 
-
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, b.getName());
         ps.setBigDecimal(2, b.getInitialAmount());
         ps.setBigDecimal(3, b.getAmount());
-        ps.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
-        ps.setTimestamp(5, Timestamp.valueOf(b.getToDate()));
+        ps.setTimestamp(4, Timestamp.valueOf(b.getFromDate().withNano(0)));
+        ps.setTimestamp(5, Timestamp.valueOf(b.getToDate().withNano(0)));
         ps.setLong(6, b.getWalletId());
         ps.setLong(7, b.getCategoryID());
+        System.out.println(b.getFromDate());
+        System.out.println(b.getToDate());
+
         ps.executeUpdate();
 
+
         ResultSet resultSet = ps.getGeneratedKeys();
+
         if ( resultSet.next() ) {
             System.out.println("Success");
         }
@@ -161,6 +164,57 @@ public class BudgetDAO {
 //
 //        return budgets;
 //    }
+
+    public Set<Budget> getAllBudgetsByUserId(long userId) throws SQLException {
+        String sql = "SELECT b.budget_id, b.name, b.initial_amount, b.amount, b.from_date, b.to_date, b.wallet_id, b.category_id FROM budgets b JOIN wallets a ON a.wallet_id = b.wallet_id AND user_id = ?;";
+
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(sql);
+        ps.setLong(1, userId);
+
+        ResultSet res = ps.executeQuery();
+        Set<Budget> budgets = new HashSet<>();
+
+        while(res.next()) {
+            long budgetId = res.getLong("budget_id");
+            String name = res.getString("name");
+            BigDecimal initialAmount = res.getBigDecimal("initial_amount");
+            BigDecimal amount = res.getBigDecimal("amount");
+            LocalDateTime fromDate = res.getTimestamp("from_date").toLocalDateTime();
+            LocalDateTime toDate = res.getTimestamp("to_date").toLocalDateTime();
+            long accountId = res.getLong("wallet_id");
+            long categoryId = res.getLong("category_id");
+            List<Transaction> transactions = budgetsHasTransactionsDAO.getAllTransactionsByBudgetId(budgetId);
+
+            Budget b = new Budget(budgetId, name, initialAmount, amount, fromDate, toDate, accountId, categoryId, transactions);
+
+            budgets.add(b);
+        }
+
+        return budgets;
+    }
+
+    public Budget getBudgetById(long budgetId) throws SQLException {
+        String sql = "SELECT * FROM budgets WHERE budget_id = ?;";
+
+        PreparedStatement ps = dbConnection.getConnection().prepareStatement(sql);
+        ps.setLong(1, budgetId);
+
+        ResultSet resultSet = ps.executeQuery();
+        resultSet.next();
+
+        String name = resultSet.getString("name");
+        BigDecimal initialAmount = resultSet.getBigDecimal("initial_amount");
+        BigDecimal amount = resultSet.getBigDecimal("amount");
+        LocalDateTime fromDate = resultSet.getTimestamp("from_date").toLocalDateTime();
+        LocalDateTime toDate = resultSet.getTimestamp("to_date").toLocalDateTime();
+        long walletId = resultSet.getLong("wallet_id");
+        long categoryId = resultSet.getLong("category_id");
+        List<Transaction> transactions = budgetsHasTransactionsDAO.getAllTransactionsByBudgetId(budgetId);
+
+        Budget b = new Budget(budgetId, name, initialAmount, amount, fromDate, toDate, walletId, categoryId, transactions);
+
+        return b;
+    }
 
 
 }

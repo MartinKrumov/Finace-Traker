@@ -79,7 +79,7 @@ public class TransactionDAO {
         ResultSet resultSet = ps.executeQuery();
         resultSet.next();
 
-        TransactionType transactionType = TransactionType.valueOf(resultSet.getString("type"));
+        TransactionType transactionType = resultSet.getInt("type") == 1 ? TransactionType.EXPENSE : TransactionType.INCOME;
         BigDecimal amount = resultSet.getBigDecimal("amount");
         Date date = resultSet.getDate("date");
         String description = resultSet.getString("description");
@@ -87,9 +87,9 @@ public class TransactionDAO {
         int walletId = resultSet.getInt("wallet_id");
 
 
-//        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
+        Transaction transaction = new Transaction(transactionType, amount, date, description, categoryId, walletId);
 
-        return null;
+        return transaction;
     }
 
     public List<Transaction> getAllTransactionsByWalletId(long walletId) throws SQLException {

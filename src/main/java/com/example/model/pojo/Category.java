@@ -17,10 +17,7 @@ public class Category implements Comparable< Category >, Serializable {
     private Set< Transaction > transactions;
 
     public Category(long categoryId, String name, TransactionType type, String imagePath, long walletId, long userId, Set< Transaction > transactions) {
-        this.categoryId = categoryId;
-        this.name = name;
-        this.type = type;
-        this.imagePath = imagePath;
+        this(categoryId, name, type, imagePath);
         this.walletId = walletId;
         this.userId = userId;
         this.transactions = new TreeSet<>();
@@ -28,13 +25,17 @@ public class Category implements Comparable< Category >, Serializable {
     }
 
     public Category(long categoryId, String name, TransactionType type, String imagePath, long userId) {
+        this(categoryId, name, type, imagePath);
+        this.userId = userId;
+        this.budgets = budgets;
+        this.transactions = new TreeSet<>();
+    }
+
+    public Category(long categoryId, String name, TransactionType type, String imagePath) {
         this.categoryId = categoryId;
         this.name = name;
         this.type = type;
         this.imagePath = imagePath;
-        this.userId = userId;
-        this.budgets = budgets;
-        this.transactions = new TreeSet<>();
     }
     public Category( String name, TransactionType type) {
         this.name = name;
