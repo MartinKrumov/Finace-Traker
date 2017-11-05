@@ -61,19 +61,20 @@ public class BudgetController {
             BigDecimal amount = new BigDecimal(request.getParameter("amount"));
             String date = request.getParameter("date");
 
+            
 
             String[] inputDate = date.split("-");
 
             int monthTo = Integer.valueOf(inputDate[1]);
 
-            int dayOfMonthTo = Integer.valueOf(inputDate[1]);
+            int dayOfMonthTo = Integer.valueOf(inputDate[2]);
 
             int yearTo = Integer.valueOf(inputDate[0]);
 
             LocalDateTime dateFrom = LocalDateTime.now();
             LocalDateTime dateTo = LocalDateTime.of(yearTo, monthTo, dayOfMonthTo, 0, 0, 0);
 
-            if (dateFrom.isAfter(dateTo)) {
+            if (dateFrom.isAfter(dateTo) && name != null && !name.isEmpty()) {
                 Set<Wallet> wallets = walletDAO.getAllWalletsByUserId(user.getUserId());
                 Set<String> categories = categoryDao.getAllCategoriesByType(user.getUserId(),0);
 
@@ -84,7 +85,7 @@ public class BudgetController {
                 return "addBudget";
             }
 
-            Budget b = new Budget(name, amount, BigDecimal.valueOf(0), dateFrom, dateTo, wallet.getWalletId(), category.getCategoryId(), new ArrayList<>());
+            Budget b = new Budget(name.trim(), amount, BigDecimal.valueOf(0), dateFrom, dateTo, wallet.getWalletId(), category.getCategoryId(), new ArrayList<>());
 
             budgetDao.insertBudget(b);
 
