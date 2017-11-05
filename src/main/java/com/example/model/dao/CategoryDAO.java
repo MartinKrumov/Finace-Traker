@@ -19,8 +19,8 @@ public class CategoryDAO {
     @Autowired
     DBConnection dbConnection;
 
-    public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path, isActive, wallet_id, user_id) VALUES (?, ?, ?, ?, ?, ?);";
-    private final static String CHECK = "SELECT * FROM categories WHERE wallet_id = ?;";
+    public static final String INSERT_CATEGORY = "INSERT INTO categories (name, type, img_path) VALUES (?, ?, ?);";
+    private final static String CHECK = "SELECT * FROM categories WHERE name = ? AND type = ?;";
     private final static String SELECT_CATEGORIES = "SELECT * FROM users_has_categories m , categories c WHERE m.category_id = c.category_id AND m.user_id = ?;";
 
     public static Set< Category > selectUserCategories(long walletId, long userId, Connection conn) throws NullPointerException {
@@ -38,8 +38,8 @@ public class CategoryDAO {
                 preparedStatement.setLong(1, categoryId);
                 preparedStatement.setLong(2, walletId);
                 ResultSet tranSet = preparedStatement.executeQuery();
-                System.out.println("categoryId "+categoryId);
-                System.out.println("walletId "+walletId);
+                System.out.println("categoryId " + categoryId);
+                System.out.println("walletId " + walletId);
                 while ( tranSet.next() ) {
                     Transaction transaction = new Transaction(tranSet.getLong("transaction_id"), tranSet.getInt("type") == 0 ? TransactionType.EXPENSE : TransactionType.INCOME, tranSet.getBigDecimal("amount"), tranSet.getDate("date"), tranSet.getString("description"), categoryId, walletId);
                     transactions.add(transaction);
@@ -60,60 +60,74 @@ public class CategoryDAO {
     }
 
 
-    public void insertCategory(Category c) throws SQLException {
+    public void insertCategory(Category c, long userId) throws SQLException {
+        long category_id = checkIfCategoryExist(c);
+        System.out.println("category_id  "+category_id );
+        if ( category_id == 0 ) {
 
-        if ( checkIfCategoryExist(c) ) {
-            System.out.println("The category already exists.");
-            return;
+            PreparedStatement ps = dbConnection.getConnection().prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setString(1, c.getName());
+            ps.setInt(2, c.getType() == TransactionType.EXPENSE ? 0 : 1);
+            ps.setString(3, "img_path");
+
+            ps.executeUpdate();
+            ResultSet resultSet = ps.getGeneratedKeys();
+
+            if ( resultSet.next() ) {
+                System.out.println("Success");
+
+                long catId = resultSet.getLong(1);
+                c.setCategoryId(catId);
+
+                ps = dbConnection.getConnection().prepareStatement("INSERT INTO users_has_categories (user_id , category_id) VALUES(?,?)");
+
+                ps.setLong(1, userId);
+                ps.setLong(2, c.getCategoryId());
+
+                ps.executeUpdate();
+            }
+        } else {
+            PreparedStatement ps = dbConnection.getConnection().prepareStatement("INSERT INTO users_has_categories (user_id , category_id) VALUES (?,?)");
+
+            ps.setLong(1, userId);
+            ps.setLong(2, category_id);
+            ps.executeUpdate();
         }
-
-        PreparedStatement ps = dbConnection.getConnection().prepareStatement(INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
-
-        ps.setString(1, c.getName());
-        ps.setString(2, c.getType().toString());
-        ps.setString(3, c.getImagePath());
-        ps.setLong(4, c.getWalletId());
-        ps.setLong(5, c.getUserId());
-
-        ps.executeUpdate();
-        ResultSet resultSet = ps.getGeneratedKeys();
-
-        if ( resultSet.next() ) {
-            System.out.println("Success");
-        }
-
-        c.setCategoryId(resultSet.getInt(1));
     }
 
-    private boolean checkIfCategoryExist(Category category) {
+
+    private long checkIfCategoryExist(Category category) {
         ResultSet resultSet;
+        long catId = 0;
         try {
             PreparedStatement ps = dbConnection.getConnection().prepareStatement(CHECK);
-            ps.setLong(1, category.getUserId());
-
+            ps.setString(1, category.getName());
+            ps.setInt(2, category.getType() == TransactionType.EXPENSE ? 0 : 1);
             resultSet = ps.executeQuery();
 
-            while ( resultSet.next() ) {
-                if ( category.getName().equals(resultSet.getString("name")) ) {
-                    return true;
-                }
+            if ( resultSet.next() ) {
+                catId = resultSet.getLong("category_id");
+                System.out.println("cat id ima go " + catId);
+                return catId;
             }
         } catch ( SQLException e ) {
             System.out.println("Problem in the function.");
             e.printStackTrace();
         }
-        return false;
+        System.out.println("cat id nqma go " + catId);
+        return catId;
     }
 
-    public Set<String> getAllCategoriesByType(long userId, String type) throws SQLException {
-        Set<String> categoriesNames = new HashSet<>();
+    public Set< String > getAllCategoriesByType(long userId, String type) throws SQLException {
+        Set< String > categoriesNames = new HashSet<>();
         String query = "SELECT name, user_id, type FROM categories WHERE user_id = ?  AND type = ?";
         PreparedStatement ps = dbConnection.getConnection().prepareStatement(query);
         ps.setLong(1, userId);
         ps.setString(2, type);
 
         ResultSet resultSet = ps.executeQuery();
-        while(resultSet.next()) {
+        while ( resultSet.next() ) {
             String name = resultSet.getString("name");
             categoriesNames.add(name);
         }

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.io.FileNotFoundException" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 27.10.2017 г.
@@ -9,7 +9,6 @@
 <%--<%@ page session="false" %>--%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link type="text/css" rel="stylesheet" href="css/jspstyle.css">
 <html>
@@ -43,10 +42,17 @@
 </div>
 <div id="tableprint"></div>
 
-
+<%try{%>
 <c:if test="${param.parameter !=null }">
     <jsp:include page="${param.parameter}.jsp"/>
 </c:if>
+<%}catch( Exception e){
+    System.out.println("no found");
+}
+%>
+walllet
+
+
 <form commandName="wallet" method="post" action="walletInsert">
     <div class="field-wrap">
         <label>
@@ -65,6 +71,8 @@
 </form>
 
 <c:set var="count" value="0" scope="page"/>
+
+TRANSACTIONSS
 <form commandName="transaction" method="post" action="transactionInsert">
     <div class="field-wrap">
         <label>
@@ -102,6 +110,27 @@
                 <option value="${w.walletId}"> ${w.name}</option>
             </c:forEach>
         </select>
+    </div>
+    <button class="button button-block"/>
+    Insert</button>
+</form>
+
+
+CATEGORIII
+
+
+<form method="post" action="addcategory">
+    <div class="field-wrap">
+        <label>
+            Wallet Name<span class="req">*</span>
+        </label>
+        <input type="text" name="name" />
+    </div>
+    <div class="field-wrap">
+        <label>
+            Amount<span class="req">*</span>
+        </label>
+        <input type="checkbox" name="income"/>
     </div>
     <button class="button button-block"/>
     Insert</button>

@@ -36,7 +36,10 @@ public class Category implements Comparable< Category >, Serializable {
         this.budgets = budgets;
         this.transactions = new TreeSet<>();
     }
-
+    public Category( String name, TransactionType type) {
+        this.name = name;
+        this.type = type;
+    }
 
     public long getWalletId() {
         return walletId;
