@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Demo {
 //    @Autowired
@@ -38,6 +39,11 @@ public class Demo {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
+
+
+        Date date = new Date();
+        date.setMonth(date.getMonth()+1);
+
 
     }
 }

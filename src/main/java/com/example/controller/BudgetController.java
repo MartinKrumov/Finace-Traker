@@ -17,10 +17,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class BudgetController {
@@ -63,6 +60,7 @@ public class BudgetController {
             Category category = categoryDao.getCategoryByName(request.getParameter("category"));
             BigDecimal amount = new BigDecimal(request.getParameter("amount"));
             String date = request.getParameter("date");
+
 
             String[] inputDate = date.split("-");
 

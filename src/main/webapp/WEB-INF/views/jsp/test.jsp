@@ -40,11 +40,24 @@
                 height: auto;
             }
         }
+
+
+        #myheader{
+            width: 100%;
+            height: 4em;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: medium;
+            background-color: #31a2b9;
+            color: black;
+            clear:both;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="container-fluid">
+
     <div class="row content">
         <div class="col-sm-3 sidenav">
             <h4>Dashboard</h4>

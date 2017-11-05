@@ -19,19 +19,54 @@
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--%>
     <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
     <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
+    <%--<style>--%>
+        <%--/* Set height of the grid so .sidenav can be 100% (adjust if needed) */--%>
+        <%--.row.content {--%>
+            <%--height: 1500px--%>
+        <%--}--%>
+
+        <%--/* Set gray background color and 100% height */--%>
+        <%--.sidenav {--%>
+            <%--background-color: #5aeec5;--%>
+            <%--height: 100%;--%>
+            <%--padding: 0;!important;--%>
+            <%--float: left;!important;--%>
+            <%--clear:both; !important;--%>
+        <%--}--%>
+
+        <%--/* Set black background color, white text and some padding */--%>
+        <%--footer {--%>
+            <%--background-color: #555;--%>
+            <%--color: #60ff16;--%>
+            <%--padding: 15px;--%>
+        <%--}--%>
+
+        <%--/* On small screens, set height to 'auto' for sidenav and grid */--%>
+        <%--@media screen and (max-width: 767px) {--%>
+            <%--.sidenav {--%>
+                <%--height: auto;--%>
+                <%--padding: 0;--%>
+            <%--}--%>
+
+            <%--.row.content {--%>
+                <%--height: auto;--%>
+            <%--}--%>
+        <%--}--%>
+    <%--</style>--%>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
         .row.content {
-            height: 1500px
+            height: 100%;
         }
 
         /* Set gray background color and 100% height */
         .sidenav {
-            background-color: #5aeec5;
+            background-color: #8bb5b9;
             height: 100%;
-            padding: 0;!important;
-            float: left;!important;
-            clear:both; !important;
         }
 
         /* Set black background color, white text and some padding */
@@ -45,12 +80,22 @@
         @media screen and (max-width: 767px) {
             .sidenav {
                 height: auto;
-                padding: 0;
+                padding: 15px;
             }
 
             .row.content {
                 height: auto;
             }
+        }
+
+        #myheader{
+            width: 100%;
+            height: 4em;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: medium;
+            background-color: #31a2b9;
+            color: black;
+            clear:both;
         }
     </style>
 </head>
@@ -59,23 +104,55 @@
 <c:if test="${empty sessionScope.user.username}">
     <c:redirect url="index"/>
 </c:if>
-<div id="header">
-    <ul id="menu">
-        <li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=transaction"><span>Home</span></a>
-        </li>
-        <li>
-            <a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=statistic"><span>Statistics</span></a>
-        </li>
-        <li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>
-        </li>
-        <c:if test="${sessionScope.user.rights == 1}">
-            <li><a href="/printallusers"><span>List Users</span></a></li>
-        </c:if>
-        <li><a href="logout"><span>Logout</span></a></li>
-    </ul>
-    <div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>
+<%--<div id="header">--%>
+    <%--<ul id="menu">--%>
+        <%--<li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=transaction"><span>Home</span></a>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=statistic"><span>Statistics</span></a>--%>
+        <%--</li>--%>
+        <%--<li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>--%>
+        <%--</li>--%>
+        <%--<c:if test="${sessionScope.user.rights == 1}">--%>
+            <%--<li><a href="/printallusers"><span>List Users</span></a></li>--%>
+        <%--</c:if>--%>
+        <%--<li><a href="logout"><span>Logout</span></a></li>--%>
+    <%--</ul>--%>
+    <%--<div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>--%>
+    <%--</div>--%>
+<%--</div>--%>
+<div id="myheader"> <h>FINANCE TRACKER</h></div>
+<div class="row content">
+    <div class="col-sm-3 sidenav">
+        <h4>Dashboard</h4>
+        <ul class="nav nav-pills nav-stacked">
+            <li <c:if test="${param.section == 'section1'}">class="active"
+            </c:if><a href="?section=section1">Home</a></li>
+            <li <c:if test="${param.section == 'section2'}">class="active" </c:if>><a href="?parameter=statistic&section=section2">Statistic</a>
+            </li>
+            <li <c:if test="${param.section == 'section3'}">class="active" </c:if>><a href="?parameter=transaction&section=section3">Transaction</a>
+            </li>
+            <c:if test="${sessionScope.user.rights == 1}">
+                <li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a href="?parameter=printallusers&section=section5"><span>Users</span></a></li>
+            </c:if>
+            <li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a href="?section=section4">Photos</a>
+            </li>
+            <li <c:if test="${param.section == 'section5'}">class="active" </c:if>><a href="?parameter=logout&section=section5">Logout</a>
+            </li>
+            <li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="?section=section6">Photos</a>
+            </li>
+
+
+            <li><a href="logout"><span>Logout</span></a></li>
+
+
+            <li <c:if test="${param.section == 'section7'}">class="active" </c:if>><a href="?section=section7">Photos</a>
+            </li>
+            <li <c:if test="${param.section == 'section8'}">class="active" </c:if>><a href="?section=section8">Photos</a>
+            </li>
+        </ul>
+        <br>
     </div>
-</div>
 
 <%--<div class="row content">--%>
     <%--<div class="col-sm-3 sidenav">--%>
@@ -94,8 +171,8 @@
     <%--</div>--%>
 <%--</div>--%>
 
-<div id="tableprint"></div>
-
+<div id="tableprint" style="float:right;"></div>
+</div>
 <%try{%>
 <c:if test="${param.parameter !=null }">
     <jsp:include page="${param.parameter}.jsp"/>

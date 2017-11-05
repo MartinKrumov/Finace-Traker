@@ -23,7 +23,7 @@ public class CategoryDAO {
     private final static String CHECK = "SELECT * FROM categories WHERE name = ? AND type = ?;";
     private final static String SELECT_CATEGORIES = "SELECT * FROM users_has_categories m , categories c WHERE m.category_id = c.category_id AND m.user_id = ?;";
 
-    public static Set< Category > selectUserCategories(long walletId, long userId, Connection conn) throws NullPointerException {
+    public static Set< Category > selectUserCategories(long walletId, long userId, Connection conn) {
         Set< Category > categories = new TreeSet< Category >();
         Set< Transaction > transactions = new TreeSet< Transaction >();
         try {
@@ -96,7 +96,7 @@ public class CategoryDAO {
         }
     }
 
-    private boolean checkIfCategoryExist(Category category) {
+    private long checkIfCategoryExist(Category category) {
         ResultSet resultSet;
         long catId = 0;
         try {

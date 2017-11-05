@@ -35,8 +35,8 @@ public class BudgetDAO {
         ps.setString(1, b.getName());
         ps.setBigDecimal(2, b.getInitialAmount());
         ps.setBigDecimal(3, b.getAmount());
-        ps.setTimestamp(4, Timestamp.valueOf(b.getFromDate().withNano(0)));
-        ps.setTimestamp(5, Timestamp.valueOf(b.getToDate().withNano(0)));
+        ps.setTimestamp(4, Timestamp.valueOf(b.getFromDate()));
+        ps.setTimestamp(5, Timestamp.valueOf(b.getToDate()));
         ps.setLong(6, b.getWalletId());
         ps.setLong(7, b.getCategoryID());
         System.out.println(b.getFromDate());
