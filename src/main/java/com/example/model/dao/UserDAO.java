@@ -27,7 +27,7 @@ public class UserDAO {
     private final static String DELETE_USER = "DELETE FROM `users` WHERE user_id = ?";
     private static final String INSERT_USER_CATEGORIES = "INSERT INTO users_has_categories Values(?,?);";
 
-    public long insertUser(User user) {
+    public long insertUser(User user) throws SQLException {
 
         try {
             conn = connection.getConnection();

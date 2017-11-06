@@ -20,51 +20,100 @@
     </ul>
 
     <div class="tab-content">
-        <div id="signup">
-            <h1>Sign Up for Free</h1>
-            <form commandName="user" action="signup" method="post">
+        <%--<div id="signup">--%>
+            <%--<h1>Sign Up for Free</h1>--%>
+            <%--<form commandName="user" action="signup" method="post">--%>
 
-                <div class="top-row">
+                <%--<div class="top-row">--%>
+                    <%--<div class="field-wrap">--%>
+                        <%--<label>--%>
+                            <%--First Name<span class="req">*</span>--%>
+                        <%--</label>--%>
+                        <%--<input name="firstName" />--%>
+                    <%--</div>--%>
+
+                    <%--<div class="field-wrap">--%>
+                        <%--<label>--%>
+                            <%--Last Name<span class="req">*</span>--%>
+                        <%--</label>--%>
+                        <%--<input  name="lastName" />--%>
+                    <%--</div>--%>
+
+                <%--</div>--%>
+                <%--<div class="field-wrap">--%>
+                    <%--<label>--%>
+                        <%--User Name<span class="req">*</span>--%>
+                    <%--</label>--%>
+                    <%--<input  name="username"/>--%>
+                <%--</div>--%>
+                <%--<div class="field-wrap">--%>
+                    <%--<label>--%>
+                        <%--Email Address<span class="req">*</span>--%>
+                    <%--</label>--%>
+                    <%--<input type="email" name="email" />--%>
+                <%--</div>--%>
+                <%--<div class="field-wrap">--%>
+                    <%--<label>--%>
+                        <%--Set A Password<span class="req">*</span>--%>
+                    <%--</label>--%>
+                    <%--<input type="password" name="password" />--%>
+                <%--</div>--%>
+                <%--<!-- <div class="field-wrap"> -->--%>
+                <%--<!-- <input type="file" name = "profilpic" /> -->--%>
+                <%--<!-- </div> -->--%>
+                <%--<button type="submit" class="button button-block"/>--%>
+                <%--Get Started</button>--%>
+
+            <%--</form>--%>
+
+            <div id="signup">
+                <h1>Sign Up for Free</h1>
+                <form:form action="signup" method="POST" commandName="user">
+                    <c:if test="${singup!=null}">
+                        <label style="color: #ff0000"><c:out value="${singup}"/></label>
+                    </c:if>
+
+                    <div class="top-row">
+                        <div class="field-wrap">
+                            <label>
+                                First Name<span class="req">*</span>
+                            </label>
+                            <form:input type="text" required="" path="firstName" />
+                        </div>
+
+                        <div class="field-wrap">
+                            <label>
+                                Last Name<span class="req">*</span>
+                            </label>
+                            <form:input type="text" required="" path="lastName" />
+                        </div>
+
+                    </div>
                     <div class="field-wrap">
                         <label>
-                            First Name<span class="req">*</span>
+                            User Name<span class="req">*</span>
                         </label>
-                        <input name="firstName" />
+                        <form:input type="text" required="" path="username"/>
                     </div>
-
                     <div class="field-wrap">
                         <label>
-                            Last Name<span class="req">*</span>
+                            Email Address<span class="req">*</span>
                         </label>
-                        <input  name="lastName" />
+                        <form:input type="email" required="" path="email" />
+                    </div>
+                    <div class="field-wrap">
+                        <label>
+                            Set A Password<span class="req">*</span>
+                        </label>
+                        <form:input type="password" required="" path="password" />
                     </div>
 
-                </div>
-                <div class="field-wrap">
-                    <label>
-                        User Name<span class="req">*</span>
-                    </label>
-                    <input  name="username"/>
-                </div>
-                <div class="field-wrap">
-                    <label>
-                        Email Address<span class="req">*</span>
-                    </label>
-                    <input type="email" name="email" />
-                </div>
-                <div class="field-wrap">
-                    <label>
-                        Set A Password<span class="req">*</span>
-                    </label>
-                    <input type="password" name="password" />
-                </div>
-                <!-- <div class="field-wrap"> -->
-                <!-- <input type="file" name = "profilpic" /> -->
-                <!-- </div> -->
-                <button type="submit" class="button button-block"/>
-                Get Started</button>
+                    <button type="Submit" class="button button-block"/>
+                    Get Started</button>
 
-            </form>
+                </form:form>
+
+            <%--</div>--%>
 
         </div>
 

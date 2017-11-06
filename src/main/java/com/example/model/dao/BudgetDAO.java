@@ -21,22 +21,19 @@ public class BudgetDAO {
     @Autowired
     BudgetsHasTransactionsDAO budgetsHasTransactionsDAO;
 
-    private static DBConnection conn;
-    public static final String INSERT_BUDGET = "INSERT INTO budgets (name, initial_amount, amount, from_date, to_date, wallet_id, category_id) VALUES (?, ?, ?, STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), ?, ?)";
-
-    public static final String UPDATE_BUDGET = "UPDATE budgets SET name = ?, initial_amount = ?, amount = ?, from_date = STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), to_date = STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), wallet_id = ?, category_id = ? WHERE budget_id = ?";
+    public static final String UPDATE_BUDGET = "UPDATE budgets SET name = ?, initial_amount = ?, amount = ?, from_date = ?, to_date = ?), wallet_id = ?, category_id = ? WHERE budget_id = ?";
 
     public static final String SELECT_BUDGETS = "SELECT budget_id, name, initial_amount, amount, from_date, to_date, category_id FROM budgets WHERE wallet_id = ?";
 
     public void insertBudget(Budget b) throws SQLException {
-        String sql = "INSERT INTO budgets (name, initial_amount, amount, from_date, to_date, wallet_id, category_id) VALUES (?, ?, ?, STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), ?, ?)";
+        String sql = "INSERT INTO budgets (name, initial_amount, amount, from_date, to_date, wallet_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = dbConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, b.getName());
         ps.setBigDecimal(2, b.getInitialAmount());
         ps.setBigDecimal(3, b.getAmount());
         ps.setTimestamp(4, Timestamp.valueOf(b.getFromDate()));
-        ps.setTimestamp(5, Timestamp.valueOf(b.getToDate()));
+        ps.setTimestamp(5, Timestamp.valueOf(b.getToDate().withNano(0)));
         ps.setLong(6, b.getWalletId());
         ps.setLong(7, b.getCategoryID());
         System.out.println(b.getFromDate());
