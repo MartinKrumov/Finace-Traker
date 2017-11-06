@@ -1,16 +1,47 @@
 package com.example.model.pojo;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
 
 public class User implements Serializable, Comparable< User >{
+
     private long userId;
+
+    @NotNull
+    @Size(min = 3, max = 45)
+    @NotEmpty
+    @Pattern(regexp = "[^\\s]+")
     private String username;
+
+    @NotNull
+    @NotEmpty
     private String password;
+
+    @NotNull
+    @NotEmpty
+    @Email
+    @Pattern(regexp = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")
     private String email;
+
+    @NotNull
+    @Size(min = 3, max = 20)
+    @NotEmpty
+    @Pattern(regexp = "[^\\s]+")
     private String firstName;
+
+    @NotNull
+    @Size(min = 3, max = 20)
+    @NotEmpty
+    @Pattern(regexp = "[^\\s]+")
     private String lastName;
+
     private Date date;
     private int blocked;
     private int rights;
@@ -44,12 +75,6 @@ public class User implements Serializable, Comparable< User >{
         this.userTransaction = userTransaction;
     }
 
-    public void setUsername(String username) {
-        if ( checkString(username) ) {
-            this.username = username;
-        }
-    }
-
     public void setPassword(String password) {
         if ( checkString(password) ) {
             this.password = password;
@@ -57,15 +82,15 @@ public class User implements Serializable, Comparable< User >{
     }
 
     public void setFirstName(String firstName) {
-        if ( checkString(firstName) ) {
-            this.firstName = firstName;
-        }
+        this.firstName = firstName.trim();
     }
 
     public void setLastName(String lastName) {
-        if ( checkString(lastName) ) {
-            this.lastName = lastName;
-        }
+        this.lastName = lastName.trim();
+    }
+
+    public void setUsername(String username) {
+        this.username = username.trim();
     }
 
     public void setEmail(String email) {

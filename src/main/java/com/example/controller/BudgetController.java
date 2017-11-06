@@ -61,7 +61,7 @@ public class BudgetController {
             BigDecimal amount = new BigDecimal(request.getParameter("amount"));
             String date = request.getParameter("date");
 
-            
+
 
             String[] inputDate = date.split("-");
 

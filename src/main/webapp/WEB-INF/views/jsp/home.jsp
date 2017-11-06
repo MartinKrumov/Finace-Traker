@@ -222,7 +222,7 @@ TRANSACTIONSS
             CategoryId<span class="req">*</span>
         </label>
         <select name="categoryId">
-            <c:forEach items="${sessionScope.user.wallets}" var="w">
+            <c:forEach items="${wallets}" var="w">
                 <c:if test="${count == 0}">
                     <c:forEach items="${w.categories}" var="cat">
                         <option value="${cat.categoryId}"> ${cat.name}</option>
@@ -237,7 +237,7 @@ TRANSACTIONSS
             WalletId<span class="req">*</span>
         </label>
         <select name="walletId">
-            <c:forEach items="${sessionScope.user.wallets}" var="w">
+            <c:forEach items="${wallets}" var="w">
                 <option value="${w.walletId}"> ${w.name}</option>
             </c:forEach>
         </select>

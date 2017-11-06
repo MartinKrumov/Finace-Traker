@@ -20,7 +20,7 @@
 
     <form action="addBudget" method="post">
         <label>Name</label>
-        <input type="text" placeholder="Enter budget name" name="name">
+        <input type="text" placeholder="Enter budget name" name="name" required>
 
         <br>
         <label>Wallet</label>
@@ -40,11 +40,11 @@
         <%--<input type="text" placeholder="Category" name="category">--%>
         <br>
         <label>End Date</label>
-        <input type="date" name="date" >
+        <input type="date" name="date" required>
 
         <br>
         <label>Amount</label>
-        <input type="text" placeholder="Amount" name="amount">
+        <input type="text" placeholder="Amount" name="amount" required>
 
         <br>
         <button type="submit" >Save</button>
