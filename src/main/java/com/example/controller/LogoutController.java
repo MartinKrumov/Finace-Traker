@@ -14,9 +14,6 @@ import java.io.IOException;
 @Controller
 public class LogoutController {
 
-    @Autowired
-    private DBConnection dbConnection;
-
     @RequestMapping( value = "/logout" )
     public String logout(HttpSession session, HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
         session.removeAttribute("user");

@@ -11,16 +11,16 @@
 <html>
 <head>
     <title>Budgets</title>
-    <%--<link href="<c:url value="/static/css/front-awesome.min.css" />" rel="stylesheet">--%>
-    <%--<script src="<c:url value="/static/css/js/calendar.js" />"></script>--%>
+    <link href="css/front-awesome.min.css" rel="stylesheet">
+    <script src="js/calendar.js"></script>
 
-    <%--<script src="<c:url value='/js/calendar.js'></c:url></script>--%>
+    <script src="js/calendar.js"></script>
 </head>
 <body>
 
     <form action="addBudget" method="post">
         <label>Name</label>
-        <textarea rows="1" placeholder="Enter budget name" name="name"></textarea>
+        <input type="text" placeholder="Enter budget name" name="name" required>
 
         <br>
         <label>Wallet</label>
@@ -32,19 +32,19 @@
         <br>
 
         <label>Category</label>
-        <%--<select data-placeholder="Select a category" name="category">--%>
-            <%--<c:forEach items="${ categories }" var="category">--%>
-                <%--<option><c:out value="${ category }"></c:out></option>--%>
-            <%--</c:forEach>--%>
-        <%--</select>--%>
-        <input type="text" placeholder="Category" name="category">
+        <select data-placeholder="Select a category" name="category">
+            <c:forEach items="${ categories }" var="category">
+                <option><c:out value="${ category }"></c:out></option>
+            </c:forEach>
+        </select>
+        <%--<input type="text" placeholder="Category" name="category">--%>
         <br>
         <label>End Date</label>
-        <input type="date" name="date" >
+        <input type="date" name="date" required>
 
         <br>
         <label>Amount</label>
-        <input type="text" placeholder="Amount" name="amount">
+        <input type="text" placeholder="Amount" name="amount" required>
 
         <br>
         <button type="submit" >Save</button>

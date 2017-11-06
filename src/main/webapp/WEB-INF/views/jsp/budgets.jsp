@@ -11,13 +11,16 @@
     <title>Budgets</title>
 </head>
 <body>
+    <a href="<c:url value='/addBudget'></c:url> ">Create budget</a>
     <c:forEach items="${budgets}" var="budget">
         <h1> Budget Name: ${budget.name}</h1>
         <h2> Initial amount: ${budget.initialAmount}</h2>
         <h2> Current amount: ${budget.amount}</h2>
 
-    <a href="<c:url value='/budget/${budget.budgetId}'></c:url>">Show Transactions</a>
+        <a href="<c:url value='/budget/${budget.budgetId}'></c:url>">Show Transactions</a>
     </c:forEach>
+
+    <br>
 
 </body>
 </html>

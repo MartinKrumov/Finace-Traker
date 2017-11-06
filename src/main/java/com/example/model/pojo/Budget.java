@@ -1,7 +1,5 @@
 package com.example.model.pojo;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,19 +8,10 @@ import java.util.List;
 
 public class Budget {
 	private long budgetId;
-	@NotNull
-    @Size(min=3, max = 15)
 	private String name;
-
-    @NotNull
-    @Size(min=3, max = 15)
     private BigDecimal initialAmount;
-
-    @NotNull
 	private BigDecimal amount;
-    @NotNull
 	private LocalDateTime fromDate;
-    @NotNull
 	private LocalDateTime toDate;
     private long walletId;
 	private long categoryID;

@@ -119,6 +119,11 @@
                             href="printallusers"><span>Users</span></a>
                     </li>
                 </c:if>
+
+                <li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="home?parameter=budgets">Budgets</a>
+                </li>
+                <li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="home?parameter=wallets">Wallets</a>
+                </li>
                 <li <c:if test="${param.section == 'section5'}">class="active" </c:if>><a
                         href="/logout?section=section5">Logout</a>
                 </li>
@@ -179,10 +184,9 @@
 
 
             $("button").click(function () {
-//                var r = confirm("Delete user ?");
-//                if (confirm("Delete user ?") == true) {
+                var r = confirm("Delete user ?");
+                if (confirm("Delete user ?") == true) {
                     var user_id = $(this).data("id");
-//                this.getProperty('data-user-id')
                     alert("u id " + user_id);
                     $.ajax({
                         url: 'DelUserFromAdmin',
@@ -193,7 +197,7 @@
                             $parent.hide();
                         }
                     })
-//                }
+                }
             });
 
 

@@ -110,13 +110,14 @@
                         href="printallusers"><span>Users</span></a>
                 </li>
             </c:if>
+
+            <li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="home?parameter=budgets">Budgets</a>
+            </li>
+            <li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="home?parameter=wallets">Wallets</a>
+            </li>
             <li <c:if test="${param.section == 'section5'}">class="active" </c:if>><a
                     href="/logout?section=section5">Logout</a>
             </li>
-            <%--<li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="?section=section6">Photos</a>--%>
-            <%--</li>--%>
-
-
             <%--<li><a href="logout"><span>Logout</span></a></li>--%>
 
 
@@ -173,22 +174,6 @@
 <%--walllet--%>
 
 
-<%--<form commandName="wallet" method="post" action="walletInsert">--%>
-    <%--<div class="field-wrap">--%>
-        <%--<label>--%>
-            <%--Wallet Name<span class="req">*</span>--%>
-        <%--</label>--%>
-        <%--<input type="text" name="name"/>--%>
-    <%--</div>--%>
-    <%--<div class="field-wrap">--%>
-        <%--<label>--%>
-            <%--Amount<span class="req">*</span>--%>
-        <%--</label>--%>
-        <%--<input type="text" name="amount"/>--%>
-    <%--</div>--%>
-    <%--<button class="button button-block"/>--%>
-    <%--Insert</button>--%>
-<%--</form>--%>
 
 <%--<c:set var="count" value="0" scope="page"/>--%>
 
@@ -211,7 +196,7 @@
             <%--CategoryId<span class="req">*</span>--%>
         <%--</label>--%>
         <%--<select name="categoryId">--%>
-            <%--<c:forEach items="${sessionScope.user.wallets}" var="w">--%>
+            <%--<c:forEach items="${wallets}" var="w">--%>
                 <%--<c:if test="${count == 0}">--%>
                     <%--<c:forEach items="${w.categories}" var="cat">--%>
                         <%--<option value="${cat.categoryId}"> ${cat.name}</option>--%>
@@ -239,22 +224,6 @@
 <%--CATEGORIII--%>
 
 
-<%--<form method="post" action="addcategory">--%>
-    <%--<div class="field-wrap">--%>
-        <%--<label>--%>
-            <%--Wallet Name<span class="req">*</span>--%>
-        <%--</label>--%>
-        <%--<input type="text" name="name"/>--%>
-    <%--</div>--%>
-    <%--<div class="field-wrap">--%>
-        <%--<label>--%>
-            <%--Amount<span class="req">*</span>--%>
-        <%--</label>--%>
-        <%--<input type="checkbox" name="income"/>--%>
-    <%--</div>--%>
-    <%--<button class="button button-block"/>--%>
-    <%--Insert</button>--%>
-<%--</form>--%>
 
 
 <%--<script type="text/javascript"--%>
@@ -279,23 +248,6 @@
                 }
             })
         };
-//        $(".userdel").click(function (e) {
-////            var user_id = $(this).data("id");
-//            var user_id = e;
-//
-////                this.getProperty('data-user-id')
-//            alert("u id " + user_id);
-//            return;
-//            $.ajax({
-//                url: 'PrintAllUserWithAjax',
-//                success: function (data) {
-////                    document.getElementById("tableprint").innerHTML = data;
-//                    $("#tableprint").html(data);
-//                    console.log($(".optionsAdmin").length);
-//                    $(".optionsAdmin").click(onDeleteClick);
-//                }
-//            });
-//        });
         $("#userslist").click(function () {
             $.ajax({
                 url: 'PrintAllUserWithAjax',

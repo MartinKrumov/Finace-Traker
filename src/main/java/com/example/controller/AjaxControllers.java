@@ -38,9 +38,9 @@ public class AjaxControllers {
     public String deleteUserForAdmin(Model model , HttpServletRequest request) {
         String userId = request.getParameter("del_user_id");
         System.out.println("user id in ajax "+userId);
-        Long uId =  Long.parseLong(userId);
+        long uId =  Long.parseLong(userId);
         try {
-            userDao.delUser(uId);
+            userDao.delUser(14);
         } catch ( SQLException e ) {
             e.printStackTrace();
         }

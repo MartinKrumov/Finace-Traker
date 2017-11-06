@@ -25,7 +25,6 @@ public class TransActionController {
     @Autowired
     TransactionDAO transactionDAO;
 
-    //    public Transaction(long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {
     @RequestMapping( value = "/transactionInsert", method = RequestMethod.POST )
     public String transaction(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) {
         User user = ( User ) session.getAttribute("user");
@@ -58,10 +57,6 @@ public class TransActionController {
             }
         }
 
-//        if ( amount.trim().matches("[0-9]") ) {
-
-
-//        }
         System.out.println("type " + income);
         System.out.println("category_id " + catId);
         System.out.println("amount " + descrip);

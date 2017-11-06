@@ -27,38 +27,6 @@ public class LoginSignUpController {
     @Autowired
     private UserDAO userDAO;
 
-//    @RequestMapping( value = "/index", method = RequestMethod.GET )
-//    public String index() {
-//        return "index";
-//    }
-//
-//    @RequestMapping( value = "/signup", method = RequestMethod.POST )
-//    public String signupUser(@ModelAttribute User user, HttpSession session, Model model) {
-//        System.out.println(user.getUsername());
-//        if ( user == null || !checkString(user.getUsername()) || !checkString(user.getEmail()) || !checkString(user.getPassword()) || !checkString(user.getFirstName()) || !checkString(user.getLastName()) ) {
-//            return "redirect:index?error=signup";
-//        }
-//
-//        if ( !userDAO.checkIfExists(user.getEmail()) ) {
-//            user.setRights(3);
-//            user.setUserId(userDAO.insertUser(user));
-//            user.setBlocked(0);
-//            Gson json = new Gson();
-//            String userjson = json.toJson(user);
-//            System.out.println(userjson);
-//            if ( (user.getUserId() > 0) ) {
-//                session.setAttribute("user", user);
-//                Set< Wallet > wallets = new TreeSet<>();
-//                model.addAttribute("wallets", wallets);
-//            }
-//        }
-//
-//        return "redirect:home";
-//    }
-
-    public boolean checkString(String str) {
-        return str != null && !str.isEmpty();
-    }
 /**-------------------------------------------------------------------------------------------------------------------*/
     @RequestMapping(value="/index", method=RequestMethod.GET)
     public String getRegister(Model m) {

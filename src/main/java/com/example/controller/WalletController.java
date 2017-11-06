@@ -68,7 +68,7 @@ public class WalletController {
             e.printStackTrace();
         }
         System.out.println("Wallet id: " + walletId);
-        return "home";
+        return "redirect:home";
     }
 
 }

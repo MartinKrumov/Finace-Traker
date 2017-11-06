@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import java.util.Set;
 
 @Controller
-//@SessionAttributes("user")
 public class UserController {
     @Autowired
     UserDAO userDAO;
@@ -44,17 +43,6 @@ public class UserController {
         return "home";
     }
 
-//    @RequestMapping( value = "/login", method = RequestMethod.GET )
-//    public String loginGet(HttpSession session, Model model) {
-//        User user = ( User ) session.getAttribute("user");
-//        if ( user != null ) {
-//            System.out.println(user.getUserId());
-//            Set< Wallet > wallets = walletDAO.selectUserWallets(user.getUserId());
-//            model.addAttribute("wallets", wallets);
-//            return "redirect:home";
-//        }
-//        return "redirect:index?error=errorLogin";
-//    }
 
     @RequestMapping( value = "/home", method = RequestMethod.GET )
     public String homeGet(HttpSession session, Model model) {

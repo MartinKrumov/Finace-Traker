@@ -55,7 +55,24 @@
         <button class="button button-block"/>
         Insert</button>
     </form>
-
+    <div style="float:right;">
+    <form method="post" action="addcategory">
+        <div class="field-wrap">
+            <label>
+                Wallet Name<span class="req">*</span>
+            </label>
+            <input type="text" name="name"/>
+        </div>
+        <div class="field-wrap">
+            <label>
+                Amount<span class="req">*</span>
+            </label>
+            <input type="checkbox" name="income"/>
+        </div>
+        <button class="button button-block"/>
+        Insert</button>
+    </form>
+    </div>
     <c:forEach items="${sessionScope.user.wallets}" var="w">
 
         <%--<tr>--%>

@@ -133,6 +133,6 @@ public class BudgetController {
             System.err.println(e.getMessage());
             //return "error500";
         }
-        return  "budgetTransactions";
+        return  "redirect:home?parameter=budgets";
     }
 }

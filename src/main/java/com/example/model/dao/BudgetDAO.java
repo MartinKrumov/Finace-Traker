@@ -133,35 +133,6 @@ public class BudgetDAO {
         return false;
     }
 
-//    public Set< Budget > getBudgetsByWalletDateCategory(LocalDateTime date, long categoryId, long walletId) throws SQLException {
-//        String sql = "SELECT budget_id, name, initial_amount, amount, from_date, to_date, wallet_id, category_id FROM budgets WHERE category_id = ? AND wallet_id = ?;";
-//
-//        PreparedStatement ps = dbConnection.getConnection().prepareStatement(sql);
-//        ps.setLong(1, categoryId);
-//        ps.setLong(2, walletId);
-//
-//        ResultSet res = ps.executeQuery();
-//        Set< Budget > budgets = new HashSet<>();
-//
-//        while ( res.next() ) {
-//            long budgetId = res.getLong("budget_id");
-//            String name = res.getString("name");
-//            BigDecimal initialAmount = res.getBigDecimal("initial_amount");
-//            BigDecimal amount = res.getBigDecimal("amount");
-//            LocalDateTime fromDate = res.getTimestamp("from_date").toLocalDateTime();
-//            LocalDateTime toDate = res.getTimestamp("to_date").toLocalDateTime();
-//            List< Transaction > transactions = budgetsHasTransactionsDAO.getAllTransactionsByBudgetId(budgetId);
-//
-//            Budget b = new Budget(budgetId, name, initialAmount, amount, fromDate, toDate, walletId, categoryId, transactions);
-//
-//            if ( isBetweenTwoDates(date, fromDate, toDate) ) {
-//                budgets.add(b);
-//            }
-//        }
-//
-//        return budgets;
-//    }
-
     public Set<Budget> getAllBudgetsByUserId(long userId) throws SQLException {
         String sql = "SELECT b.budget_id, b.name, b.initial_amount, b.amount, b.from_date, b.to_date, b.wallet_id, b.category_id FROM budgets b JOIN wallets a ON a.wallet_id = b.wallet_id AND user_id = ?;";
 

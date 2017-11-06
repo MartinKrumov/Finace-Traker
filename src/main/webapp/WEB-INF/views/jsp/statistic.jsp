@@ -39,13 +39,13 @@
 //            }
 
                 ['${sessionScope.user.username}', 3],
-                ['Onions', 1],
-                ['Olives', 1],
-                ['Zucchini', 1],
-                ['Pepii', 4],
-                ['kolio', 8],
-                ['Pepperoni', 2],
-                ['cheche', 1]
+                ['Fun', 1],
+                ['Hobby', 1],
+                ['Home', 1],
+                ['Food', 4],
+                ['Family', 8],
+                ['Car', 2],
+                ['Bills', 1]
             ]);
 
             // Set chart options
@@ -80,7 +80,7 @@
         ]);
 
         var options = {
-            title: 'Company Performance',
+            title: 'User Activity',
             hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
             vAxis: {minValue: 0}
         };

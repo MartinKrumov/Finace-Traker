@@ -28,39 +28,55 @@
 <%--<option value="3">3</option>--%>
 <%--</select>--%>
 <%--<c:out value="${param.select}"/>--%>
-<c:forEach items="${sessionScope.user.wallets}" var="w">
-    Wallet name: ${w.name}<br/>
-    Wallet Categories:
-    <table border=1>
-        <tr>
-            <th>Cat Name</th>
-            <th>Cat Id</th>
-            <th>Cat userId</th>
-            <%--<th>Options</th>--%>
-            <th>Income/Expense</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Submit</th>
-        </tr>
-        <c:forEach items="${w.categories}" var="cat">
-            <tr>
-                <td>${cat.name}</td>
-                <td>${cat.categoryId}</td>
-                <td>${cat.userId}</td>
-<%--long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {--%>
-                <form  method="post" action="transaction">
-                    <td><input type="checkbox" name="isIncome" value="1"/></td>
-                    <td><input type="text" name="description"/></td>
-                    <td><input type="number" name="amount"/></td>
-                    <input style="display: none;" type="hidden" name="categoryId" value = "${cat.categoryId}"/>
-                    <td><input type="submit" name="submitsTrans" value="Add"/></td>
-                </form>
-            </tr>
-        </c:forEach>
-    </table>
+<form commandName="wallet" method="post" action="walletInsert">
+    <div class="field-wrap">
+        <label>
+            Wallet Name<span class="req">*</span>
+        </label>
+        <input type="text" name="name"/>
+    </div>
+    <div class="field-wrap">
+        <label>
+            Amount<span class="req">*</span>
+        </label>
+        <input type="text" name="amount"/>
+    </div>
+    <button class="button button-block"/>
+    Insert</button>
+</form>
+<%--<c:forEach items="${sessionScope.user.wallets}" var="w">--%>
+    <%--Wallet name: ${w.name}<br/>--%>
+    <%--Wallet Categories:--%>
+    <%--<table border=1>--%>
+        <%--<tr>--%>
+            <%--<th>Cat Name</th>--%>
+            <%--<th>Cat Id</th>--%>
+            <%--<th>Cat userId</th>--%>
+            <%--&lt;%&ndash;<th>Options</th>&ndash;%&gt;--%>
+            <%--<th>Income/Expense</th>--%>
+            <%--<th>Description</th>--%>
+            <%--<th>Amount</th>--%>
+            <%--<th>Submit</th>--%>
+        <%--</tr>--%>
+        <%--<c:forEach items="${w.categories}" var="cat">--%>
+            <%--<tr>--%>
+                <%--<td>${cat.name}</td>--%>
+                <%--<td>${cat.categoryId}</td>--%>
+                <%--<td>${cat.userId}</td>--%>
+<%--&lt;%&ndash;long transactionId, TransactionType type, BigDecimal amount, LocalDateTime date, String description, long categoryId) {&ndash;%&gt;--%>
+                <%--<form  method="post" action="transaction">--%>
+                    <%--<td><input type="checkbox" name="isIncome" value="1"/></td>--%>
+                    <%--<td><input type="text" name="description"/></td>--%>
+                    <%--<td><input type="number" name="amount"/></td>--%>
+                    <%--<input style="display: none;" type="hidden" name="categoryId" value = "${cat.categoryId}"/>--%>
+                    <%--<td><input type="submit" name="submitsTrans" value="Add"/></td>--%>
+                <%--</form>--%>
+            <%--</tr>--%>
+        <%--</c:forEach>--%>
+    <%--</table>--%>
 
 
-</c:forEach>
+<%--</c:forEach>--%>
 
 <%--<form:form commandName="wallet" method="post" action="wallet_insert">--%>
 
