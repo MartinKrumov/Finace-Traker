@@ -55,7 +55,23 @@
     </style>
 </head>
 <body>
-
+<%--<div id="header">--%>
+<%--<ul id="menu">--%>
+<%--<li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=transaction"><span>Home</span></a>--%>
+<%--</li>--%>
+<%--<li>--%>
+<%--<a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=statistic"><span>Statistics</span></a>--%>
+<%--</li>--%>
+<%--<li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>--%>
+<%--</li>--%>
+<%--<c:if test="${sessionScope.user.rights == 1}">--%>
+<%--<li><a href="/printallusers"><span>List Users</span></a></li>--%>
+<%--</c:if>--%>
+<%--<li><a href="logout"><span>Logout</span></a></li>--%>
+<%--</ul>--%>
+<%--<div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>--%>
+<%--</div>--%>
+<%--</div>--%>
 <div class="container-fluid">
 
     <div class="row content">

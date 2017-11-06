@@ -50,7 +50,7 @@ public class LoginSignUpController {
             }
         }
 
-        return "redirect:home";
+        return "home";
     }
 
     public boolean checkString(String str) {

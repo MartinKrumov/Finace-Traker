@@ -16,44 +16,8 @@
     <meta charset="UTF-8">
     <title>Finance Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--%>
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
-    <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
-    <%--<style>--%>
-        <%--/* Set height of the grid so .sidenav can be 100% (adjust if needed) */--%>
-        <%--.row.content {--%>
-            <%--height: 1500px--%>
-        <%--}--%>
 
-        <%--/* Set gray background color and 100% height */--%>
-        <%--.sidenav {--%>
-            <%--background-color: #5aeec5;--%>
-            <%--height: 100%;--%>
-            <%--padding: 0;!important;--%>
-            <%--float: left;!important;--%>
-            <%--clear:both; !important;--%>
-        <%--}--%>
-
-        <%--/* Set black background color, white text and some padding */--%>
-        <%--footer {--%>
-            <%--background-color: #555;--%>
-            <%--color: #60ff16;--%>
-            <%--padding: 15px;--%>
-        <%--}--%>
-
-        <%--/* On small screens, set height to 'auto' for sidenav and grid */--%>
-        <%--@media screen and (max-width: 767px) {--%>
-            <%--.sidenav {--%>
-                <%--height: auto;--%>
-                <%--padding: 0;--%>
-            <%--}--%>
-
-            <%--.row.content {--%>
-                <%--height: auto;--%>
-            <%--}--%>
-        <%--}--%>
-    <%--</style>--%>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -63,10 +27,20 @@
             height: 100%;
         }
 
-        /* Set gray background color and 100% height */
-        .sidenav {
-            background-color: #8bb5b9;
+        .leftcontainer {
             height: 100%;
+            background-color: #2f4050;
+        }
+
+        /* Set gray background color and 100% height */
+        body {
+            background-color: #2f4050;
+        }
+
+        .sidenav {
+            background-color: #2f4050;
+            height: 100%;
+            width: 25%;
         }
 
         /* Set black background color, white text and some padding */
@@ -79,23 +53,28 @@
         /* On small screens, set height to 'auto' for sidenav and grid */
         @media screen and (max-width: 767px) {
             .sidenav {
-                height: auto;
+                height: 100%;
                 padding: 15px;
             }
 
             .row.content {
-                height: auto;
+                height: 100%;
             }
         }
 
-        #myheader{
+        #myheader {
             width: 100%;
             height: 4em;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: medium;
-            background-color: #31a2b9;
-            color: black;
-            clear:both;
+            background-color: #0f2034;
+            color: #aec8ff;
+            clear: both;
+        }
+
+        #myheader h {
+            margin-left: 30%;
+            font-size: 3em;
         }
     </style>
 </head>
@@ -104,172 +83,182 @@
 <c:if test="${empty sessionScope.user.username}">
     <c:redirect url="index"/>
 </c:if>
-<%--<div id="header">--%>
-    <%--<ul id="menu">--%>
-        <%--<li><a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=transaction"><span>Home</span></a>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<a href="${requestScope['javax.servlet.forward.request_uri']}?parameter=statistic"><span>Statistics</span></a>--%>
-        <%--</li>--%>
-        <%--<li><a id="walletuser" href="${requestScope['javax.servlet.forward.request_uri']}?parameter=wallets" onclick=""><span>Wallets</span></a>--%>
-        <%--</li>--%>
-        <%--<c:if test="${sessionScope.user.rights == 1}">--%>
-            <%--<li><a href="/printallusers"><span>List Users</span></a></li>--%>
-        <%--</c:if>--%>
-        <%--<li><a href="logout"><span>Logout</span></a></li>--%>
-    <%--</ul>--%>
-    <%--<div style="float: right; color: #00aa2b; margin-top: -3.5em; "><h1>${sessionScope.user.username}</h1>--%>
-    <%--</div>--%>
-<%--</div>--%>
-<div id="myheader"> <h>FINANCE TRACKER</h></div>
-<div class="row content">
-    <div class="col-sm-3 sidenav">
-        <h4>Dashboard</h4>
-        <ul class="nav nav-pills nav-stacked">
-            <li <c:if test="${param.section == 'section1'}">class="active"
-            </c:if><a href="?section=section1">Home</a></li>
-            <li <c:if test="${param.section == 'section2'}">class="active" </c:if>><a href="?parameter=statistic&section=section2">Statistic</a>
+
+<div id="myheader">
+    <h>
+        <img src="https://previews.123rf.com/images/maxborovkov/maxborovkov1007/maxborovkov100700372/7385359-Abstract-modern-3d-FT-logo-Stock-Vector-logo-logos-design.jpg"
+             width="60" height="60"/> FINANCE TRACKER
+    </h>
+</div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li <c:if test="${param.section == 'section1'}">class="active"</c:if>><a
+                    href="home?homepage=homepage">Home</a>
             </li>
-            <li <c:if test="${param.section == 'section3'}">class="active" </c:if>><a href="?parameter=transaction&section=section3">Transaction</a>
+            <li <c:if test="${param.section == 'section2'}">class="active" </c:if>><a
+                    href="home?parameter=statistic&section=section2">Statistic</a>
+            </li>
+            <li <c:if test="${param.section == 'section3'}">class="active" </c:if>><a
+                    href="home?parameter=transaction">Transaction</a>
             </li>
             <c:if test="${sessionScope.user.rights == 1}">
-                <li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a href="?parameter=printallusers&section=section5"><span>Users</span></a></li>
+                <li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a
+                        href="printallusers"><span>Users</span></a>
+                </li>
             </c:if>
-            <li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a href="?section=section4">Photos</a>
+            <li <c:if test="${param.section == 'section5'}">class="active" </c:if>><a
+                    href="/logout?section=section5">Logout</a>
             </li>
-            <li <c:if test="${param.section == 'section5'}">class="active" </c:if>><a href="?parameter=logout&section=section5">Logout</a>
-            </li>
-            <li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="?section=section6">Photos</a>
-            </li>
+            <%--<li <c:if test="${param.section == 'section6'}">class="active" </c:if>><a href="?section=section6">Photos</a>--%>
+            <%--</li>--%>
 
 
-            <li><a href="logout"><span>Logout</span></a></li>
+            <%--<li><a href="logout"><span>Logout</span></a></li>--%>
 
 
-            <li <c:if test="${param.section == 'section7'}">class="active" </c:if>><a href="?section=section7">Photos</a>
-            </li>
-            <li <c:if test="${param.section == 'section8'}">class="active" </c:if>><a href="?section=section8">Photos</a>
-            </li>
+            <%--<li <c:if test="${param.section == 'section7'}">class="active" </c:if>><a href="?section=section7">Photos</a>--%>
+            <%--</li>--%>
+            <%--<li <c:if test="${param.section == 'section8'}">class="active" </c:if>><a href="?section=section8">Photos</a>--%>
+            <%--</li>--%>
         </ul>
-        <br>
-    </div>
-
-<%--<div class="row content">--%>
-    <%--<div class="col-sm-3 sidenav">--%>
-        <%--<h4>Dashboard</h4>--%>
-        <%--<ul class="nav nav-pills nav-stacked">--%>
-            <%--<li <c:if test="${param.section == 'section1'}">class="active"--%>
-            <%--</c:if><a href="?section=section1">Home</a></li>--%>
-            <%--<li <c:if test="${param.section == 'section2'}">class="active" </c:if>><a href="?section=section2">Friends</a>--%>
-            <%--</li>--%>
-            <%--<li <c:if test="${param.section == 'section3'}">class="active" </c:if>><a href="?section=section3">Family</a>--%>
-            <%--</li>--%>
-            <%--<li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a href="?section=section4">Photos</a>--%>
-            <%--</li>--%>
-        <%--</ul>--%>
         <%--<br>--%>
-    <%--</div>--%>
+
+    </div>
+</nav>
+    <%--<div class="col-sm-9">--%>
+    <div id="tableprint" style="background-color: rgba(224,255,190,0.73);  width: 100%;height: 100%">
+        <%try {%>
+        <c:if test="${param.parameter !=null }">
+            <jsp:include page="${param.parameter}.jsp"/>
+        </c:if>
+        <%
+            } catch ( Exception e ) {
+                System.out.println("no found");
+            }
+        %>
+        <c:if test="${param.homepage =='homepage' }">
+            <%--<jsp:include page="${param.parameter}.jsp"/>--%>
+            <img style="margin-top:-2em;" src="http://navigatefinancial.com.au/wp-content/uploads/2014/12/investment-stratedgy.jpg"width="100%" height="100%"/>
+        </c:if>
+    </div>
+</div>
+
+
 <%--</div>--%>
 
-<div id="tableprint" style="float:right;"></div>
-</div>
-<%try{%>
-<c:if test="${param.parameter !=null }">
-    <jsp:include page="${param.parameter}.jsp"/>
-</c:if>
-<%}catch( Exception e){
-    System.out.println("no found");
-}
-%>
-walllet
+<%--<div class="row content">--%>
+<%--<div class="col-sm-3 sidenav">--%>
+<%--<h4>Dashboard</h4>--%>
+<%--<ul class="nav nav-pills nav-stacked">--%>
+<%--<li <c:if test="${param.section == 'section1'}">class="active"--%>
+<%--</c:if><a href="?section=section1">Home</a></li>--%>
+<%--<li <c:if test="${param.section == 'section2'}">class="active" </c:if>><a href="?section=section2">Friends</a>--%>
+<%--</li>--%>
+<%--<li <c:if test="${param.section == 'section3'}">class="active" </c:if>><a href="?section=section3">Family</a>--%>
+<%--</li>--%>
+<%--<li <c:if test="${param.section == 'section4'}">class="active" </c:if>><a href="?section=section4">Photos</a>--%>
+<%--</li>--%>
+<%--</ul>--%>
+<%--<br>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--<div class="container">--%>
+
+<%--</div>--%>
+
+<%--walllet--%>
 
 
-<form commandName="wallet" method="post" action="walletInsert">
-    <div class="field-wrap">
-        <label>
-            Wallet Name<span class="req">*</span>
-        </label>
-        <input type="text" name="name"/>
-    </div>
-    <div class="field-wrap">
-        <label>
-            Amount<span class="req">*</span>
-        </label>
-        <input type="text" name="amount"/>
-    </div>
-    <button class="button button-block"/>
-    Insert</button>
-</form>
+<%--<form commandName="wallet" method="post" action="walletInsert">--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--Wallet Name<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<input type="text" name="name"/>--%>
+    <%--</div>--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--Amount<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<input type="text" name="amount"/>--%>
+    <%--</div>--%>
+    <%--<button class="button button-block"/>--%>
+    <%--Insert</button>--%>
+<%--</form>--%>
 
-<c:set var="count" value="0" scope="page"/>
+<%--<c:set var="count" value="0" scope="page"/>--%>
 
-TRANSACTIONSS
-<form commandName="transaction" method="post" action="transactionInsert">
-    <div class="field-wrap">
-        <label>
-            Amount<span class="req">*</span>
-        </label>
-        <input type="number" name="amount"/>
-    </div>
-    <div class="field-wrap">
-        <label>
-            Description<span class="req">*</span>
-        </label>
-        <input type="text" name="description"/>
-    </div>
-    <div class="field-wrap">
-        <label>
-            CategoryId<span class="req">*</span>
-        </label>
-        <select name="categoryId">
-            <c:forEach items="${sessionScope.user.wallets}" var="w">
-                <c:if test="${count == 0}">
-                    <c:forEach items="${w.categories}" var="cat">
-                        <option value="${cat.categoryId}"> ${cat.name}</option>
-                    </c:forEach>
-                </c:if>
-                <c:set var="count" value="${count + 1}" scope="page"/>
-            </c:forEach>
-        </select>
-    </div>
-    <div class="field-wrap">
-        <label>
-            WalletId<span class="req">*</span>
-        </label>
-        <select name="walletId">
-            <c:forEach items="${sessionScope.user.wallets}" var="w">
-                <option value="${w.walletId}"> ${w.name}</option>
-            </c:forEach>
-        </select>
-    </div>
-    <button class="button button-block"/>
-    Insert</button>
-</form>
-
-
-CATEGORIII
+<%--TRANSACTIONSS--%>
+<%--<form commandName="transaction" method="post" action="transactionInsert">--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--Amount<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<input type="number" name="amount"/>--%>
+    <%--</div>--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--Description<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<input type="text" name="description"/>--%>
+    <%--</div>--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--CategoryId<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<select name="categoryId">--%>
+            <%--<c:forEach items="${sessionScope.user.wallets}" var="w">--%>
+                <%--<c:if test="${count == 0}">--%>
+                    <%--<c:forEach items="${w.categories}" var="cat">--%>
+                        <%--<option value="${cat.categoryId}"> ${cat.name}</option>--%>
+                    <%--</c:forEach>--%>
+                <%--</c:if>--%>
+                <%--<c:set var="count" value="${count + 1}" scope="page"/>--%>
+            <%--</c:forEach>--%>
+        <%--</select>--%>
+    <%--</div>--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--WalletId<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<select name="walletId">--%>
+            <%--<c:forEach items="${sessionScope.user.wallets}" var="w">--%>
+                <%--<option value="${w.walletId}"> ${w.name}</option>--%>
+            <%--</c:forEach>--%>
+        <%--</select>--%>
+    <%--</div>--%>
+    <%--<button class="button button-block"/>--%>
+    <%--Insert</button>--%>
+<%--</form>--%>
 
 
-<form method="post" action="addcategory">
-    <div class="field-wrap">
-        <label>
-            Wallet Name<span class="req">*</span>
-        </label>
-        <input type="text" name="name" />
-    </div>
-    <div class="field-wrap">
-        <label>
-            Amount<span class="req">*</span>
-        </label>
-        <input type="checkbox" name="income"/>
-    </div>
-    <button class="button button-block"/>
-    Insert</button>
-</form>
+<%--CATEGORIII--%>
 
 
-<script type="text/javascript"
-        src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<%--<form method="post" action="addcategory">--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--Wallet Name<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<input type="text" name="name"/>--%>
+    <%--</div>--%>
+    <%--<div class="field-wrap">--%>
+        <%--<label>--%>
+            <%--Amount<span class="req">*</span>--%>
+        <%--</label>--%>
+        <%--<input type="checkbox" name="income"/>--%>
+    <%--</div>--%>
+    <%--<button class="button button-block"/>--%>
+    <%--Insert</button>--%>
+<%--</form>--%>
+
+
+<%--<script type="text/javascript"--%>
+        <%--src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--%>
 <script type="text/javascript">
     $(document).ready(function () {
 

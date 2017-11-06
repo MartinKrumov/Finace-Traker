@@ -7,12 +7,55 @@
     <title>transaction</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
-    <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<c:set var="count" value="0" scope="page"/>
 
 <div class="container" style="margin-top: 0 !important;">
+    <form commandName="transaction" method="post" action="transactionInsert">
+        <div class="field-wrap">
+            <label>
+                Amount<span class="req">*</span>
+            </label>
+            <input type="number" name="amount"/>
+        </div>
+        <div class="field-wrap">
+            <label>
+                Description<span class="req">*</span>
+            </label>
+            <input type="text" name="description"/>
+        </div>
+        <div class="field-wrap">
+            <label>
+                CategoryId<span class="req">*</span>
+            </label>
+            <select name="categoryId">
+                <c:forEach items="${sessionScope.user.wallets}" var="w">
+                    <c:if test="${count == 0}">
+                        <c:forEach items="${w.categories}" var="cat">
+                            <option value="${cat.categoryId}"> ${cat.name}</option>
+                        </c:forEach>
+                    </c:if>
+                    <c:set var="count" value="${count + 1}" scope="page"/>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="field-wrap">
+            <label>
+                WalletId<span class="req">*</span>
+            </label>
+            <select name="walletId">
+                <c:forEach items="${sessionScope.user.wallets}" var="w">
+                    <option value="${w.walletId}"> ${w.name}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <button class="button button-block"/>
+        Insert</button>
+    </form>
+
     <c:forEach items="${sessionScope.user.wallets}" var="w">
 
         <%--<tr>--%>

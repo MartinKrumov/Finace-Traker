@@ -132,6 +132,10 @@ public class User implements Serializable, Comparable< User >{
         return date;
     }
 
+    public void setOwnCategories(Set< Category > ownCategories) {
+        this.ownCategories = ownCategories;
+    }
+
     public Set< Category > getOwnCategories() {
         return Collections.unmodifiableSet(ownCategories);
     }

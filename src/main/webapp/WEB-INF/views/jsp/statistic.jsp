@@ -30,22 +30,31 @@
             data.addColumn('string', 'Topping');
             data.addColumn('number', 'Slices');
             data.addRows([
-                ['Mushrooms', 3],
+//                function(){
+
+//                for(index = 0; index < 10;index++){
+//                    if(index == 10){}
+//                    ['Mushrooms', 3]
+//                }
+//            }
+
+                ['${sessionScope.user.username}', 3],
                 ['Onions', 1],
                 ['Olives', 1],
                 ['Zucchini', 1],
                 ['Pepii', 4],
                 ['kolio', 8],
-                ['Pepperoni', 2]
+                ['Pepperoni', 2],
+                ['cheche', 1]
             ]);
 
             // Set chart options
-            var options = {'title':'How Much Pizza I Ate Last Night',
+            var options = {'title':'Category Activity',
                 'width':500,
                 'height':600};
 
             // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.PieChart(document.getElementById('chart_divs'));
             chart.draw(data, options);
         }
     </script>
@@ -53,10 +62,7 @@
 
 <body>
 <!--Div that will hold the pie chart-->
-<div id="chart_div"></div>
-
-
-
+<div id="chart_divs" style="width: 50%; float:left; height: 500px;"></div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -85,7 +91,7 @@
 </script>
 </head>
 <body>
-<div id="chart_diva" style="width: 100%; height: 500px;"></div>
+<div id="chart_diva" style="width: 50%; height: 500px; float:right;"></div>
 </body>
 </body>
 </html>

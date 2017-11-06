@@ -27,7 +27,7 @@ public class UserController {
     WalletDAO walletDAO;
 
     @RequestMapping( value = "/login", method = RequestMethod.POST )
-    public String loginUser(@ModelAttribute( "user" ) User user, HttpSession session) {
+    public String loginUser(@ModelAttribute( "user" ) User user, HttpSession session,Model model) {
 
         if ( user != null && user.getUsername() != null && user.getPassword() != null ) {
             user = userDAO.login(user.getUsername(), user.getPassword());
@@ -36,11 +36,12 @@ public class UserController {
         }
         if ( user != null && user.getUserId() != 0 ) {
             session.setAttribute("user", user);
+            model.addAttribute("userCat",user);
         }
         Gson json = new Gson();
         String userjson = json.toJson(user);
         System.out.println(userjson);
-        return "redirect:home";
+        return "home";
     }
 
 //    @RequestMapping( value = "/login", method = RequestMethod.GET )
@@ -64,7 +65,7 @@ public class UserController {
             model.addAttribute("wallets", wallets);
             return "home";
         }
-        return "redirect:index?error=errorLogin";
+        return "index?error=errorLogin";
     }
 
     @RequestMapping( value = "/home", method = RequestMethod.POST )
@@ -74,6 +75,6 @@ public class UserController {
         if ( user.getUsername() != null && user.getUsername() != null ) {
             return "home";
         }
-        return "redirect:index";
+        return "index";
     }
 }

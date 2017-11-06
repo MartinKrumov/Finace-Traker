@@ -68,5 +68,11 @@ public class TransActionController {
 
         return "redirect:home";
     }
+
+    @RequestMapping( value = "/transaction", method = RequestMethod.GET )
+    public String transactionList(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) {
+
+    return "transaction";
+    }
 }
 

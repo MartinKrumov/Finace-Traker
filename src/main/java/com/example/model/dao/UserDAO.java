@@ -119,6 +119,7 @@ public class UserDAO {
                         Set< Wallet > walletss = walletDAO.selectUserWallets(user.getUserId());
                         if ( !walletss.isEmpty() ) {
                             user.setWallets(walletss);
+//                            user.setOwnCategories();
                         }
                     } catch ( Exception e ) {
                         System.out.println(e.getMessage());
